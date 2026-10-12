@@ -54,6 +54,10 @@ Use `src/components/ui/button.tsx` as the model.
 
 `src/components/ui/icon.tsx` maps Figma glyph names to Font Awesome icons. Figma uses Font Awesome 7 Sharp Regular (Pro). The code uses the free solid set until the team has a Pro token. To change to Pro, change only the imports in that file.
 
+Some Figma icons are Material glyphs or images, not Font Awesome. They are custom glyphs in `icon.tsx` with the Figma path: `arrow-forward-ios`, `material-close`, `keyboard-arrow-right`, `add-2`, `search`, `mic`, `filter-list`, `dehaze`, `cellular`, `wifi`.
+
+Set the icon size with the `size` prop. A `size-*` class on `<Icon>` has no effect, because the component sets an inline width and height. If Figma puts the icon in a larger box, wrap the icon in a `span` with that box size. `IconButton` takes `iconSize` (default 16).
+
 ## Font
 
 Phonic is in `src/assets/fonts`. These are trial files. Buy a license before the app goes live.
