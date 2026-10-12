@@ -58,6 +58,7 @@ const rules = [
   [/(?<![\w])-?[a-z][\w:-]*-\[[^\]]+\](?!:)/, "arbitrary value, use a token (spacing class number = px)"],
   [/(?<![\w-])rounded(?:-[tblrse]{1,2})?(?:-(?:xs|sm|md|lg|xl|2xl|3xl|4xl))?(?![\w-])/, "radius, use rounded-<px> or rounded-full"],
   [/(?<![\w-])(?:shadow|drop-shadow|text-shadow)-(?:2xs|xs|sm|md|lg|xl|2xl)(?![\w-])/, "shadow, use a shadow token"],
+  [/<svg[\s>]|from\s+["'][^"']+\.svg["']/, "inline or imported SVG, use <Icon name> (add the glyph to icon.tsx if missing)"],
   [/(?<![\w-])tracking-(?:tighter|tight|normal|wide|wider|widest)(?![\w-])/, "tracking, use tracking-condensed or a type class"],
 ]
 function walk(dir) {

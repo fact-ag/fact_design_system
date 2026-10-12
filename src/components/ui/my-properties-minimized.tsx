@@ -1,7 +1,6 @@
 import type { ComponentProps } from "react"
 import { cn } from "@/lib/utils"
 import { Icon } from "@/components/ui/icon"
-import filterList from "@/assets/images/filter-list.svg"
 
 // Figma: My Properties - Minimized (881:1660). Search pill + mic + filter. The off-canvas add_2 icon is not rendered.
 type MyPropertiesMinimizedProps = Omit<ComponentProps<"div">, "children"> & {
@@ -32,7 +31,7 @@ function MyPropertiesMinimized({ onOpen, onMic, onFilter, placeholder = "My Prop
         aria-label="Filter"
         className={cn("flex size-40 shrink-0 cursor-pointer items-center justify-center rounded-20 border border-border-default bg-surface-default drop-shadow-glow", focus)}
       >
-        <img src={filterList} alt="" className="size-24" />
+        <Icon name="filter-list" size={24} className="text-icon-default" />
       </button>
     </div>
   )

@@ -1,5 +1,6 @@
 import type { ComponentProps } from "react"
 import { cn } from "@/lib/utils"
+// ds-exception: AI sparkle artwork with glow, not an icon
 import aiFabImage from "@/assets/images/ai-fab.svg"
 
 // Figma: AI FAB (853:818). Single state; the artwork (glow included) is the Figma SVG, drawn 25% larger than the 40px hit area.

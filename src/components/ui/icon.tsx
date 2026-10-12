@@ -113,6 +113,8 @@ export const icons = {
   "chevron-left": faChevronLeft,
   "flashlight": faLightbulb,
   "camera-slash": faVideoSlash,
+  // Figma "My properties - minimized" uses the Material "filter_list" glyph, which Font Awesome Free does not have.
+  "filter-list": { prefix: "fas", iconName: "filter" as IconDefinition["iconName"], icon: [24, 24, [], "", "M10.2787 17.5V16H13.7115V17.5H10.2787ZM6.404 12.75V11.25H17.5865V12.75H6.404ZM3.5 8V6.5H20.5V8H3.5Z"] },
 } satisfies Record<string, IconDefinition>
 
 export type IconName = keyof typeof icons

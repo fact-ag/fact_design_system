@@ -1,5 +1,6 @@
 import type { ComponentProps } from "react"
 import { cn } from "@/lib/utils"
+// ds-exception: map pin shape, not an icon
 import marker from "@/assets/images/map-pin-marker.svg"
 
 // Figma: Map Pin (1219:1176). showLabel -> showLabel, Pin name text -> name.
