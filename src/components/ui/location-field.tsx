@@ -35,14 +35,14 @@ function LocationField({ label = "Location", value, error, mapPreview, onPick, o
               aria-label="Remove location"
               className={cn("absolute top-9 right-9 flex size-28 cursor-pointer items-center justify-center rounded-14 text-icon-default outline-none focus-visible:ring-2 focus-visible:ring-border-focus", chip)}
             >
-              <Icon name="xmark" size={16} />
+              <Icon name="xmark" />
             </button>
             <button
               type="button"
               onClick={onPick}
               className={cn("absolute bottom-9 left-9 flex cursor-pointer items-center gap-6 rounded-14 px-10 py-5 text-label text-text-default outline-none focus-visible:ring-2 focus-visible:ring-border-focus", chip)}
             >
-              <Icon name="pen" size={16} />
+              <span className="flex size-20 items-center justify-center"><Icon name="pen" /></span>
               Move pin
             </button>
           </div>
@@ -63,13 +63,13 @@ function LocationField({ label = "Location", value, error, mapPreview, onPick, o
             )}
           >
             <span className={cn("flex size-36 shrink-0 items-center justify-center rounded-full border border-border-default bg-bg-default", error ? "text-status-danger" : "text-icon-default")}>
-              <Icon name="location-dot" size={16} className="size-20" />
+              <Icon name="location-dot" />
             </span>
             <span className="flex min-w-0 flex-1 flex-col gap-2">
               <span className={cn("text-heading", error ? "text-status-danger" : "text-text-default")}>Drop a pin</span>
               <span className="text-label text-text-muted">Pick the spot on the satellite map</span>
             </span>
-            <Icon name="plus" size={16} className="size-20 text-icon-default" />
+            <span className="flex size-20 shrink-0 items-center justify-center text-icon-default"><Icon name="plus" /></span>
           </button>
           {error && <span role="alert" className="text-label text-status-danger">{error}</span>}
           <button
@@ -77,7 +77,7 @@ function LocationField({ label = "Location", value, error, mapPreview, onPick, o
             onClick={onUseCurrent}
             className="flex cursor-pointer items-center gap-6 rounded-4 text-label text-text-default underline outline-none focus-visible:ring-2 focus-visible:ring-border-focus"
           >
-            <Icon name="location-crosshairs" size={16} className="size-20" />
+            <span className="flex size-20 items-center justify-center"><Icon name="location-crosshairs" /></span>
             Use my current location
           </button>
         </>

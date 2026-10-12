@@ -17,7 +17,7 @@ function ListSectionHeaderLarge({ title, expanded, onToggle, children, className
         type="button"
         aria-expanded={expanded}
         onClick={onToggle}
-        className="flex w-full cursor-pointer items-center justify-between gap-24 rounded-6 p-10 text-left text-22 leading-normal tracking-condensed text-text-default outline-none focus-visible:ring-2 focus-visible:ring-border-focus"
+        className="flex w-full cursor-pointer items-center justify-between gap-25 rounded-6 p-10 text-left text-22 leading-normal tracking-condensed text-text-default outline-none focus-visible:ring-2 focus-visible:ring-border-focus"
       >
         {title}
         <span className="flex size-25 items-center justify-center text-text-on-fill-brand-tonal">

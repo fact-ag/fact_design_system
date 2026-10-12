@@ -25,7 +25,11 @@ type SlimButtonProps = ComponentProps<"button"> &
 function SlimButton({ className, variant, icon = "house", type = "button", children, ...props }: SlimButtonProps) {
   return (
     <button type={type} className={cn(slimButtonVariants({ variant }), className)} {...props}>
-      {icon && <Icon name={icon} size={16} className="size-15" />}
+      {icon && (
+        <span className="flex size-15 shrink-0 items-center justify-center">
+          <Icon name={icon} size={16} />
+        </span>
+      )}
       {children}
     </button>
   )

@@ -6,11 +6,11 @@ import { extendTailwindMerge, validators } from "tailwind-merge"
 const twMerge = extendTailwindMerge({
   extend: {
     theme: {
-      radius: [validators.isNumber, "wave"],
-      blur: ["glass", "glass-sm"],
+      radius: [validators.isNumber, "wave", "battery", "battery-fill"],
+      blur: ["glass", "glass-sm", "hairline"],
       "text-shadow": ["media-sm", "media-md", "media-lg"],
       "drop-shadow": ["floating", "glow", "lift"],
-      shadow: ["drop-shadow-2", "croptrak", "mobile", "hairline", "glow-sm", "glow-md", "lift", "ring-selected", "scrim"],
+      shadow: ["drop-shadow-2", "croptrak", "mobile", "hairline", "glow-sm", "glow-md", "lift", "ring-selected", "scrim", "selected"],
       tracking: ["condensed", "hairline"],
     },
     classGroups: {

@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button"
 
 // Figma: Signature Pad (1224:1430). State=[Empty|Signed] -> signed boolean (or a signatureSrc / children).
 // No canvas code: the feature draws into the children slot (for example a <canvas>) or passes a signatureSrc image.
-// Done is disabled until signed. Clear shows when signed. Figma uses a 874px frame; here it fills its container.
+// Done is disabled until signed. Clear shows when signed (hidden, not removed, when empty, so the baseline stays at the Figma position). Figma uses a 874px frame; here it fills its container.
 // Cancel/Clear use Button secondary/tertiary (Figma Cancel has a border like tertiary on a neutral fill; closest is secondary).
 type SignaturePadProps = Omit<ComponentProps<"div">, "children"> & {
   signed?: boolean
@@ -47,19 +47,17 @@ function SignaturePad({
       </div>
       <div className="relative mx-20 mt-18 flex-1">
         {!isSigned && !children && (
-          <p className="absolute inset-x-0 top-1/2 -mt-13 text-center text-title text-icon-subtle opacity-60">{placeholder}</p>
+          <p className="absolute inset-x-0 top-114 text-center text-title text-icon-subtle opacity-60">{placeholder}</p>
         )}
-        {signatureSrc && <img src={signatureSrc} alt="Signature" className="absolute top-1/2 left-1/2 w-450 max-w-full -translate-x-1/2 -translate-y-1/2" />}
+        {signatureSrc && <img src={signatureSrc} alt="Signature" className="absolute top-99.25 left-1/2 w-450 max-w-full -translate-x-1/2" />}
         {children && <div className="absolute inset-0">{children}</div>}
         <div className="absolute inset-x-0 bottom-36 h-px bg-border-default" />
-        <p className="absolute bottom-42 left-0 text-heading text-icon-subtle">×</p>
+        <p className="absolute bottom-38 left-0 text-heading text-icon-subtle">×</p>
         {signerName && <p className="absolute inset-x-0 bottom-12 text-center text-label text-text-muted">{signerName}</p>}
       </div>
-      {isSigned && (
-        <Button variant="tertiary" onClick={onClear} className="self-start text-body">
-          Clear
-        </Button>
-      )}
+      <Button variant="tertiary" onClick={onClear} className={cn("mt-7 self-start text-body", !isSigned && "invisible")}>
+        Clear
+      </Button>
     </div>
   )
 }

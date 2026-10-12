@@ -24,7 +24,7 @@ function PhotoThumbnail({ src, alt = "", state = "default", progress = 45, onSel
     <div
       className={cn(
         "relative size-100 overflow-clip rounded-10 bg-surface-muted",
-        selected && "border-3 border-border-selected-alt shadow-mobile",
+        selected && "border-3 border-border-selected-alt shadow-selected",
         className,
       )}
       {...props}
@@ -56,7 +56,7 @@ function PhotoThumbnail({ src, alt = "", state = "default", progress = 45, onSel
                 type="button"
                 onClick={onRetry}
                 aria-label="Retry upload"
-                className="pointer-events-auto flex size-30 cursor-pointer items-center justify-center rounded-full bg-bg-default text-icon-default outline-none focus-visible:ring-2 focus-visible:ring-border-focus"
+                className="pointer-events-auto flex size-30 cursor-pointer items-center justify-center rounded-18 bg-bg-default text-icon-default outline-none focus-visible:ring-2 focus-visible:ring-border-focus"
               >
                 <Icon name="rotate-right" size={12} />
               </button>

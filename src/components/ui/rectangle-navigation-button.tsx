@@ -35,9 +35,11 @@ function RectangleNavigationButton({ className, variant = "green", icon = "house
         <Icon name={icon} size={16} className="size-20" />
       </span>
       <span className="min-w-px flex-1 text-18 leading-none tracking-condensed">{title}</span>
-      <span className="flex shrink-0 items-center gap-2 text-body text-text-muted">
+      <span className="flex shrink-0 items-center gap-2 text-body leading-none text-text-muted">
         {meta}
-        <Icon name="chevron-right" size={16} className="size-20" />
+        <span className="flex size-20 shrink-0 items-center justify-center">
+          <Icon name="chevron-right" size={16} />
+        </span>
       </span>
     </button>
   )

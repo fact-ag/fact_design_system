@@ -23,7 +23,7 @@ function AddOption({ icon, title, hint, onClick }: { icon: IconName; title: stri
       <span className="flex size-36 items-center justify-center rounded-full border border-border-default bg-bg-default text-icon-default">
         <Icon name={icon} size={16} className="size-20" />
       </span>
-      <span className="mt-4 text-heading whitespace-nowrap text-text-default">{title}</span>
+      <span className="mt-8 text-heading whitespace-nowrap text-text-default">{title}</span>
       <span className="text-label whitespace-nowrap text-text-muted">{hint}</span>
     </button>
   )

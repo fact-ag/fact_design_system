@@ -22,8 +22,10 @@ function ListItem({ title, subtitle, icon = "house", showChevron = true, trailin
       )}
       {...props}
     >
-      <span className="flex size-45 shrink-0 items-center justify-center rounded-10 bg-fill-alternative text-text-on-fill-brand">
-        <Icon name={icon} />
+      <span className="flex size-45 shrink-0 items-start justify-start rounded-10 bg-fill-alternative pt-13 pl-13 text-text-on-fill-brand">
+        <span className="flex size-20 items-center justify-center">
+          <Icon name={icon} />
+        </span>
       </span>
       <span className="flex min-w-0 flex-1 flex-col gap-3">
         <span className="truncate text-16 leading-16.25 text-text-default">{title}</span>

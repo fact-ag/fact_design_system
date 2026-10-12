@@ -8,9 +8,11 @@ type IconButtonProps = Omit<ComponentProps<"button">, "aria-label"> & {
   label: string
   icon?: IconName
   variant?: "default" | "alt"
+  /** Glyph size in px. Figma uses 16, and 24 for Material glyphs such as the header menu. */
+  iconSize?: number
 }
 
-function IconButton({ className, label, icon = "house", variant = "default", type = "button", ...props }: IconButtonProps) {
+function IconButton({ className, label, icon = "house", variant = "default", iconSize = 16, type = "button", ...props }: IconButtonProps) {
   return (
     <button
       type={type}
@@ -24,7 +26,7 @@ function IconButton({ className, label, icon = "house", variant = "default", typ
       )}
       {...props}
     >
-      <Icon name={icon} size={16} className="size-20" />
+      <Icon name={icon} size={iconSize} />
     </button>
   )
 }

@@ -16,8 +16,8 @@ type ItemTypeBadgeProps = ComponentProps<"div"> & { itemType?: keyof typeof item
 function ItemTypeBadge({ className, itemType = "inspection", ...props }: ItemTypeBadgeProps) {
   const { icon, label } = items[itemType]
   return (
-    <div className={cn("inline-flex items-center gap-5 text-label font-medium text-text-muted uppercase", className)} {...props}>
-      <Icon name={icon} size={12} />
+    <div className={cn("inline-flex items-center gap-5 text-label font-bold text-text-muted uppercase", className)} {...props}>
+      <Icon name={icon} size={12} className="size-15" />
       {label}
     </div>
   )

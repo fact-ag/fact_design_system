@@ -46,7 +46,7 @@ function SelectField({ label, placeholder = "Select Property", value, open = fal
               onClick={onScan}
               className="flex size-28 cursor-pointer items-center justify-center rounded-full text-icon-default outline-none focus-visible:ring-2 focus-visible:ring-border-focus"
             >
-              <Icon name="barcode-read" size={20} label="Scan" />
+              <Icon name="barcode-read" label="Scan" />
             </button>
           </>
         )}

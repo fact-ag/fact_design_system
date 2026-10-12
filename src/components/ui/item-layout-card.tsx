@@ -39,7 +39,7 @@ function ItemLayoutCard({
         <div className="flex h-32 items-center gap-5 text-label text-text-muted">
           {info.map((n, i) => (
             <span key={i} className="flex items-center gap-5">
-              {i > 0 && <Dot />}
+              {i > 0 && <span className={cn("flex", statusBadge && i === 1 && "ml-px")}><Dot /></span>}
               {n}
             </span>
           ))}

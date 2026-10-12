@@ -86,7 +86,7 @@ function BarcodeScanner({
           </span>
           <h3 className="text-title">Camera access needed</h3>
           <p className="text-center text-body opacity-75">Allow camera access in Settings to scan barcodes, or enter the code manually.</p>
-          <Button variant="tertiary" className="mt-8" onClick={onOpenSettings}>
+          <Button variant="tertiary" className="mt-20" onClick={onOpenSettings}>
             Open Settings
           </Button>
           <Button variant="text" className="text-text-on-inverse active:bg-transparent active:text-text-on-inverse" onClick={onEnterManually}>

@@ -16,7 +16,9 @@ function AddPhotoTile({ onPress, className, type = "button", ...props }: AddPhot
       )}
       {...props}
     >
-      <Icon name="image-circle-plus" size={16} />
+      <span className="flex size-20 items-center justify-center">
+        <Icon name="image-circle-plus" size={16} />
+      </span>
       Add photo
     </button>
   )

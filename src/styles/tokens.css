@@ -232,6 +232,8 @@
   /* Radius: rounded-<px>, plus rounded-full. Figma "Radius/<px>". */
   --radius-*: initial;
   --radius-wave: 1.6px;
+  --radius-battery: 4.3px;
+  --radius-battery-fill: 2.5px;
   --radius-2: 2px;
   --radius-4: 4px;
   --radius-6: 6px;
@@ -261,6 +263,7 @@
   --shadow-drop-shadow-2: 0 2px 4px 0 #2727271a;
   --shadow-croptrak: 0 0 10px 3px #2947390d;
   --shadow-mobile: 0 0 10px 3px #2947391a;
+  --shadow-selected: 0 0 10px 3px var(--color-border-default);
   --shadow-hairline: 0 1px 1.5px #2947391a;
   --shadow-glow-sm: 0 0 2.5px 0 #2947391a;
   --shadow-glow-md: 0 0 5px 0 #2947391a;
@@ -278,6 +281,12 @@
   --blur-*: initial;
   --blur-glass: 15px;
   --blur-glass-sm: 8px;
+  --blur-hairline: 1px;
+
+  /* Colors that Figma uses without a semantic variable. */
+  --color-text-danger: #b51b29; /* Figma legacy variable "danger" */
+  --color-device-notch: #000000; /* Phone notch in device frames */
+  --color-surface-scrim: #0a140e73; /* Mobile screen dim, rgba(10, 20, 14, 0.45) */
 
   /* Overlay colors on photos. */
   --color-media-shade: #1a2a3926;

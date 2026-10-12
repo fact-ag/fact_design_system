@@ -42,7 +42,7 @@ function SketchPad({
         {children}
         {blank && (
           <div className="absolute top-1/2 -mt-60 left-1/2 flex -translate-x-1/2 -translate-y-1/2 flex-col items-center gap-8 text-icon-subtle opacity-60">
-            <Icon name="scribble" size={16} className="size-20" />
+            <span className="flex size-20 items-center justify-center"><Icon name="scribble" /></span>
             <p className="text-title whitespace-nowrap">{hint}</p>
           </div>
         )}

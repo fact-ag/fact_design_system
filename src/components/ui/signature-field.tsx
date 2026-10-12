@@ -37,7 +37,7 @@ function SignatureField({ state = "empty", label = "Signature", caption, signatu
         <span className="pointer-events-none absolute top-79 left-23 text-heading text-icon-subtle">×</span>
         {signed && signatureSrc ? (
           <>
-            <img src={signatureSrc} alt="Signature" className="pointer-events-none absolute top-56 left-1/2 h-55 w-240 -translate-x-1/2" />
+            <img src={signatureSrc} alt="Signature" className="pointer-events-none absolute top-56.25 left-1/2 h-54.75 w-240 -translate-x-1/2" />
             <button
               type="button"
               onClick={onClear}
@@ -48,7 +48,7 @@ function SignatureField({ state = "empty", label = "Signature", caption, signatu
           </>
         ) : (
           <div className={cn("pointer-events-none absolute top-43 left-1/2 flex -translate-x-1/2 items-center gap-8", error ? "text-status-danger" : "text-text-default")}>
-            <Icon name="signature" size={16} />
+            <span className="flex size-20 items-center justify-center"><Icon name="signature" size={16} /></span>
             <span className="text-heading whitespace-nowrap">Tap to sign</span>
           </div>
         )}

@@ -23,15 +23,15 @@ const initialsOf = (name: string) =>
     .slice(0, 2)
     .toUpperCase()
 
-const row = "flex w-full items-center gap-12 border-b border-border-default py-12"
+const row = "flex w-full items-center gap-12 border-b border-border-default py-8"
 
 function UserRow({ name, role, initials = initialsOf(name), mode = "multiple", selected = false, onSelect, className, ...props }: UserRowProps) {
   const content = (
     <>
       <Avatar size="medium" initials={initials} />
       <span className="flex min-w-0 flex-1 flex-col text-left">
-        <span className="truncate text-heading text-text-default">{name}</span>
-        {role && <span className="truncate text-label text-text-muted">{role}</span>}
+        <span className="truncate text-body text-text-default">{name}</span>
+        {role && <span className="truncate text-caption text-text-muted">{role}</span>}
       </span>
     </>
   )
@@ -42,7 +42,7 @@ function UserRow({ name, role, initials = initialsOf(name), mode = "multiple", s
           type="button"
           aria-pressed={selected}
           onClick={onSelect}
-          className="flex w-full cursor-pointer items-center gap-12 py-12 outline-none focus-visible:ring-2 focus-visible:ring-border-focus"
+          className="flex w-full cursor-pointer items-center gap-12 py-8 outline-none focus-visible:ring-2 focus-visible:ring-border-focus"
         >
           {content}
           {selected && <Icon name="check" size={16} className="size-20 text-icon-default" />}

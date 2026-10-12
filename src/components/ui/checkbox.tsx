@@ -6,7 +6,7 @@ import { Icon } from "@/components/ui/icon"
 const sizes = {
   small: { box: "size-20", icon: 16, title: "text-heading", desc: "text-label" },
   medium: { box: "size-24", icon: 18, title: "text-heading", desc: "text-label" },
-  large: { box: "size-28", icon: 20, title: "text-18 leading-none", desc: "text-body" },
+  large: { box: "size-28", icon: 20, title: "text-18 leading-none tracking-condensed", desc: "text-14 leading-none tracking-condensed" },
 }
 
 type CheckboxProps = Omit<ComponentProps<"input">, "size" | "title" | "type"> & {

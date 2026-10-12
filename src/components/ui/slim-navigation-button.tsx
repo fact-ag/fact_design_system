@@ -11,7 +11,7 @@ const slimNavigationButtonVariants = cva(
     variants: {
       variant: {
         green: "border border-border-brand-tonal bg-fill-brand-tonal-default text-text-default",
-        red: "border border-status-danger-subtle bg-fill-danger-bg-subtle text-status-danger",
+        red: "border border-status-danger-subtle bg-fill-danger-bg-subtle text-text-danger",
         silt: "bg-fill-neutral-default text-text-default",
       },
     },

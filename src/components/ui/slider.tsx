@@ -17,10 +17,11 @@ const thumb =
 function Slider({ title, subtitle, min = 0, max = 100, value = 0, className, ...props }: SliderProps) {
   const pct = max > min ? ((value - min) / (max - min)) * 100 : 0
   return (
-    <label className={cn("flex w-full flex-col gap-4", className)}>
+    <label className={cn("flex w-full flex-col gap-4 pt-15.5", className)}>
       {title && <span className="text-18 leading-none text-text-default">{title}</span>}
-      {subtitle && <span className="text-caption text-text-muted">{subtitle}</span>}
-      <span className="rounded-20 bg-fill-neutral-default px-16 pt-8">
+      {subtitle && <span className="text-caption leading-20 text-text-muted">{subtitle}</span>}
+      <span className="flex flex-col">
+      <span className="flex h-44 items-center rounded-20 bg-fill-neutral-default px-17">
         <input
           type="range"
           min={min}
@@ -36,7 +37,8 @@ function Slider({ title, subtitle, min = 0, max = 100, value = 0, className, ...
           )}
           {...props}
         />
-        <span className="flex justify-between pb-4 text-label text-text-muted">
+      </span>
+        <span className="flex justify-between px-17 pt-5 text-label text-text-muted">
           <span>{min.toLocaleString()}</span>
           <span>{max.toLocaleString()}</span>
         </span>

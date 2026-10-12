@@ -26,7 +26,7 @@ function HeaderWithTitle({ title, onBack, onTitleClick, children, className, ...
             className="flex cursor-pointer items-center gap-6 rounded-4 text-heading text-text-default outline-none focus-visible:ring-2 focus-visible:ring-border-focus"
           >
             {title}
-            <Icon name="chevron-down" size={16} />
+            <Icon name="arrow-forward-ios" size={25} className="rotate-90" />
           </button>
         ) : (
           <h1 className="truncate text-heading text-text-default">{title}</h1>

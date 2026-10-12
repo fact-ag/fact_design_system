@@ -83,6 +83,12 @@ import { UtilityButton } from "@/components/ui/utility-button"
 
 const wheat = presentationImages.wheatField
 const potato = presentationImages.potatoField
+// Sample signature stroke for the demos (a real app passes the drawn signature).
+const sampleSignature =
+  "data:image/svg+xml," +
+  encodeURIComponent(
+    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 70"><path d="M6 52c14-30 26-44 30-30s-22 30-12 30 20-34 34-26 6 22 14 18 12-26 22-20 4 20 14 16 12-22 22-16 4 18 14 14 14-20 24-14 6 16 16 12 18-14 28-10M30 64c60-4 140-6 200-8" fill="none" stroke="#294739" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+  )
 const noop = () => {}
 
 function Section({ id, title, wide, children }: { id: string; title: string; wide?: boolean; children: ReactNode }) {
@@ -575,6 +581,7 @@ function SignaturePadDemo() {
       title="Sign to confirm inspection"
       signerName="Maria Lopez"
       placeholder="Sign here"
+      signatureSrc={signed ? sampleSignature : undefined}
       onCancel={noop}
       onClear={() => setSigned(false)}
       onDone={noop}
@@ -1164,7 +1171,7 @@ export function Gallery() {
 
       <Section id="signature-field" title="Signature Field (1224:1405)">
         <SignatureField state="empty" label="Inspector signature" caption="Tap to sign" onPress={noop} />
-        <SignatureField state="signed" label="Inspector signature" caption="Signed by Maria Lopez" signatureSrc={wheat} onPress={noop} onClear={noop} />
+        <SignatureField state="signed" label="Inspector signature" caption="Signed by Maria Lopez" signatureSrc={sampleSignature} onPress={noop} onClear={noop} />
         <SignatureField state="error" label="Inspector signature" caption="Signature required" onPress={noop} />
       </Section>
 

@@ -18,7 +18,11 @@ function Tab({ className, selected = false, tabName = "Tab Name", icon = "circle
       )}
       {...props}
     >
-      {icon && <Icon name={icon} size={12} />}
+      {icon && (
+        <span className="flex size-15 shrink-0 items-center justify-center">
+          <Icon name={icon} size={12} />
+        </span>
+      )}
       {tabName}
     </button>
   )

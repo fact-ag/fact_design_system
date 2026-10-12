@@ -13,7 +13,7 @@ type InputFieldProps = Omit<ComponentProps<"input">, "size"> & {
 function InputField({ label, unit, onScan, id, className, ...props }: InputFieldProps) {
   return (
     <label className={cn("flex w-full flex-col gap-8", className)}>
-      {label && <span className="text-heading text-text-default">{label}</span>}
+      {label && <span className="flex h-20 items-center text-heading text-text-default">{label}</span>}
       <span className="flex h-44 items-center gap-8 rounded-30 bg-fill-neutral-default px-14 focus-within:ring-2 focus-within:ring-border-focus has-disabled:opacity-50">
         <input
           id={id}
@@ -29,7 +29,7 @@ function InputField({ label, unit, onScan, id, className, ...props }: InputField
               onClick={onScan}
               className="flex size-28 cursor-pointer items-center justify-center rounded-full text-icon-default outline-none focus-visible:ring-2 focus-visible:ring-border-focus"
             >
-              <Icon name="barcode-read" size={20} label="Scan" />
+              <Icon name="barcode-read" size={16} className="size-20" label="Scan" />
             </button>
           </>
         )}

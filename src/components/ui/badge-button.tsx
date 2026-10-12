@@ -18,7 +18,9 @@ function BadgeButton({ className, selected = false, icon = "house", type = "butt
       )}
       {...props}
     >
-      <Icon name={icon} size={16} className="size-15" />
+      <span className="flex size-15 shrink-0 items-center justify-center">
+        <Icon name={icon} size={16} />
+      </span>
       {children}
     </button>
   )

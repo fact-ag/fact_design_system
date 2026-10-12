@@ -15,7 +15,9 @@ function UtilityButton({ className, icon = "house", type = "button", children, .
       )}
       {...props}
     >
-      <Icon name={icon} size={16} className="size-20" />
+      <span className="flex size-20 shrink-0 items-center justify-center">
+        <Icon name={icon} size={16} />
+      </span>
       {children}
     </button>
   )

@@ -15,14 +15,14 @@ const focus = "outline-none focus-visible:ring-2 focus-visible:ring-border-focus
 
 function MyPropertiesMinimized({ onOpen, onMic, onFilter, placeholder = "My Properties", className, ...props }: MyPropertiesMinimizedProps) {
   return (
-    <div className={cn("flex h-68 w-full items-center gap-10 rounded-50 border border-border-neutral bg-bg-default px-14", className)} {...props}>
-      <div className="flex h-40 min-w-0 flex-1 items-center rounded-25 bg-fill-neutral-default pr-12 pl-12 text-text-muted">
+    <div className={cn("flex h-68 w-full items-center gap-9 rounded-50 border border-border-neutral bg-bg-default pr-13 pl-14", className)} {...props}>
+      <div className="flex h-40 min-w-0 flex-1 items-center rounded-25 bg-fill-neutral-default pr-13 pl-12 text-text-muted">
         <button type="button" onClick={onOpen} className={cn("flex h-full min-w-0 flex-1 cursor-pointer items-center gap-4 rounded-25 text-body text-text-muted", focus)}>
-          <Icon name="magnifying-glass" size={20} className="text-icon-default" />
+          <Icon name="search" size={24} className="text-icon-default" />
           <span className="truncate">{placeholder}</span>
         </button>
         <button type="button" onClick={onMic} aria-label="Voice search" className={cn("flex size-24 cursor-pointer items-center justify-center rounded-full text-icon-default", focus)}>
-          <Icon name="microphone" size={18} />
+          <Icon name="mic" size={24} />
         </button>
       </div>
       <button

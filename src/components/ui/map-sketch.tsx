@@ -76,7 +76,7 @@ function MapSketch({
   const draw = state === "draw"
   const pinDetails = state === "pin-details"
   return (
-    <div className={cn("relative h-full min-h-600 w-full overflow-clip bg-bg-inverse", className)} {...props}>
+    <div className={cn("relative h-full min-h-600 w-full overflow-clip rounded-50 bg-bg-inverse", className)} {...props}>
       <div className="absolute inset-0">{background}</div>
       {(draw || pinDetails) && <div className="absolute inset-0 overflow-clip">{children}</div>}
       {(explore || layers) && (
@@ -102,7 +102,9 @@ function MapSketch({
           </div>
           <div className="absolute inset-x-16 bottom-50 flex flex-col items-center gap-12">
             <p className="flex items-center gap-8 rounded-14 bg-bg-default px-14 py-8 text-label text-text-default drop-shadow-floating">
-              <Icon name="hand-pointer" size={16} className="size-20 text-text-muted" />
+              <span className="flex size-20 items-center justify-center text-text-muted">
+                <Icon name="hand-pointer" size={16} />
+              </span>
               {hint}
             </p>
             <Button className="w-full" onClick={onCapture}>
@@ -120,7 +122,7 @@ function MapSketch({
         />
       )}
       {/* Dim and drawers come from the native dialog backdrop. */}
-      <BottomDrawer open={pinDetails} modal={false} onClose={() => onDone?.()} className="h-257">
+      <BottomDrawer open={pinDetails} modal={false} onClose={() => onDone?.()} className="bottom-5 h-257">
         <div className="flex flex-col gap-12 px-24 pt-12">
           <div className="flex items-center gap-12">
             <span className="flex size-32 items-center justify-center rounded-full bg-fill-neutral-default text-icon-default">
@@ -142,7 +144,7 @@ function MapSketch({
           </div>
         </div>
       </BottomDrawer>
-      <BottomDrawer open={layers} onClose={() => onLayersClose?.()} size="medium" className="overflow-visible">
+      <BottomDrawer open={layers} onClose={() => onLayersClose?.()} size="medium" className="bottom-5 overflow-visible">
         <MapLayers layers={[]} {...layersProps} onClose={onLayersClose} className="rounded-none border-0 bg-transparent" />
       </BottomDrawer>
     </div>

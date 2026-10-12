@@ -20,7 +20,7 @@ type DisplayIconProps = ComponentProps<"div"> & VariantProps<typeof displayIconV
 function DisplayIcon({ className, size, children, ...props }: DisplayIconProps) {
   return (
     <div className={cn(displayIconVariants({ size }), className)} {...props}>
-      {children ?? <Icon name="house" size={size === "medium" ? 20 : 16} />}
+      {children ?? <Icon name="house" size={16} />}
     </div>
   )
 }

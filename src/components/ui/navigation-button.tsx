@@ -35,7 +35,7 @@ function NavigationButton({ className, variant = "green", icon = "house", title 
       </span>
       <span className="min-h-24 flex-1" />
       <span className="w-full text-18 leading-none tracking-condensed">{title}</span>
-      <span className="w-full pt-3 text-body text-text-muted">{description}</span>
+      <span className="w-full pt-3 text-body leading-none text-text-muted">{description}</span>
     </button>
   )
 }

@@ -70,7 +70,7 @@ function UploadPhotos({
       )}
       <div className="flex w-full flex-col">
         <p className="text-heading text-text-default">{header ?? `Photos (${done})`}</p>
-        <div className="flex gap-11 overflow-x-auto pt-12 pb-12">
+        <div className="flex h-123 gap-11 overflow-x-auto pt-12">
           <AddPhotoTile onPress={onAdd} className="shrink-0" />
           {photos.map((p) => (
             <PhotoThumbnail

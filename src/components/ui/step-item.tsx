@@ -18,7 +18,7 @@ function StepItem({ className, state = "upcoming", label = "Label", stepNumber =
       <span className={cn("text-16 leading-22 whitespace-nowrap", upcoming ? "text-text-disabled" : "text-text-default")}>{label}</span>
       {showConnector && (
         <span className={cn("flex size-24 items-center justify-center", upcoming ? "text-text-disabled" : "text-text-muted")}>
-          <Icon name="chevron-right" size={12} />
+          <Icon name="keyboard-arrow-right" size={24} />
         </span>
       )}
     </div>
