@@ -24,7 +24,6 @@ type AudioRecorderProps = Omit<ComponentProps<"div">, "children"> & {
   onStart?: () => void
   onPause?: () => void
   onResume?: () => void
-  onStop?: () => void
   onPlay?: () => void
   onDiscard?: () => void
   onSave?: () => void

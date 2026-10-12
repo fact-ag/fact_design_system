@@ -85,10 +85,10 @@ const wheat = presentationImages.wheatField
 const potato = presentationImages.potatoField
 const noop = () => {}
 
-function Section({ id, title, children }: { id: string; title: string; children: ReactNode }) {
+function Section({ id, title, wide, children }: { id: string; title: string; wide?: boolean; children: ReactNode }) {
   return (
-    <section id={id} className="w-full max-w-[392px] scroll-mt-4">
-      <h2 className="mb-2 text-heading text-heading">{title}</h2>
+    <section id={id} className={wide ? "w-full max-w-[1122px] scroll-mt-4" : "w-full max-w-[392px] scroll-mt-4"}>
+      <h2 className="mb-2 text-heading text-text-default">{title}</h2>
       <div className="flex flex-col gap-4 rounded-xl border border-border-default bg-bg-default p-4">{children}</div>
     </section>
   )
@@ -791,9 +791,9 @@ const allIcons = Object.keys(icons) as IconName[]
 
 export function Gallery() {
   return (
-    <main className="flex min-h-screen flex-col items-center gap-8 bg-bg-muted p-4">
-      <div className="flex w-full max-w-[392px] flex-col gap-2">
-        <h1 className="text-title text-heading">Component gallery</h1>
+    <main className="flex min-h-screen flex-wrap items-start justify-center gap-8 bg-bg-muted p-4">
+      <div className="flex w-full flex-col gap-2">
+        <h1 className="text-title text-text-default">Component gallery</h1>
         <ThemeToggle />
       </div>
 
@@ -869,7 +869,6 @@ export function Gallery() {
               onStart={noop}
               onPause={noop}
               onResume={noop}
-              onStop={noop}
               onPlay={noop}
               onDiscard={noop}
               onSave={noop}
@@ -910,7 +909,7 @@ export function Gallery() {
               {(open, close) => (
                 <BottomDrawer open={open} onClose={close} size={s}>
                   <div className="flex flex-col gap-3 p-6">
-                    <p className="text-title text-heading">Hillside harvest plan</p>
+                    <p className="text-title text-text-default">Hillside harvest plan</p>
                     <p className="text-body text-text-muted">Harvest the lower blocks first. Dry weather expected through Friday.</p>
                     <Button onClick={close}>Close</Button>
                   </div>
@@ -1004,7 +1003,7 @@ export function Gallery() {
         <InteractiveInputDemo action="scan" initial="Lot 24-PO-007" />
       </Section>
 
-      <Section id="ipad-list-item" title="iPad List item container (531:455)">
+      <Section id="ipad-list-item" wide title="iPad List item container (531:455)">
         <IPadListItem items={poItems} />
       </Section>
 
