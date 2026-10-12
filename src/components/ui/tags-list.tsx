@@ -1,6 +1,7 @@
 import type { ComponentProps } from "react"
 import { cn } from "@/lib/utils"
 import { Button } from "./button"
+import { Icon } from "./icon"
 
 // Figma: Tags list (1182:1086). Tag 1-3 toggles -> tags array. The Add Button is shown when onAdd is given.
 type TagsListProps = Omit<ComponentProps<"div">, "onChange"> & {
@@ -18,8 +19,8 @@ function TagsList({ tags, onTagClick, onAdd, className, ...props }: TagsListProp
         </Button>
       ))}
       {onAdd && (
-        <Button variant="tertiary" aria-label="Add tag" className="size-28 rounded-50 p-0 text-24 leading-20" onClick={onAdd}>
-          +
+        <Button variant="tertiary" aria-label="Add tag" className="size-28 rounded-50 p-0" onClick={onAdd}>
+          <Icon name="plus" size={16} />
         </Button>
       )}
     </div>
