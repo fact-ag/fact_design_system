@@ -10,12 +10,12 @@ const buttonVariants = cva(
     variants: {
       variant: {
         primary:
-          "rounded-full bg-fill-brand-default text-text-on-fill-brand active:bg-fill-brand-pressed disabled:bg-fill-disabled disabled:text-text-on-fill-disabled",
+          "rounded-pill bg-fill-brand-default text-text-on-fill-brand active:bg-fill-brand-pressed disabled:bg-fill-disabled disabled:text-text-on-fill-disabled",
         secondary:
-          "rounded-full bg-fill-neutral-default text-text-on-fill-neutral active:bg-fill-neutral-pressed disabled:bg-fill-disabled disabled:text-text-on-fill-disabled",
+          "rounded-pill bg-fill-neutral-default text-text-on-fill-neutral active:bg-fill-neutral-pressed disabled:bg-fill-disabled disabled:text-text-on-fill-disabled",
         tertiary:
-          "rounded-full border border-border-brand-tonal bg-fill-brand-tonal-default text-text-on-fill-brand-tonal active:border-border-default active:bg-fill-brand-tonal-pressed disabled:border-border-default disabled:bg-transparent disabled:text-text-on-fill-disabled",
-        text: "rounded-[14px] text-text-link underline active:bg-bg-default active:text-text-muted disabled:text-text-on-fill-disabled",
+          "rounded-pill border border-border-brand-tonal bg-fill-brand-tonal-default text-text-on-fill-brand-tonal active:border-border-default active:bg-fill-brand-tonal-pressed disabled:border-border-default disabled:bg-transparent disabled:text-text-on-fill-disabled",
+        text: "rounded-card text-text-link underline active:bg-bg-default active:text-text-muted disabled:text-text-on-fill-disabled",
       },
     },
     defaultVariants: { variant: "primary" },

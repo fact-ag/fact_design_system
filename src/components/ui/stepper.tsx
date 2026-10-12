@@ -11,7 +11,7 @@ type StepperProps = ComponentProps<"div"> & {
 
 function Stepper({ steps, currentStep, className, ...props }: StepperProps) {
   return (
-    <div className={cn("inline-flex h-[47px] max-w-full items-center overflow-x-auto rounded-[23.5px] bg-fill-neutral-default p-2.5", className)} {...props}>
+    <div className={cn("inline-flex h-12 max-w-full items-center overflow-x-auto rounded-pill bg-fill-neutral-default p-2", className)} {...props}>
       {steps.map((label, i) => (
         <StepItem
           key={i}

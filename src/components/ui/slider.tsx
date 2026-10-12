@@ -12,15 +12,15 @@ type SliderProps = Omit<ComponentProps<"input">, "type" | "title"> & {
 }
 
 const thumb =
-  "h-5 w-5 appearance-none rounded-full border-0 bg-status-success shadow-croptrak"
+  "h-5 w-5 appearance-none rounded-full border-0 bg-status-success shadow-card"
 
 function Slider({ title, subtitle, min = 0, max = 100, value = 0, className, ...props }: SliderProps) {
   const pct = max > min ? ((value - min) / (max - min)) * 100 : 0
   return (
     <label className={cn("flex w-full flex-col gap-1", className)}>
-      {title && <span className="text-[18px] leading-none text-text-default">{title}</span>}
+      {title && <span className="text-heading text-text-default">{title}</span>}
       {subtitle && <span className="text-caption text-text-muted">{subtitle}</span>}
-      <span className="rounded-[20px] bg-fill-neutral-default px-4 pt-2">
+      <span className="rounded-sheet bg-fill-neutral-default px-4 pt-2">
         <input
           type="range"
           min={min}
@@ -30,7 +30,7 @@ function Slider({ title, subtitle, min = 0, max = 100, value = 0, className, ...
             background: `linear-gradient(to right, var(--color-fill-brand-default) ${pct}%, var(--color-border-default) ${pct}%) center / 100% 4px no-repeat`,
           }}
           className={cn(
-            "block h-7 w-full cursor-pointer appearance-none rounded-[2px] bg-transparent outline-none focus-visible:[&::-webkit-slider-thumb]:ring-2 focus-visible:[&::-webkit-slider-thumb]:ring-border-focus disabled:cursor-not-allowed disabled:opacity-50",
+            "block h-7 w-full cursor-pointer appearance-none rounded-hairline bg-transparent outline-none focus-visible:[&::-webkit-slider-thumb]:ring-2 focus-visible:[&::-webkit-slider-thumb]:ring-border-focus disabled:cursor-not-allowed disabled:opacity-disabled",
             `[&::-webkit-slider-thumb]:${thumb.split(" ").join(" [&::-webkit-slider-thumb]:")}`,
             `[&::-moz-range-thumb]:${thumb.split(" ").join(" [&::-moz-range-thumb]:")}`,
           )}

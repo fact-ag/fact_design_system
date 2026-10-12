@@ -21,7 +21,7 @@ type FileItemProps = Omit<ComponentProps<"div">, "children"> & {
 }
 
 const actionClass =
-  "flex size-7 shrink-0 cursor-pointer items-center justify-center rounded-[14px] bg-fill-neutral-default text-icon-default outline-none focus-visible:ring-2 focus-visible:ring-border-focus"
+  "flex size-7 shrink-0 cursor-pointer items-center justify-center rounded-card bg-fill-neutral-default text-icon-default outline-none focus-visible:ring-2 focus-visible:ring-border-focus"
 
 function FileItem({
   state = "uploading",
@@ -39,7 +39,7 @@ function FileItem({
   return (
     <div
       className={cn(
-        "flex w-full items-center gap-[11px] rounded-[11px] border bg-bg-default p-[11px]",
+        "flex w-full items-center gap-3 rounded-card border bg-bg-default p-3",
         error ? "border-status-danger-subtle" : "border-border-default",
         className,
       )}
@@ -47,7 +47,7 @@ function FileItem({
     >
       <div
         className={cn(
-          "flex size-[34px] shrink-0 items-center justify-center rounded-[17px]",
+          "flex size-8 shrink-0 items-center justify-center rounded-panel",
           error ? "bg-fill-danger-surface-subtle text-status-danger" : "bg-surface-muted text-icon-default",
         )}
       >
@@ -57,7 +57,7 @@ function FileItem({
         <p className="truncate text-body text-text-default">{name}</p>
         {state === "uploading" && (
           <div className="flex w-full items-center gap-2">
-            <LinearProgressBar value={progress} className="h-[3px] flex-1" />
+            <LinearProgressBar value={progress} className="h-1 flex-1" />
             <p className="text-caption text-text-muted">{progress}%</p>
           </div>
         )}

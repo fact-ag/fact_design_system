@@ -29,19 +29,19 @@ function AlertBottomDrawer({
   destructive = false,
 }: AlertBottomDrawerProps) {
   return (
-    <BottomDrawer open={open} onClose={onClose} role="alertdialog" className="h-[273px]">
-      <div className="flex flex-col items-center px-[34px] pt-3.5 pb-6 text-center">
-        <span className="flex size-14 items-center justify-center rounded-full bg-fill-danger-surface-subtle text-status-danger">
-          <Icon name="triangle-exclamation" size={20} className="size-[25px]" />
+    <BottomDrawer open={open} onClose={onClose} role="alertdialog" className="h-68">
+      <div className="flex flex-col items-center px-8 pt-3 pb-6 text-center">
+        <span className="flex size-14 items-center justify-center rounded-pill bg-fill-danger-surface-subtle text-status-danger">
+          <Icon name="triangle-exclamation" size={20} className="size-6" />
         </span>
         <h2 className="mt-5 text-title text-text-default">{title}</h2>
         {description && <p className="mt-2 line-clamp-2 text-body text-text-muted">{description}</p>}
       </div>
-      <div className="flex gap-5 px-[33px]">
+      <div className="flex gap-5 px-8">
         <Button variant="secondary" className="flex-1" onClick={onCancel ?? onClose}>
           {cancelLabel}
         </Button>
-        <Button className={destructive ? "flex-1 bg-fill-danger text-text-on-fill-brand active:bg-fill-danger active:opacity-80" : "flex-1"} onClick={onConfirm}>
+        <Button className={destructive ? "flex-1 bg-fill-danger text-text-on-fill-brand active:bg-fill-danger active:opacity-pressed" : "flex-1"} onClick={onConfirm}>
           {confirmLabel}
         </Button>
       </div>

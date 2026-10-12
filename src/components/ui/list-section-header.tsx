@@ -19,8 +19,8 @@ function ListSectionHeader({ title, expanded, onToggle, children, className, ...
         className="flex h-7 w-fit cursor-pointer items-center gap-1.5 rounded-full text-body text-text-default outline-none focus-visible:ring-2 focus-visible:ring-border-focus"
       >
         {title}
-        <span className="flex size-[25px] items-center justify-center rounded-full bg-fill-neutral-default">
-          <Icon name={expanded ? "chevron-up" : "chevron-down"} size={10} />
+        <span className="flex size-6 items-center justify-center rounded-full bg-fill-neutral-default">
+          <Icon name={expanded ? "chevron-up" : "chevron-down"} size={8} />
         </span>
       </button>
       {expanded && children}

@@ -73,7 +73,7 @@ function UserSelectorDrawer({
         </div>
       )}
       <span className="text-label text-text-muted">{groupLabel}</span>
-      <div className="flex flex-col px-[7px]">
+      <div className="flex flex-col px-1.5">
         {visible.map((u) => (
           <UserRow
             key={u.id}

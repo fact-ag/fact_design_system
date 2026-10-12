@@ -26,12 +26,12 @@ function FileUpload({
 }: FileUploadProps) {
   return (
     <div className={cn("flex w-full flex-col gap-4", className)} {...props}>
-      <div className="flex w-full flex-col gap-[9px]">
+      <div className="flex w-full flex-col gap-2">
         {showTitle && <p className="text-body text-text-default">{title}</p>}
         <button
           type="button"
           onClick={onPick}
-          className="flex w-full cursor-pointer flex-col items-center justify-center gap-1 rounded-xl border border-dashed border-border-default bg-surface-muted px-4 pt-[18px] pb-4 outline-none focus-visible:ring-2 focus-visible:ring-border-focus"
+          className="flex w-full cursor-pointer flex-col items-center justify-center gap-1 rounded-card border border-dashed border-border-default bg-surface-muted px-4 pt-4 pb-4 outline-none focus-visible:ring-2 focus-visible:ring-border-focus"
         >
           <span className="flex size-9 items-center justify-center rounded-full border border-border-default bg-bg-default text-icon-default">
             <Icon name="arrow-up-from-bracket" size={16} className="size-5" />

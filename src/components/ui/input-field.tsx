@@ -14,7 +14,7 @@ function InputField({ label, unit, onScan, id, className, ...props }: InputField
   return (
     <label className={cn("flex w-full flex-col gap-2", className)}>
       {label && <span className="text-heading text-text-default">{label}</span>}
-      <span className="flex h-[44px] items-center gap-2 rounded-[30px] bg-fill-neutral-default px-3.5 focus-within:ring-2 focus-within:ring-border-focus has-disabled:opacity-50">
+      <span className="flex h-11 items-center gap-2 rounded-pill bg-fill-neutral-default px-3 focus-within:ring-2 focus-within:ring-border-focus has-disabled:opacity-disabled">
         <input
           id={id}
           className="min-w-0 flex-1 bg-transparent text-body text-text-default outline-none placeholder:text-text-on-fill-placeholder"

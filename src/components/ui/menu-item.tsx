@@ -15,7 +15,7 @@ function MenuItem({ icon = "globe", active = false, children, className, type = 
       type={type}
       aria-current={active ? "page" : undefined}
       className={cn(
-        "flex w-full cursor-pointer items-center gap-2.5 rounded-[10px] p-2.5 text-left text-title outline-none focus-visible:ring-2 focus-visible:ring-border-focus",
+        "flex w-full cursor-pointer items-center gap-2 rounded-tile p-2 text-left text-title outline-none focus-visible:ring-2 focus-visible:ring-border-focus",
         active ? "bg-surface-muted text-text-default" : "text-text-muted",
         className,
       )}

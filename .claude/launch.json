@@ -1,6 +1,7 @@
 {
   "version": "0.0.1",
   "configurations": [
-    { "name": "dev", "runtimeExecutable": "npm", "runtimeArgs": ["run", "dev", "--", "--port", "5173", "--strictPort"], "port": 5173 }
+    { "name": "dev", "runtimeExecutable": "npm", "runtimeArgs": ["run", "dev", "--", "--port", "5173", "--strictPort"], "port": 5173 },
+    { "name": "before", "runtimeExecutable": "npm", "runtimeArgs": ["--prefix", "/private/tmp/claude-501/-Users-hamzaalabou-Desktop-Claude-Code-International-Farming/3e6ca2c5-2a4a-4446-b310-03b0ce111435/scratchpad/before", "run", "dev", "--", "--port", "5174", "--strictPort"], "port": 5174 }
   ]
 }

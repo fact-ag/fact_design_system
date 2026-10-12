@@ -11,11 +11,11 @@ function StepItem({ className, state = "upcoming", label = "Label", stepNumber =
   return (
     <div
       aria-current={state === "active" ? "step" : undefined}
-      className={cn("inline-flex items-start gap-2.5 overflow-clip py-2 pr-2.5 pl-1", className)}
+      className={cn("inline-flex items-start gap-2 overflow-clip py-2 pr-2 pl-1", className)}
       {...props}
     >
       <StepIndicator state={state} stepNumber={stepNumber} />
-      <span className={cn("text-[16px] leading-[22px] whitespace-nowrap", upcoming ? "text-text-disabled" : "text-text-default")}>{label}</span>
+      <span className={cn("text-heading whitespace-nowrap", upcoming ? "text-text-disabled" : "text-text-default")}>{label}</span>
       {showConnector && (
         <span className={cn("flex size-6 items-center justify-center", upcoming ? "text-text-disabled" : "text-text-muted")}>
           <Icon name="chevron-right" size={12} />

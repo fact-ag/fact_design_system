@@ -16,7 +16,7 @@ type AudioNotesProps = Omit<ComponentProps<"div">, "children"> & {
 function AudioNotes({ title = "Voice notes", showTitle = true, recorder, clips = [], className, ...props }: AudioNotesProps) {
   return (
     <div className={cn("flex w-full flex-col gap-4", className)} {...props}>
-      <div className="flex w-full flex-col gap-[9px]">
+      <div className="flex w-full flex-col gap-2">
         {showTitle && <p className="text-body text-text-default">{title}</p>}
         <AudioRecorder {...recorder} />
       </div>

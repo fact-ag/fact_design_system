@@ -6,13 +6,14 @@ import { cn } from "@/lib/utils"
 // One component with a size prop. Uses the native <dialog>: showModal() gives focus trap, Escape, and the backdrop.
 // modal={false} uses show(), so the page behind stays usable.
 const drawerVariants = cva(
-  "fixed inset-x-0 top-auto bottom-0 z-10 mx-auto w-full max-w-[392px] overflow-clip rounded-t-[25px] rounded-b-[50px] border border-border-default bg-surface-default p-0 pt-3.5 text-text-default backdrop:bg-surface-overlay",
+  "fixed inset-x-0 top-auto bottom-0 z-raised mx-auto w-full max-w-98 overflow-clip rounded-t-sheet rounded-b-screen border border-border-default bg-surface-default p-0 pt-3 text-text-default backdrop:bg-surface-overlay",
   {
     variants: {
       size: {
-        small: "h-[250px]",
-        medium: "h-[449px]",
-        large: "h-[796px] max-h-[calc(100dvh-16px)]",
+        small: "h-62",
+        medium: "h-112",
+        // ds-exception: viewport-relative cap, no grid class
+        large: "h-199 max-h-[calc(100dvh-16px)]",
       },
     },
     defaultVariants: { size: "small" },
@@ -49,7 +50,7 @@ function BottomDrawer({ open, onClose, modal = true, size, className, children, 
       className={cn(drawerVariants({ size }), className)}
       {...props}
     >
-      <div aria-hidden className="absolute top-1 left-1/2 h-1 w-[50px] -translate-x-1/2 rounded-[25px] bg-border-focus" />
+      <div aria-hidden className="absolute top-1 left-1/2 h-1 w-12 -translate-x-1/2 rounded-pill bg-border-focus" />
       <div className="h-full overflow-y-auto">{children}</div>
     </dialog>
   )

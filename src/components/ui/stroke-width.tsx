@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils"
 
 // Figma: Stroke Width (1229:1462). Size=[Thin|Medium|Thick] -> size, State=[Default|Selected] -> selected.
 // Selected fill (#F1F3E1) and border (#D1DBBA) have no variable; closest tokens used.
-const dot = cva("rounded-full bg-fill-brand-default", {
+const dot = cva("rounded-pill bg-fill-brand-default", {
   variants: { size: { thin: "size-1", medium: "size-2", thick: "size-3" } },
 })
 
@@ -20,7 +20,7 @@ function StrokeWidth({ size = "thin", selected = false, className, type = "butto
       aria-pressed={selected}
       aria-label={`${size} stroke`}
       className={cn(
-        "flex size-[30px] cursor-pointer items-center justify-center rounded-full border border-transparent outline-none focus-visible:ring-2 focus-visible:ring-border-focus",
+        "flex size-7 cursor-pointer items-center justify-center rounded-pill border border-transparent outline-none focus-visible:ring-2 focus-visible:ring-border-focus",
         selected && "border-border-default bg-fill-brand-tonal-alternative",
         className,
       )}

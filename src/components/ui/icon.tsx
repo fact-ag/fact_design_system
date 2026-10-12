@@ -117,10 +117,13 @@ export const icons = {
 
 export type IconName = keyof typeof icons
 
+/** Icon size scale in px (Figma "Icon size/<px>"). */
+export type IconSize = 8 | 12 | 16 | 20 | 24 | 32
+
 type IconProps = {
   name: IconName
   /** Glyph size in px. Figma "Font Awesome Icon" uses 16 inside a 20 box by default. */
-  size?: number
+  size?: IconSize
   className?: string
   /** Set when the icon is the only content of a control. Otherwise the icon is hidden from screen readers. */
   label?: string

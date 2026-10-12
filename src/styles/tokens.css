@@ -98,6 +98,36 @@
   --color-alpha-tint-surface-danger: color-mix(in srgb, var(--color-indicators-negative) 10%, transparent);
   --color-alpha-tint-glass-positive: color-mix(in srgb, var(--color-indicators-positive) 60%, transparent);
   --color-alpha-tint-bg-mint: color-mix(in srgb, var(--color-greens-mint) 80%, transparent);
+
+  /* Radius primitives (Figma "Radius/<px>"). Components use the role tokens in @theme. */
+  --radius-2: 2px;
+  --radius-4: 4px;
+  --radius-8: 8px;
+  --radius-12: 12px;
+  --radius-16: 16px;
+  --radius-24: 24px;
+  --radius-32: 32px;
+  --radius-48: 48px;
+  --radius-full: 9999px;
+
+  /* Shadow primitives (Figma "Elevation/*" effect styles use the same values). */
+  --shadow-color: var(--color-greens-algae);
+  --shadow-1: 0 1px 2px 0 color-mix(in srgb, var(--shadow-color) 10%, transparent);
+  --shadow-2: 0 0 12px 4px color-mix(in srgb, var(--shadow-color) 5%, transparent);
+  --shadow-3: 0 4px 16px 0 color-mix(in srgb, var(--shadow-color) 18%, transparent);
+  --shadow-4: 0 0 12px 4px color-mix(in srgb, var(--shadow-color) 10%, transparent);
+
+  /* Opacity primitives (Figma "Opacity/<percent>"). */
+  --opacity-0: 0%;
+  --opacity-25: 25%;
+  --opacity-50: 50%;
+  --opacity-75: 75%;
+  --opacity-100: 100%;
+
+  /* Motion primitives. */
+  --duration-100: 100ms;
+  --duration-200: 200ms;
+  --duration-300: 300ms;
 }
 
 /* Semantic tokens (Figma collection "Semantic tokens", Light mode). Tailwind default colors are removed. */
@@ -187,6 +217,7 @@
 
   /* Text styles: Type/Display ... Type/Caption. Figma letter spacing is -2%. */
   --font-sans: "Phonic", ui-sans-serif, system-ui, sans-serif;
+  --text-*: initial;
   --text-display: 28px;
   --text-display--line-height: 34px;
   --text-display--letter-spacing: -0.02em;
@@ -206,11 +237,76 @@
   --text-caption--line-height: 14px;
   --text-caption--letter-spacing: -0.02em;
 
-  /* Effects from the linked libraries: "Drop Shadow/2", "Croptrak - Drop shadow", "Mobile - Dropshadow". */
-  --shadow-drop-shadow-2: 0 2px 4px 0 #2727271a;
-  --shadow-croptrak: 0 0 10px 3px #2947390d;
-  --shadow-mobile: 0 0 10px 3px #2947391a;
+  /*
+   * Spacing and size: one 4px grid. Class number x 4 = px: p-1 = 4px, gap-3 = 12px, h-12 = 48px.
+   * Allowed steps: 0, 0.5 (2px), 1.5 (6px), and every whole number. Figma "Spacing/<n>" uses the same n.
+   * Role sizes below make classes like h-control-md and size-touch.
+   */
+  --spacing: 4px;
+  --spacing-control-sm: 32px;
+  --spacing-control-md: 40px;
+  --spacing-control-lg: 48px;
+  --spacing-touch: 44px;
+  --spacing-screen-x: 16px;
+
+  /* Radius roles: rounded-<role>. */
+  --radius-*: initial;
+  --radius-hairline: var(--radius-2);
+  --radius-checkbox: var(--radius-4);
+  --radius-tile: var(--radius-8);
+  --radius-card: var(--radius-12);
+  --radius-panel: var(--radius-16);
+  --radius-sheet: var(--radius-24);
+  --radius-hero: var(--radius-32);
+  --radius-screen: var(--radius-48);
+  --radius-pill: var(--radius-full);
+
+  /* Elevation roles: shadow-<role>, drop-shadow-<role>, text-shadow-<role>. */
+  --shadow-*: initial;
+  --inset-shadow-*: initial;
+  --drop-shadow-*: initial;
+  --text-shadow-*: initial;
+  --shadow-raised: var(--shadow-1);
+  --shadow-card: var(--shadow-2);
+  --shadow-floating: var(--shadow-3);
+  --shadow-overlay: var(--shadow-4);
+  --drop-shadow-floating: 0 4px 8px color-mix(in srgb, var(--color-greens-algae) 18%, transparent);
+  --text-shadow-on-media: 0 0 2px color-mix(in srgb, var(--color-neutrals-charcoal) 25%, transparent);
+
+  /* Opacity roles: opacity-<role>. */
+  --opacity-hidden: var(--opacity-0);
+  --opacity-subtle: var(--opacity-25);
+  --opacity-disabled: var(--opacity-50);
+  --opacity-scrim: var(--opacity-50);
+  --opacity-secondary: var(--opacity-75);
+  --opacity-pressed: var(--opacity-75);
+
+  /* Blur roles: backdrop-blur-<role>. */
+  --blur-*: initial;
+  --blur-glass: 16px;
+
+  /* Motion roles: ease-<role> here, duration-<role> below. */
+  --ease-*: initial;
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --default-transition-duration: var(--duration-200);
+  --default-transition-timing-function: var(--ease-standard);
+
+  /* Breakpoints: tablet: and desktop: prefixes. Phone is the default. */
+  --breakpoint-*: initial;
+  --breakpoint-tablet: 744px;
+  --breakpoint-desktop: 1280px;
 }
+
+/* Layer roles: z-<role>. Native <dialog> uses the top layer, so drawers need no z-index. */
+@utility z-raised { z-index: 10; }
+@utility z-sticky { z-index: 20; }
+@utility z-overlay { z-index: 30; }
+@utility z-toast { z-index: 40; }
+
+/* Motion roles: duration-<role>. */
+@utility duration-fast { transition-duration: var(--duration-100); }
+@utility duration-base { transition-duration: var(--duration-200); }
+@utility duration-slow { transition-duration: var(--duration-300); }
 
 /* Semantic tokens, Dark mode. Add class "dark" on <html> to use it. */
 .dark {

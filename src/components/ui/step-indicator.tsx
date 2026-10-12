@@ -16,7 +16,7 @@ const styles: Record<StepState, string> = {
 function StepIndicator({ className, state = "upcoming", stepNumber = "1", ...props }: StepIndicatorProps) {
   return (
     <div
-      className={cn("inline-flex size-[22px] shrink-0 items-center justify-center rounded-full text-[14px] leading-none", styles[state], className)}
+      className={cn("inline-flex size-5 shrink-0 items-center justify-center rounded-pill text-body", styles[state], className)}
       {...props}
     >
       {state === "completed" ? <Icon name="check" size={12} label="Completed" /> : stepNumber}

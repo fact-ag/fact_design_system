@@ -14,7 +14,7 @@ type UserChipProps = ComponentProps<"div"> & {
 function UserChip({ name, initials = initialsOf(name), onRemove, className, ...props }: UserChipProps) {
   return (
     <div
-      className={cn("inline-flex items-center gap-1.5 rounded-[16px] border border-border-brand-tonal bg-fill-brand-tonal-default py-1 pr-2 pl-1", className)}
+      className={cn("inline-flex items-center gap-1.5 rounded-panel border border-border-brand-tonal bg-fill-brand-tonal-default py-1 pr-2 pl-1", className)}
       {...props}
     >
       <Avatar size="small" initials={initials} />

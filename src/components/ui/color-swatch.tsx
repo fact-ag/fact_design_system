@@ -17,7 +17,7 @@ function ColorSwatch({ color, selected = false, label, className, type = "button
       aria-pressed={selected}
       aria-label={label}
       className={cn(
-        "flex size-[30px] cursor-pointer items-center justify-center rounded-full outline-none focus-visible:ring-2 focus-visible:ring-border-focus",
+        "flex size-7 cursor-pointer items-center justify-center rounded-full outline-none focus-visible:ring-2 focus-visible:ring-border-focus",
         selected && "border-2 border-fill-brand-default",
         className,
       )}

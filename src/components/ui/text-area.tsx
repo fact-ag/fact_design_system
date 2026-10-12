@@ -9,7 +9,7 @@ function TextArea({ label, className, ...props }: TextAreaProps) {
     <label className={cn("flex w-full flex-col gap-2", className)}>
       {label && <span className="text-heading text-text-default">{label}</span>}
       <textarea
-        className="h-[70px] w-full resize-none rounded-[10px] bg-fill-neutral-default px-3.5 py-3 text-body text-text-default outline-none placeholder:text-text-on-fill-placeholder focus-visible:ring-2 focus-visible:ring-border-focus disabled:opacity-50"
+        className="h-17 w-full resize-none rounded-tile bg-fill-neutral-default px-3 py-3 text-body text-text-default outline-none placeholder:text-text-on-fill-placeholder focus-visible:ring-2 focus-visible:ring-border-focus disabled:opacity-disabled"
         {...props}
       />
     </label>

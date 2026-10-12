@@ -6,19 +6,19 @@ import { Icon, type IconName } from "./icon"
 // Figma: Square Rectangle Button (270:280). Size=[Small|Medium|Large] -> size (small|medium|large).
 // Figma has no pressed/disabled states; pressed/disabled here are a fallback.
 const squareButtonVariants = cva(
-  "inline-flex shrink-0 cursor-pointer items-center justify-center bg-fill-alternative text-text-on-fill-brand outline-none transition-colors focus-visible:ring-2 focus-visible:ring-border-focus active:opacity-80 disabled:cursor-not-allowed disabled:bg-fill-disabled disabled:text-text-on-fill-disabled",
+  "inline-flex shrink-0 cursor-pointer items-center justify-center bg-fill-alternative text-text-on-fill-brand outline-none transition-colors focus-visible:ring-2 focus-visible:ring-border-focus active:opacity-pressed disabled:cursor-not-allowed disabled:bg-fill-disabled disabled:text-text-on-fill-disabled",
   {
     variants: {
       size: {
-        small: "size-8 rounded-lg",
-        medium: "size-[46px] rounded-[10px]",
-        large: "size-[60px] rounded-[14px]",
+        small: "size-8 rounded-tile",
+        medium: "size-12 rounded-tile",
+        large: "size-15 rounded-card",
       },
     },
     defaultVariants: { size: "small" },
   },
 )
-const iconPx = { small: 15, medium: 20, large: 30 } as const
+const iconPx = { small: 16, medium: 20, large: 32 } as const
 
 type SquareRectangleButtonProps = Omit<ComponentProps<"button">, "aria-label"> &
   VariantProps<typeof squareButtonVariants> & { label: string; icon?: IconName }

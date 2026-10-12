@@ -17,8 +17,8 @@ function PropertyListRow({ title, subtitle, selected = false, className, type = 
       type={type}
       aria-pressed={selected}
       className={cn(
-        "flex h-[60px] w-full cursor-pointer items-center gap-2.5 overflow-clip rounded-[30px] bg-fill-neutral-default pr-4 pl-3 text-left outline-none focus-visible:ring-2 focus-visible:ring-border-focus",
-        selected ? "border-[1.5px] border-border-brand-tonal" : "active:bg-fill-neutral-pressed",
+        "flex h-15 w-full cursor-pointer items-center gap-2 overflow-clip rounded-pill bg-fill-neutral-default pr-4 pl-3 text-left outline-none focus-visible:ring-2 focus-visible:ring-border-focus",
+        selected ? "border-2 border-border-brand-tonal" : "active:bg-fill-neutral-pressed",
         className,
       )}
       {...props}

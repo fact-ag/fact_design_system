@@ -35,7 +35,7 @@ function InteractiveInput({
 }: InteractiveInputProps) {
   const filled = value !== ""
   return (
-    <div className={cn("flex w-full items-center gap-2 py-[7px]", className)} {...props}>
+    <div className={cn("flex w-full items-center gap-2 py-1.5", className)} {...props}>
       {leading ?? <Checkbox checked={checked} onChange={(e) => onCheckedChange?.(e.target.checked)} aria-label="Select" />}
       {filled ? (
         <div className="flex min-w-0 flex-1 flex-col py-px">

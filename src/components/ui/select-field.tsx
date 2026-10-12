@@ -19,12 +19,12 @@ function SelectField({ label, placeholder = "Select Property", value, open = fal
   return (
     <div className={cn("flex w-full flex-col gap-2", className)}>
       {label && <span className="text-heading text-text-default">{label}</span>}
-      <div className="flex h-[44px] items-center gap-2.5 rounded-[30px] bg-fill-neutral-default px-3.5">
+      <div className="flex h-touch items-center gap-2 rounded-pill bg-fill-neutral-default px-3">
         <button
           type="button"
           aria-haspopup="listbox"
           aria-expanded={open}
-          className="flex h-full min-w-0 flex-1 cursor-pointer items-center gap-2.5 rounded-full text-left outline-none focus-visible:ring-2 focus-visible:ring-border-focus disabled:cursor-not-allowed disabled:opacity-50"
+          className="flex h-full min-w-0 flex-1 cursor-pointer items-center gap-2 rounded-pill text-left outline-none focus-visible:ring-2 focus-visible:ring-border-focus disabled:cursor-not-allowed disabled:opacity-disabled"
           {...props}
         >
           <span className="flex size-5 items-center justify-center text-text-on-fill-brand-tonal">
@@ -44,7 +44,7 @@ function SelectField({ label, placeholder = "Select Property", value, open = fal
             <button
               type="button"
               onClick={onScan}
-              className="flex size-7 cursor-pointer items-center justify-center rounded-full text-icon-default outline-none focus-visible:ring-2 focus-visible:ring-border-focus"
+              className="flex size-7 cursor-pointer items-center justify-center rounded-pill text-icon-default outline-none focus-visible:ring-2 focus-visible:ring-border-focus"
             >
               <Icon name="barcode-read" size={20} label="Scan" />
             </button>

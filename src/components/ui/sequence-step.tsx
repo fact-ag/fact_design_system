@@ -13,8 +13,8 @@ function SequenceStep({ value, selected = false, className, type = "button", ...
       type={type}
       aria-pressed={selected}
       className={cn(
-        "flex h-9 w-[29px] cursor-pointer items-center justify-center rounded-lg border border-border-default bg-fill-rating-05 text-label text-text-default outline-none focus-visible:ring-2 focus-visible:ring-border-focus disabled:cursor-not-allowed disabled:bg-fill-disabled disabled:text-text-disabled",
-        selected && "border-transparent shadow-[0_0_0_1.5px_var(--color-bg-default),0_0_0_3.5px_var(--color-fill-brand-default)]",
+        "flex h-9 w-7 cursor-pointer items-center justify-center rounded-tile border border-border-default bg-fill-rating-05 text-label text-text-default outline-none focus-visible:ring-2 focus-visible:ring-border-focus disabled:cursor-not-allowed disabled:bg-fill-disabled disabled:text-text-disabled",
+        selected && "border-transparent ring-2 ring-fill-brand-default ring-offset-2 ring-offset-bg-default",
         className,
       )}
       {...props}

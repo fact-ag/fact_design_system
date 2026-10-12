@@ -8,7 +8,7 @@ const badgeVariants = cva("inline-flex items-center rounded-full whitespace-nowr
   variants: {
     badgeStyle: {
       status: "h-5 px-2 text-caption",
-      tag: "h-6 px-2.5 bg-bg-muted text-label text-text-on-fill-neutral",
+      tag: "h-6 px-2 bg-bg-muted text-label text-text-on-fill-neutral",
     },
     tone: { neutral: "", positive: "", caution: "", negative: "" },
   },

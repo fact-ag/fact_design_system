@@ -12,7 +12,7 @@ function ToolButton({ className, label, selected = false, icon = "pen", type = "
       aria-label={label}
       aria-pressed={selected}
       className={cn(
-        "inline-flex size-11 shrink-0 cursor-pointer items-center justify-center rounded-xl border text-icon-default outline-none transition-colors focus-visible:ring-2 focus-visible:ring-border-focus disabled:cursor-not-allowed disabled:text-icon-disabled",
+        "inline-flex size-touch shrink-0 cursor-pointer items-center justify-center rounded-card border text-icon-default outline-none transition-colors focus-visible:ring-2 focus-visible:ring-border-focus disabled:cursor-not-allowed disabled:text-icon-disabled",
         selected ? "border-border-brand-tonal bg-fill-brand-tonal-default" : "border-transparent",
         className,
       )}

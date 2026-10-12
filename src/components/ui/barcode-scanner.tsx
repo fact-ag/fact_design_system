@@ -24,7 +24,7 @@ type BarcodeScannerProps = Omit<ComponentProps<"div">, "children"> & {
   onScanAgain?: () => void
 }
 
-const glass = "flex size-10 cursor-pointer items-center justify-center rounded-[20px] bg-text-on-inverse/16 text-text-on-inverse outline-none focus-visible:ring-2 focus-visible:ring-border-focus"
+const glass = "flex size-10 cursor-pointer items-center justify-center rounded-pill bg-text-on-inverse/16 text-text-on-inverse outline-none focus-visible:ring-2 focus-visible:ring-border-focus"
 
 function GlassButton({ icon, label, onClick, className }: { icon: IconName; label: string; onClick?: () => void; className?: string }) {
   return (
@@ -53,7 +53,7 @@ function BarcodeScanner({
   const noMatch = state === "no-match"
   const hint = detected ? "Barcode captured" : noMatch ? "Code read — no match in catalog" : "Align the barcode inside the frame"
   return (
-    <div className={cn("relative h-full min-h-[600px] w-full overflow-clip bg-bg-inverse text-text-on-inverse", className)} {...props}>
+    <div className={cn("relative h-full min-h-150 w-full overflow-clip bg-bg-inverse text-text-on-inverse", className)} {...props}>
       {!denied && <div className="absolute inset-0">{background}</div>}
       {!denied && (
         <>
@@ -61,31 +61,32 @@ function BarcodeScanner({
           <div
             aria-hidden
             className={cn(
-              "absolute top-[290px] left-1/2 h-[170px] w-[280px] -translate-x-1/2 rounded-2xl border-2 shadow-[0_0_0_100vmax_color-mix(in_srgb,var(--color-bg-inverse)_55%,transparent)]",
+              // ds-exception: huge spread shadow used as dim backdrop
+              "absolute top-72 left-1/2 h-42 w-70 -translate-x-1/2 rounded-panel border-2 shadow-[0_0_0_100vmax_var(--color-surface-overlay)]",
               detected ? "border-status-success" : noMatch ? "border-status-danger" : "border-text-on-inverse",
             )}
           />
-          <div className="absolute top-[480px] left-1/2 flex -translate-x-1/2 flex-col items-center gap-1 text-center whitespace-nowrap">
+          <div className="absolute top-120 left-1/2 flex -translate-x-1/2 flex-col items-center gap-1 text-center whitespace-nowrap">
             <p className="text-body">{hint}</p>
-            {state === "scanning" && <p className="text-label opacity-70">UPC, EAN, Code 128 and QR</p>}
+            {state === "scanning" && <p className="text-label opacity-secondary">UPC, EAN, Code 128 and QR</p>}
           </div>
         </>
       )}
-      <GlassButton icon="xmark" label="Close" onClick={onClose} className="absolute top-[62px] left-4" />
-      <h2 className="absolute top-[71px] left-1/2 -translate-x-1/2 text-heading whitespace-nowrap">Scan barcode</h2>
-      {!denied && <GlassButton icon="flashlight" label="Flashlight" onClick={onToggleFlashlight} className="absolute top-[62px] right-4" />}
+      <GlassButton icon="xmark" label="Close" onClick={onClose} className="absolute top-15 left-4" />
+      <h2 className="absolute top-18 left-1/2 -translate-x-1/2 text-heading whitespace-nowrap">Scan barcode</h2>
+      {!denied && <GlassButton icon="flashlight" label="Flashlight" onClick={onToggleFlashlight} className="absolute top-15 right-4" />}
       {state === "scanning" && (
-        <Button variant="tertiary" onClick={onEnterManually} className="absolute bottom-[50px] left-1/2 -translate-x-1/2">
+        <Button variant="tertiary" onClick={onEnterManually} className="absolute bottom-12 left-1/2 -translate-x-1/2">
           Enter code manually
         </Button>
       )}
       {denied && (
         <div className="absolute inset-x-0 top-1/2 flex -translate-y-1/2 flex-col items-center gap-3 px-8">
-          <span className="flex size-16 items-center justify-center rounded-[32px] bg-text-on-inverse/12">
+          <span className="flex size-16 items-center justify-center rounded-pill bg-text-on-inverse/12">
             <Icon name="camera-slash" size={20} />
           </span>
           <h3 className="text-title">Camera access needed</h3>
-          <p className="text-center text-body opacity-75">Allow camera access in Settings to scan barcodes, or enter the code manually.</p>
+          <p className="text-center text-body opacity-secondary">Allow camera access in Settings to scan barcodes, or enter the code manually.</p>
           <Button variant="tertiary" className="mt-2" onClick={onOpenSettings}>
             Open Settings
           </Button>
@@ -94,7 +95,7 @@ function BarcodeScanner({
           </Button>
         </div>
       )}
-      <BottomDrawer open={detected} modal={false} onClose={() => onScanAgain?.()} className="h-[190px]">
+      <BottomDrawer open={detected} modal={false} onClose={() => onScanAgain?.()} className="h-48">
         {children ?? (
           <div className="flex flex-col items-center gap-2 px-6 pt-4">
             <p className="text-label text-text-muted">Barcode</p>
@@ -110,7 +111,7 @@ function BarcodeScanner({
           </div>
         )}
       </BottomDrawer>
-      <BottomDrawer open={noMatch} modal={false} onClose={() => onScanAgain?.()} className="h-[224px]">
+      <BottomDrawer open={noMatch} modal={false} onClose={() => onScanAgain?.()} className="h-56">
         {children ?? (
           <div className="flex flex-col items-center gap-2 px-6 pt-4">
             <h3 className="text-title text-text-default">No match found</h3>

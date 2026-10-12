@@ -89,7 +89,7 @@ function Section({ id, title, wide, children }: { id: string; title: string; wid
   return (
     <section id={id} className={wide ? "w-full max-w-[1122px] scroll-mt-4" : "w-full max-w-[392px] scroll-mt-4"}>
       <h2 className="mb-2 text-heading text-text-default">{title}</h2>
-      <div className="flex flex-col gap-4 rounded-xl border border-border-default bg-bg-default p-4">{children}</div>
+      <div className="flex flex-col gap-4 rounded-card border border-border-default bg-bg-default p-4">{children}</div>
     </section>
   )
 }
@@ -353,7 +353,7 @@ function BarcodeScannerDemo() {
           <BadgeButton key={s} selected={state === s} onClick={() => setState(s)}>{s}</BadgeButton>
         ))}
       </Row>
-      <div className="h-[640px] overflow-clip rounded-xl">
+      <div className="h-[640px] overflow-clip rounded-card">
         <BarcodeScanner
           state={state}
           background={<img src={wheat} alt="" className="size-full object-cover" />}
@@ -381,7 +381,7 @@ function LocationPickerDemo() {
           <BadgeButton key={s} selected={state === s} onClick={() => setState(s)}>{s}</BadgeButton>
         ))}
       </Row>
-      <div className="h-[640px] overflow-clip rounded-xl">
+      <div className="h-[640px] overflow-clip rounded-card">
         <LocationPicker
           state={state}
           background={<img src={wheat} alt="" className="size-full object-cover" />}
@@ -402,11 +402,11 @@ function LocationPickerDemo() {
 function MobileScreenDemo() {
   const [dim, setDim] = useToggle()
   return (
-    <div className="h-[480px] overflow-clip rounded-xl border border-border-default">
+    <div className="h-[480px] overflow-clip rounded-card border border-border-default">
       <MobileScreen
         header={<div className="p-4 text-title">North Field</div>}
         dim={dim}
-        onTop={dim ? <div className="absolute inset-x-4 bottom-4 rounded-xl bg-surface-default p-4">On-top panel</div> : null}
+        onTop={dim ? <div className="absolute inset-x-4 bottom-4 rounded-card bg-surface-default p-4">On-top panel</div> : null}
       >
         <div className="p-4"><Button onClick={setDim}>Toggle backdrop dim</Button></div>
       </MobileScreen>
@@ -425,7 +425,7 @@ function MapSketchDemo() {
           <BadgeButton key={s} selected={state === s} onClick={() => setState(s)}>{s}</BadgeButton>
         ))}
       </Row>
-      <div className="h-[640px] overflow-clip rounded-xl">
+      <div className="h-[640px] overflow-clip rounded-card">
         <MapSketch
           state={state}
           background={<img src={wheat} alt="" className="size-full object-cover" />}
@@ -593,7 +593,7 @@ function SketchPadDemo() {
           <BadgeButton key={s} selected={state === s} onClick={() => setState(s)}>{s}</BadgeButton>
         ))}
       </Row>
-      <div className="h-[640px] overflow-clip rounded-xl">
+      <div className="h-[640px] overflow-clip rounded-card">
         <SketchPad
           state={state}
           title="Field sketch"
@@ -604,7 +604,7 @@ function SketchPadDemo() {
           onKeepDrawing={() => setState("drawing")}
           onDiscard={() => setState("blank")}
         >
-          {state !== "blank" && <img src={potato} alt="" className="size-full object-cover opacity-60" />}
+          {state !== "blank" && <img src={potato} alt="" className="size-full object-cover opacity-secondary" />}
         </SketchPad>
       </div>
     </>

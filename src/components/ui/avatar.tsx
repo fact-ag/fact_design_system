@@ -8,8 +8,8 @@ const avatarVariants = cva(
   {
     variants: {
       size: {
-        small: "size-5 rounded-[10px] text-caption",
-        medium: "size-8 rounded-[16px] text-label",
+        small: "size-5 rounded-pill text-caption",
+        medium: "size-8 rounded-pill text-label",
       },
     },
     defaultVariants: { size: "small" },

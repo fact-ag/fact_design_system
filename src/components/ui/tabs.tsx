@@ -12,7 +12,7 @@ type TabsProps = Omit<ComponentProps<"div">, "onChange"> & {
 
 function Tabs({ items, value, onValueChange, className, ...props }: TabsProps) {
   return (
-    <div role="tablist" className={cn("inline-flex h-10 items-center rounded-full bg-fill-neutral-default p-[3px]", className)} {...props}>
+    <div role="tablist" className={cn("inline-flex h-10 items-center rounded-full bg-fill-neutral-default p-0.5", className)} {...props}>
       {items.map((item) => (
         <Tab key={item.value} tabName={item.label} icon={item.icon} selected={item.value === value} onClick={() => onValueChange?.(item.value)} />
       ))}

@@ -79,7 +79,7 @@ function DrawingToolbar({
   const tools = context === "map" ? mapTools : canvasTools
   return (
     <div
-      className={cn("flex w-fit flex-col items-center gap-1.5 rounded-[15px] bg-bg-default p-2 drop-shadow-[0_6px_14px_rgba(41,71,57,0.18)]", className)}
+      className={cn("flex w-fit flex-col items-center gap-1.5 rounded-panel bg-bg-default p-2 drop-shadow-floating", className)}
       {...props}
     >
       <div role="toolbar" aria-label="Drawing tools" className="flex items-center gap-0.5">
@@ -90,7 +90,7 @@ function DrawingToolbar({
         <ToolButton icon="arrow-rotate-left" label="Undo" disabled={!canUndo} onClick={onUndo} />
         <ToolButton icon="arrow-rotate-right" label="Redo" disabled={!canRedo} onClick={onRedo} />
       </div>
-      <div className="flex items-center gap-2.5 pb-1">
+      <div className="flex items-center gap-2 pb-1">
         {swatches.map((s) => (
           <ColorSwatch key={s.label} color={s.color} label={s.label} selected={selectedColor === s.color} onClick={() => onColorChange?.(s.color)} />
         ))}

@@ -20,13 +20,13 @@ type AudioClipProps = Omit<ComponentProps<"div">, "children"> & {
 
 function AudioClip({ playing = false, title, duration, position = "0:00", progress = 0, onPlay, onPause, onRemove, className, ...props }: AudioClipProps) {
   return (
-    <div className={cn("flex w-full items-center gap-[11px] rounded-[11px] border border-border-default bg-bg-default p-[11px]", className)} {...props}>
+    <div className={cn("flex w-full items-center gap-3 rounded-card border border-border-default bg-bg-default p-3", className)} {...props}>
       <button
         type="button"
         onClick={playing ? onPause : onPlay}
         aria-label={playing ? "Pause" : "Play"}
         className={cn(
-          "flex size-[34px] shrink-0 cursor-pointer items-center justify-center rounded-[17px] text-icon-default outline-none focus-visible:ring-2 focus-visible:ring-border-focus",
+          "flex size-8 shrink-0 cursor-pointer items-center justify-center rounded-pill text-icon-default outline-none focus-visible:ring-2 focus-visible:ring-border-focus",
           playing ? "border border-border-brand-tonal bg-fill-brand-tonal-default" : "bg-surface-muted",
         )}
       >
@@ -36,7 +36,7 @@ function AudioClip({ playing = false, title, duration, position = "0:00", progre
         <p className="truncate text-body text-text-default">{title}</p>
         {playing ? (
           <div className="flex w-full items-center gap-2">
-            <LinearProgressBar value={progress} className="h-[3px] flex-1" />
+            <LinearProgressBar value={progress} className="h-0.5 flex-1" />
             <p className="text-caption whitespace-nowrap text-text-muted">
               {position} / {duration}
             </p>
@@ -49,7 +49,7 @@ function AudioClip({ playing = false, title, duration, position = "0:00", progre
         type="button"
         onClick={onRemove}
         aria-label="Remove recording"
-        className="flex size-7 shrink-0 cursor-pointer items-center justify-center rounded-[14px] bg-fill-neutral-default text-icon-default outline-none focus-visible:ring-2 focus-visible:ring-border-focus"
+        className="flex size-7 shrink-0 cursor-pointer items-center justify-center rounded-pill bg-fill-neutral-default text-icon-default outline-none focus-visible:ring-2 focus-visible:ring-border-focus"
       >
         <Icon name="xmark" size={16} className="size-5" />
       </button>

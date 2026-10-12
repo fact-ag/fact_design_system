@@ -54,7 +54,7 @@ function SequenceButtons({
       </div>
       {legends && (
         <div className="flex gap-1 px-1 text-caption text-text-muted">
-          {showNA && <span className="w-[28.364px] shrink-0 text-center">{naLabel}</span>}
+          {showNA && <span className="w-7 shrink-0 text-center">{naLabel}</span>}
           <span className="min-w-0 flex-1">{lowLabel}</span>
           <span className="text-right whitespace-nowrap">{highLabel}</span>
         </div>

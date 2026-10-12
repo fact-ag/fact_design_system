@@ -17,10 +17,10 @@ function ListSectionHeaderLarge({ title, expanded, onToggle, children, className
         type="button"
         aria-expanded={expanded}
         onClick={onToggle}
-        className="flex w-full cursor-pointer items-center justify-between gap-6 rounded-md p-2.5 text-left text-[22px] leading-normal tracking-[-0.02em] text-text-default outline-none focus-visible:ring-2 focus-visible:ring-border-focus"
+        className="flex w-full cursor-pointer items-center justify-between gap-6 rounded-tile p-2 text-left text-title text-text-default outline-none focus-visible:ring-2 focus-visible:ring-border-focus"
       >
         {title}
-        <span className="flex size-[25px] items-center justify-center text-text-on-fill-brand-tonal">
+        <span className="flex size-6 items-center justify-center text-text-on-fill-brand-tonal">
           <Icon name={expanded ? "chevron-up" : "chevron-down"} size={20} />
         </span>
       </button>

@@ -40,19 +40,19 @@ function ItemSelectorDrawer({
   return (
     <BottomDrawer open={open} onClose={onClose} size={size} aria-label={typeof title === "string" ? title : undefined}>
       <div className="relative flex min-h-full flex-col">
-        <div className="flex items-center gap-3.5 border-b border-border-default px-3.5 pt-3.5 pb-3">
+        <div className="flex items-center gap-3 border-b border-border-default px-3 pt-3 pb-3">
           {showBack && <IconButton label="Back" icon="arrow-left" variant="alt" onClick={onBack} />}
           <h2 className="flex-1 text-title text-text-default">{title}</h2>
           {onClear && (
-            <Button variant="secondary" className="h-9 px-3.5" onClick={onClear}>
+            <Button variant="secondary" className="h-9 px-3" onClick={onClear}>
               Clear
             </Button>
           )}
         </div>
-        <div className="flex flex-1 flex-col gap-2.5 px-3.5 pt-2.5 pb-4">
+        <div className="flex flex-1 flex-col gap-2 px-3 pt-2 pb-4">
           {onQueryChange && (
-            <label className="flex h-11 shrink-0 items-center gap-2.5 rounded-[30px] bg-fill-neutral-default px-3.5 text-text-muted focus-within:ring-2 focus-within:ring-border-focus">
-              <Icon name="magnifying-glass" size={16} className="size-[18px]" />
+            <label className="flex h-11 shrink-0 items-center gap-2 rounded-pill bg-fill-neutral-default px-3 text-text-muted focus-within:ring-2 focus-within:ring-border-focus">
+              <Icon name="magnifying-glass" size={16} className="size-4" />
               <input
                 type="search"
                 value={query}
@@ -65,7 +65,7 @@ function ItemSelectorDrawer({
           {children}
         </div>
         {confirmLabel && (
-          <div className="sticky bottom-0 flex justify-center bg-gradient-to-b from-transparent to-bg-default px-3.5 pt-[45px] pb-2.5 backdrop-blur-[15px]">
+          <div className="sticky bottom-0 flex justify-center bg-linear-to-b from-transparent to-bg-default px-3 pt-12 pb-2 backdrop-blur-glass">
             <Button className="w-44" onClick={onConfirm}>
               {confirmLabel}
             </Button>

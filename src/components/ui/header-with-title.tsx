@@ -23,7 +23,7 @@ function HeaderWithTitle({ title, onBack, onTitleClick, children, className, ...
           <button
             type="button"
             onClick={onTitleClick}
-            className="flex cursor-pointer items-center gap-1.5 rounded text-heading text-text-default outline-none focus-visible:ring-2 focus-visible:ring-border-focus"
+            className="flex cursor-pointer items-center gap-1.5 rounded-checkbox text-heading text-text-default outline-none focus-visible:ring-2 focus-visible:ring-border-focus"
           >
             {title}
             <Icon name="chevron-down" size={16} />

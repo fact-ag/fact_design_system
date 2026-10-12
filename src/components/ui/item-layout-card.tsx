@@ -23,29 +23,29 @@ const Dot = () => <span aria-hidden className="size-0.5 shrink-0 rounded-full bg
 function ItemLayoutCard({
   itemType, title, locationName, propertyName, status, statusTone = "positive", statusBadge, owner, date, className, children, ...props
 }: ItemLayoutCardProps) {
-  const info = [statusBadge, owner && <span key="owner" className="max-w-[150px] truncate font-bold">{owner}</span>, date && <span key="date" className="max-w-[150px] truncate font-bold">{date}</span>].filter(Boolean)
+  const info = [statusBadge, owner && <span key="owner" className="max-w-38 truncate font-bold">{owner}</span>, date && <span key="date" className="max-w-38 truncate font-bold">{date}</span>].filter(Boolean)
   return (
-    <div className={cn("relative flex flex-col pt-[30px]", className)} {...props}>
+    <div className={cn("relative flex flex-col pt-7", className)} {...props}>
       {status && <Badge tone={statusTone} className="absolute top-0 right-0">{status}</Badge>}
       <ItemTypeBadge itemType={itemType} />
       <p className="text-body text-text-default">{title}</p>
-      <div className="flex h-5 items-start gap-[5px] text-label text-text-muted">
+      <div className="flex h-5 items-start gap-1 text-label text-text-muted">
         <Icon name="location-dot" size={12} />
         <span>{locationName}</span>
         <Dot />
         <span>{propertyName}</span>
       </div>
       {info.length > 0 && (
-        <div className="flex h-8 items-center gap-[5px] text-label text-text-muted">
+        <div className="flex h-8 items-center gap-1 text-label text-text-muted">
           {info.map((n, i) => (
-            <span key={i} className="flex items-center gap-[5px]">
+            <span key={i} className="flex items-center gap-1">
               {i > 0 && <Dot />}
               {n}
             </span>
           ))}
         </div>
       )}
-      {children && <div className="mt-2 flex flex-col gap-2.5 border-t border-border-neutral pt-2.5">{children}</div>}
+      {children && <div className="mt-2 flex flex-col gap-2 border-t border-border-neutral pt-2">{children}</div>}
     </div>
   )
 }

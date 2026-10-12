@@ -27,6 +27,23 @@ All tokens are in `src/styles/tokens.css`. A Figma variable name becomes a CSS v
 | `Type/*` | `text-body`, `text-heading` |
 | Effects | `shadow-drop-shadow-2`, `shadow-croptrak`, `shadow-mobile` |
 
+Every other value is also a token. Primitives are plain CSS variables without classes. Use the role classes.
+
+| Group | Classes |
+| --- | --- |
+| Spacing and size | 4px grid: class number x 4 = px (`p-4` = 16px). Allowed: `0.5`, `1.5`, whole numbers. Roles: `h-control-sm` 32, `h-control-md` 40, `h-control-lg` 48, `size-touch` 44, `px-screen-x` 16 |
+| Radius | `rounded-hairline` 2, `-checkbox` 4, `-tile` 8, `-card` 12, `-panel` 16, `-sheet` 24, `-hero` 32, `-screen` 48, `-pill` |
+| Elevation | `shadow-raised`, `shadow-card`, `shadow-floating`, `shadow-overlay`, `drop-shadow-floating`, `text-shadow-on-media` |
+| Opacity | `opacity-hidden`, `-subtle` 25, `-disabled` 50, `-scrim` 50, `-secondary` 75, `-pressed` 75 |
+| Border width | `border` 1px, `border-2` 2px |
+| Icon size | `<Icon size>`: 8, 12, 16, 20, 24, 32 |
+| Blur | `backdrop-blur-glass` |
+| Motion | `duration-fast` 100ms, `duration-base` 200ms, `duration-slow` 300ms, `ease-standard` |
+| Layers | `z-raised`, `z-sticky`, `z-overlay`, `z-toast` |
+| Breakpoints | `tablet:` 744px, `desktop:` 1280px. Phone is the default |
+
+`npm run lint` fails on raw values in all of `src` except `src/styles` and `src/dev`: raw colors, arbitrary values like `p-[13px]`, off-grid steps like `p-2.5`, and default Tailwind scales like `rounded-xl` or `opacity-60`. If a value cannot be a token, write `ds-exception: <reason>` in a comment on that line or the line above. Keep exceptions rare.
+
 Dark mode: add the class `dark` on `<html>`. The semantic tokens switch to the Figma "Dark" mode values.
 
 ## How a design-system component is written
@@ -41,7 +58,7 @@ Use `src/components/ui/button.tsx` as the model.
 - Figma BOOLEAN properties are optional boolean props. TEXT properties are string or `ReactNode` props. SLOT and INSTANCE_SWAP properties are `ReactNode` props or `children`.
 - Use `cva` for variants and `cn` from `@/lib/utils` to merge classes. Spread the remaining props onto the root element and accept `className`.
 - Use native elements (`button`, `input`, `textarea`, `dialog`) before a library. If a native element cannot do the job, use `@base-ui/react`. An example is a popover with focus handling.
-- If Figma uses a value that the Tailwind scale does not have, use an arbitrary pixel value such as `rounded-[14px]`. This is allowed only inside `src/components/ui`.
+- If Figma uses a value that is not a token, snap it to the nearest token. If it is halfway between two steps, round down.
 - Some components are complex: Barcode Scanner, Map Sketch, Sketch Pad, Signature Pad, Audio Recorder, Location Picker, and device frames. They render every Figma state from props and report user actions through callbacks. They do not contain camera, map, canvas drawing, or audio logic. The feature that uses them adds that logic.
 
 ## Icons
