@@ -21,7 +21,7 @@ type FileItemProps = Omit<ComponentProps<"div">, "children"> & {
 }
 
 const actionClass =
-  "flex size-7 shrink-0 cursor-pointer items-center justify-center rounded-[14px] bg-fill-neutral-default text-icon-default outline-none focus-visible:ring-2 focus-visible:ring-border-focus"
+  "flex size-28 shrink-0 cursor-pointer items-center justify-center rounded-14 bg-fill-neutral-default text-icon-default outline-none focus-visible:ring-2 focus-visible:ring-border-focus"
 
 function FileItem({
   state = "uploading",
@@ -39,7 +39,7 @@ function FileItem({
   return (
     <div
       className={cn(
-        "flex w-full items-center gap-[11px] rounded-[11px] border bg-bg-default p-[11px]",
+        "flex w-full items-center gap-11 rounded-11 border bg-bg-default p-11",
         error ? "border-status-danger-subtle" : "border-border-default",
         className,
       )}
@@ -47,27 +47,27 @@ function FileItem({
     >
       <div
         className={cn(
-          "flex size-[34px] shrink-0 items-center justify-center rounded-[17px]",
+          "flex size-34 shrink-0 items-center justify-center rounded-17",
           error ? "bg-fill-danger-surface-subtle text-status-danger" : "bg-surface-muted text-icon-default",
         )}
       >
-        <Icon name={error ? "circle-exclamation" : fileIcon} size={16} className="size-5" />
+        <Icon name={error ? "circle-exclamation" : fileIcon} size={16} className="size-20" />
       </div>
-      <div className="flex min-w-px flex-1 flex-col gap-0.5">
+      <div className="flex min-w-px flex-1 flex-col gap-2">
         <p className="truncate text-body text-text-default">{name}</p>
         {state === "uploading" && (
-          <div className="flex w-full items-center gap-2">
-            <LinearProgressBar value={progress} className="h-[3px] flex-1" />
+          <div className="flex w-full items-center gap-8">
+            <LinearProgressBar value={progress} className="h-3 flex-1" />
             <p className="text-caption text-text-muted">{progress}%</p>
           </div>
         )}
         {state === "uploaded" && meta && <p className="text-caption text-text-muted">{meta}</p>}
         {error && <p className="text-caption text-status-danger">{errorText}</p>}
       </div>
-      <div className={cn("flex items-center", error && "gap-2")}>
+      <div className={cn("flex items-center", error && "gap-8")}>
         {error && (
           <button type="button" onClick={onRetry} aria-label="Retry upload" className={actionClass}>
-            <Icon name="rotate-right" size={16} className="size-5" />
+            <Icon name="rotate-right" size={16} className="size-20" />
           </button>
         )}
         <button
@@ -76,7 +76,7 @@ function FileItem({
           aria-label={state === "uploading" ? "Cancel upload" : "Remove file"}
           className={actionClass}
         >
-          <Icon name="xmark" size={16} className="size-5" />
+          <Icon name="xmark" size={16} className="size-20" />
         </button>
       </div>
     </div>

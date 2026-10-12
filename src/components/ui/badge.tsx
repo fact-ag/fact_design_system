@@ -7,8 +7,8 @@ import { cn } from "@/lib/utils"
 const badgeVariants = cva("inline-flex items-center rounded-full whitespace-nowrap", {
   variants: {
     badgeStyle: {
-      status: "h-5 px-2 text-caption",
-      tag: "h-6 px-2.5 bg-bg-muted text-label text-text-on-fill-neutral",
+      status: "h-20 px-8 text-caption",
+      tag: "h-24 px-10 bg-bg-muted text-label text-text-on-fill-neutral",
     },
     tone: { neutral: "", positive: "", caution: "", negative: "" },
   },

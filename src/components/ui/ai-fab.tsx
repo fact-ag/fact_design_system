@@ -10,9 +10,10 @@ function AiFab({ className, label, type = "button", ...props }: AiFabProps) {
     <button
       type={type}
       aria-label={label}
-      className={cn("relative size-10 shrink-0 cursor-pointer rounded-full outline-none focus-visible:ring-2 focus-visible:ring-border-focus active:scale-95 disabled:cursor-not-allowed disabled:opacity-50", className)}
+      className={cn("relative size-40 shrink-0 cursor-pointer rounded-full outline-none focus-visible:ring-2 focus-visible:ring-border-focus active:scale-95 disabled:cursor-not-allowed disabled:opacity-50", className)}
       {...props}
     >
+      {/* ds-exception: glow image is 160% of the button */}
       <img alt="" src={aiFabImage} className="pointer-events-none absolute -inset-1/4 block max-w-none size-[160%]" />
     </button>
   )

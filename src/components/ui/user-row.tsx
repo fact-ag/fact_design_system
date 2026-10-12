@@ -23,7 +23,7 @@ const initialsOf = (name: string) =>
     .slice(0, 2)
     .toUpperCase()
 
-const row = "flex w-full items-center gap-3 border-b border-border-default py-3"
+const row = "flex w-full items-center gap-12 border-b border-border-default py-12"
 
 function UserRow({ name, role, initials = initialsOf(name), mode = "multiple", selected = false, onSelect, className, ...props }: UserRowProps) {
   const content = (
@@ -42,10 +42,10 @@ function UserRow({ name, role, initials = initialsOf(name), mode = "multiple", s
           type="button"
           aria-pressed={selected}
           onClick={onSelect}
-          className="flex w-full cursor-pointer items-center gap-3 py-3 outline-none focus-visible:ring-2 focus-visible:ring-border-focus"
+          className="flex w-full cursor-pointer items-center gap-12 py-12 outline-none focus-visible:ring-2 focus-visible:ring-border-focus"
         >
           {content}
-          {selected && <Icon name="check" size={16} className="size-5 text-icon-default" />}
+          {selected && <Icon name="check" size={16} className="size-20 text-icon-default" />}
         </button>
       </div>
     )
@@ -53,7 +53,7 @@ function UserRow({ name, role, initials = initialsOf(name), mode = "multiple", s
   return (
     <div className={cn(row, className)} {...props}>
       <Checkbox checked={selected} onChange={() => onSelect?.()} aria-label={name} />
-      <div onClick={onSelect} className="flex min-w-0 flex-1 cursor-pointer items-center gap-3">
+      <div onClick={onSelect} className="flex min-w-0 flex-1 cursor-pointer items-center gap-12">
         {content}
       </div>
     </div>

@@ -10,12 +10,12 @@ function UtilityButton({ className, icon = "house", type = "button", children, .
     <button
       type={type}
       className={cn(
-        "inline-flex h-[50px] w-full cursor-pointer items-center justify-center gap-1.5 rounded-[50px] border border-border-brand-tonal bg-fill-brand-tonal-default px-[7px] text-heading text-text-on-fill-brand-tonal outline-none transition-colors focus-visible:ring-2 focus-visible:ring-border-focus active:border-transparent active:bg-fill-brand-tonal-pressed disabled:cursor-not-allowed disabled:border-transparent disabled:bg-fill-disabled disabled:text-text-on-fill-disabled",
+        "inline-flex h-50 w-full cursor-pointer items-center justify-center gap-6 rounded-50 border border-border-brand-tonal bg-fill-brand-tonal-default px-7 text-heading text-text-on-fill-brand-tonal outline-none transition-colors focus-visible:ring-2 focus-visible:ring-border-focus active:border-transparent active:bg-fill-brand-tonal-pressed disabled:cursor-not-allowed disabled:border-transparent disabled:bg-fill-disabled disabled:text-text-on-fill-disabled",
         className,
       )}
       {...props}
     >
-      <Icon name={icon} size={16} className="size-5" />
+      <Icon name={icon} size={16} className="size-20" />
       {children}
     </button>
   )

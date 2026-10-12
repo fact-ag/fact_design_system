@@ -35,7 +35,7 @@ function InteractiveInput({
 }: InteractiveInputProps) {
   const filled = value !== ""
   return (
-    <div className={cn("flex w-full items-center gap-2 py-[7px]", className)} {...props}>
+    <div className={cn("flex w-full items-center gap-8 py-7", className)} {...props}>
       {leading ?? <Checkbox checked={checked} onChange={(e) => onCheckedChange?.(e.target.checked)} aria-label="Select" />}
       {filled ? (
         <div className="flex min-w-0 flex-1 flex-col py-px">
@@ -47,14 +47,14 @@ function InteractiveInput({
           value={value}
           onChange={(e) => onChange?.(e.target.value)}
           placeholder={placeholder ?? (action === "scan" ? "Scan or enter a code" : "Enter a name")}
-          className="h-5 min-w-0 flex-1 bg-transparent text-body text-text-default caret-fill-success outline-none placeholder:text-text-on-fill-placeholder"
+          className="h-20 min-w-0 flex-1 bg-transparent text-body text-text-default caret-fill-success outline-none placeholder:text-text-on-fill-placeholder"
         />
       )}
       <button
         type="button"
         onClick={onAction}
         aria-label={action === "scan" ? "Scan" : "Clear"}
-        className="flex size-6 shrink-0 cursor-pointer items-center justify-center rounded-full text-icon-default outline-none focus-visible:ring-2 focus-visible:ring-border-focus"
+        className="flex size-24 shrink-0 cursor-pointer items-center justify-center rounded-full text-icon-default outline-none focus-visible:ring-2 focus-visible:ring-border-focus"
       >
         <Icon name={action === "scan" ? "barcode-read" : "xmark"} size={16} />
       </button>

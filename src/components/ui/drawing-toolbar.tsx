@@ -79,22 +79,22 @@ function DrawingToolbar({
   const tools = context === "map" ? mapTools : canvasTools
   return (
     <div
-      className={cn("flex w-fit flex-col items-center gap-1.5 rounded-[15px] bg-bg-default p-2 drop-shadow-[0_6px_14px_rgba(41,71,57,0.18)]", className)}
+      className={cn("flex w-fit flex-col items-center gap-6 rounded-15 bg-bg-default p-8 drop-shadow-floating", className)}
       {...props}
     >
-      <div role="toolbar" aria-label="Drawing tools" className="flex items-center gap-0.5">
+      <div role="toolbar" aria-label="Drawing tools" className="flex items-center gap-2">
         {tools.map((t) => (
           <ToolButton key={t} icon={toolMeta[t].icon} label={toolMeta[t].label} selected={tool === t} onClick={() => onToolChange?.(t)} />
         ))}
-        <Divider className="h-6" />
+        <Divider className="h-24" />
         <ToolButton icon="arrow-rotate-left" label="Undo" disabled={!canUndo} onClick={onUndo} />
         <ToolButton icon="arrow-rotate-right" label="Redo" disabled={!canRedo} onClick={onRedo} />
       </div>
-      <div className="flex items-center gap-2.5 pb-1">
+      <div className="flex items-center gap-10 pb-4">
         {swatches.map((s) => (
           <ColorSwatch key={s.label} color={s.color} label={s.label} selected={selectedColor === s.color} onClick={() => onColorChange?.(s.color)} />
         ))}
-        <Divider className="h-5" />
+        <Divider className="h-20" />
         {(["thin", "medium", "thick"] as const).map((s) => (
           <StrokeWidth key={s} size={s} selected={strokeWidth === s} onClick={() => onStrokeWidthChange?.(s)} />
         ))}

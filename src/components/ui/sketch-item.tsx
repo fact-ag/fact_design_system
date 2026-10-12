@@ -25,24 +25,24 @@ function SketchItem({ variant = "canvas", state = "default", preview, title, aut
   const uploading = state === "uploading"
   const map = variant === "map"
   return (
-    <div className={cn("flex w-full items-center gap-3 rounded-[11px] border border-border-default bg-bg-default p-[11px]", className)} {...props}>
-      <div className={cn("relative size-16 shrink-0 overflow-clip rounded-lg", map ? "bg-bg-inverse" : "border border-border-default bg-bg-default")}>
+    <div className={cn("flex w-full items-center gap-12 rounded-11 border border-border-default bg-bg-default p-11", className)} {...props}>
+      <div className={cn("relative size-64 shrink-0 overflow-clip rounded-8", map ? "bg-bg-inverse" : "border border-border-default bg-bg-default")}>
         {preview}
-        {map && <MapPin showLabel={false} className="absolute top-[34px] left-[53px] origin-top-left scale-25" />}
+        {map && <MapPin showLabel={false} className="absolute top-34 left-53 origin-top-left scale-25" />}
         {uploading && <div className="absolute inset-0 bg-bg-inverse opacity-45" />}
       </div>
-      <div className="flex min-w-0 flex-1 flex-col gap-0.5">
+      <div className="flex min-w-0 flex-1 flex-col gap-2">
         <p className="truncate text-body text-text-default">{title}</p>
         {uploading ? (
-          <div className="flex items-center gap-2">
-            <LinearProgressBar value={progress} className="h-[3px] flex-1" />
+          <div className="flex items-center gap-8">
+            <LinearProgressBar value={progress} className="h-3 flex-1" />
             <span className="text-caption text-text-muted">{Math.round(progress)}%</span>
           </div>
         ) : (
           author && <p className="text-caption text-text-muted">{author}</p>
         )}
       </div>
-      <IconButton variant="alt" icon="xmark" label={uploading ? "Cancel upload" : "Remove sketch"} onClick={onRemove} className="size-7 rounded-[14px]" />
+      <IconButton variant="alt" icon="xmark" label={uploading ? "Cancel upload" : "Remove sketch"} onClick={onRemove} className="size-28 rounded-14" />
     </div>
   )
 }

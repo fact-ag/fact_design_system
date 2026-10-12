@@ -87,9 +87,9 @@ const noop = () => {}
 
 function Section({ id, title, wide, children }: { id: string; title: string; wide?: boolean; children: ReactNode }) {
   return (
-    <section id={id} className={wide ? "w-full max-w-[1122px] scroll-mt-4" : "w-full max-w-[392px] scroll-mt-4"}>
-      <h2 className="mb-2 text-heading text-text-default">{title}</h2>
-      <div className="flex flex-col gap-4 rounded-xl border border-border-default bg-bg-default p-4">{children}</div>
+    <section id={id} className={wide ? "w-full max-w-1122 scroll-mt-16" : "w-full max-w-392 scroll-mt-16"}>
+      <h2 className="mb-8 text-heading text-text-default">{title}</h2>
+      <div className="flex flex-col gap-16 rounded-12 border border-border-default bg-bg-default p-16">{children}</div>
     </section>
   )
 }
@@ -99,7 +99,7 @@ function Cap({ children }: { children: ReactNode }) {
 }
 
 function Row({ children }: { children: ReactNode }) {
-  return <div className="flex flex-wrap items-center gap-3">{children}</div>
+  return <div className="flex flex-wrap items-center gap-12">{children}</div>
 }
 
 function Opener({ label, children }: { label: string; children: (open: boolean, close: () => void) => ReactNode }) {
@@ -353,7 +353,7 @@ function BarcodeScannerDemo() {
           <BadgeButton key={s} selected={state === s} onClick={() => setState(s)}>{s}</BadgeButton>
         ))}
       </Row>
-      <div className="h-[640px] overflow-clip rounded-xl">
+      <div className="h-640 overflow-clip rounded-12">
         <BarcodeScanner
           state={state}
           background={<img src={wheat} alt="" className="size-full object-cover" />}
@@ -381,7 +381,7 @@ function LocationPickerDemo() {
           <BadgeButton key={s} selected={state === s} onClick={() => setState(s)}>{s}</BadgeButton>
         ))}
       </Row>
-      <div className="h-[640px] overflow-clip rounded-xl">
+      <div className="h-640 overflow-clip rounded-12">
         <LocationPicker
           state={state}
           background={<img src={wheat} alt="" className="size-full object-cover" />}
@@ -402,13 +402,13 @@ function LocationPickerDemo() {
 function MobileScreenDemo() {
   const [dim, setDim] = useToggle()
   return (
-    <div className="h-[480px] overflow-clip rounded-xl border border-border-default">
+    <div className="h-480 overflow-clip rounded-12 border border-border-default">
       <MobileScreen
-        header={<div className="p-4 text-title">North Field</div>}
+        header={<div className="p-16 text-title">North Field</div>}
         dim={dim}
-        onTop={dim ? <div className="absolute inset-x-4 bottom-4 rounded-xl bg-surface-default p-4">On-top panel</div> : null}
+        onTop={dim ? <div className="absolute inset-x-16 bottom-16 rounded-12 bg-surface-default p-16">On-top panel</div> : null}
       >
-        <div className="p-4"><Button onClick={setDim}>Toggle backdrop dim</Button></div>
+        <div className="p-16"><Button onClick={setDim}>Toggle backdrop dim</Button></div>
       </MobileScreen>
     </div>
   )
@@ -425,7 +425,7 @@ function MapSketchDemo() {
           <BadgeButton key={s} selected={state === s} onClick={() => setState(s)}>{s}</BadgeButton>
         ))}
       </Row>
-      <div className="h-[640px] overflow-clip rounded-xl">
+      <div className="h-640 overflow-clip rounded-12">
         <MapSketch
           state={state}
           background={<img src={wheat} alt="" className="size-full object-cover" />}
@@ -593,7 +593,7 @@ function SketchPadDemo() {
           <BadgeButton key={s} selected={state === s} onClick={() => setState(s)}>{s}</BadgeButton>
         ))}
       </Row>
-      <div className="h-[640px] overflow-clip rounded-xl">
+      <div className="h-640 overflow-clip rounded-12">
         <SketchPad
           state={state}
           title="Field sketch"
@@ -791,8 +791,8 @@ const allIcons = Object.keys(icons) as IconName[]
 
 export function Gallery() {
   return (
-    <main className="flex min-h-screen flex-wrap items-start justify-center gap-8 bg-bg-muted p-4">
-      <div className="flex w-full flex-col gap-2">
+    <main className="flex min-h-screen flex-wrap items-start justify-center gap-32 bg-bg-muted p-16">
+      <div className="flex w-full flex-col gap-8">
         <h1 className="text-title text-text-default">Component gallery</h1>
         <ThemeToggle />
       </div>
@@ -859,7 +859,7 @@ export function Gallery() {
 
       <Section id="audio-recorder" title="Audio Recorder (1190:1384)">
         {(["idle", "recording", "paused", "review"] as const).map((s) => (
-          <div key={s} className="flex flex-col gap-1">
+          <div key={s} className="flex flex-col gap-4">
             <Cap>{s}</Cap>
             <AudioRecorder
               state={s}
@@ -908,7 +908,7 @@ export function Gallery() {
             <Opener key={s} label={`Open ${s}`}>
               {(open, close) => (
                 <BottomDrawer open={open} onClose={close} size={s}>
-                  <div className="flex flex-col gap-3 p-6">
+                  <div className="flex flex-col gap-12 p-24">
                     <p className="text-title text-text-default">Hillside harvest plan</p>
                     <p className="text-body text-text-muted">Harvest the lower blocks first. Dry weather expected through Friday.</p>
                     <Button onClick={close}>Close</Button>
@@ -981,7 +981,7 @@ export function Gallery() {
       </Section>
 
       <Section id="icon" title="Icon (all glyph names)">
-        <div className="flex flex-wrap gap-3 text-icon-default">
+        <div className="flex flex-wrap gap-12 text-icon-default">
           {allIcons.map((n) => (
             <span key={n} title={n}><Icon name={n} size={20} /></span>
           ))}

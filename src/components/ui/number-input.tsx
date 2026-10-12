@@ -14,12 +14,12 @@ type NumberInputProps = Omit<ComponentProps<"div">, "onChange"> & {
 }
 
 const stepper =
-  "flex size-6 cursor-pointer items-center justify-center rounded-full border border-border-default bg-surface-default text-text-on-fill-neutral outline-none focus-visible:ring-2 focus-visible:ring-border-focus disabled:cursor-not-allowed disabled:opacity-50"
+  "flex size-24 cursor-pointer items-center justify-center rounded-full border border-border-default bg-surface-default text-text-on-fill-neutral outline-none focus-visible:ring-2 focus-visible:ring-border-focus disabled:cursor-not-allowed disabled:opacity-50"
 
 function NumberInput({ value, onChange, min = -Infinity, max = Infinity, step = 1, placeholder = "Number of X", disabled, className, ...props }: NumberInputProps) {
   const set = (n: number) => onChange?.(Math.min(max, Math.max(min, n)))
   return (
-    <div className={cn("flex h-[44px] w-full items-center gap-2 rounded-[30px] bg-fill-neutral-default px-1.5", className)} {...props}>
+    <div className={cn("flex h-44 w-full items-center gap-8 rounded-30 bg-fill-neutral-default px-6", className)} {...props}>
       <button type="button" className={stepper} disabled={disabled || (value ?? 0) <= min} onClick={() => set((value ?? 0) - step)}>
         <Icon name="minus" size={12} label="Decrease" />
       </button>

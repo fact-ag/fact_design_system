@@ -7,7 +7,7 @@ import { Icon, type IconName } from "./icon"
 // The trailing "N" + arrow image in Figma is a chevron: rendered as <Icon name="chevron-right" /> with `meta` text (default "N") instead of the SVG asset.
 // Figma has no pressed/disabled states; pressed/disabled here are a fallback.
 const rectangleNavigationButtonVariants = cva(
-  "flex w-full cursor-pointer items-center gap-3 rounded-[14px] px-3.5 py-[13px] text-left outline-none transition-colors focus-visible:ring-2 focus-visible:ring-border-focus active:opacity-80 disabled:cursor-not-allowed disabled:opacity-50",
+  "flex w-full cursor-pointer items-center gap-12 rounded-14 px-14 py-13 text-left outline-none transition-colors focus-visible:ring-2 focus-visible:ring-border-focus active:opacity-80 disabled:cursor-not-allowed disabled:opacity-50",
   {
     variants: {
       variant: {
@@ -31,13 +31,13 @@ type RectangleNavigationButtonProps = Omit<ComponentProps<"button">, "title"> &
 function RectangleNavigationButton({ className, variant = "green", icon = "house", title = "Title", meta = "N", type = "button", ...props }: RectangleNavigationButtonProps) {
   return (
     <button type={type} className={cn(rectangleNavigationButtonVariants({ variant }), className)} {...props}>
-      <span className={cn("flex size-9 shrink-0 items-center justify-center rounded-[10px]", overlay[variant ?? "green"])}>
-        <Icon name={icon} size={16} className="size-5" />
+      <span className={cn("flex size-36 shrink-0 items-center justify-center rounded-10", overlay[variant ?? "green"])}>
+        <Icon name={icon} size={16} className="size-20" />
       </span>
-      <span className="min-w-px flex-1 text-[18px] leading-none tracking-[-0.02em]">{title}</span>
-      <span className="flex shrink-0 items-center gap-0.5 text-body text-text-muted">
+      <span className="min-w-px flex-1 text-18 leading-none tracking-condensed">{title}</span>
+      <span className="flex shrink-0 items-center gap-2 text-body text-text-muted">
         {meta}
-        <Icon name="chevron-right" size={16} className="size-5" />
+        <Icon name="chevron-right" size={16} className="size-20" />
       </span>
     </button>
   )

@@ -17,14 +17,15 @@ function PropertyListRow({ title, subtitle, selected = false, className, type = 
       type={type}
       aria-pressed={selected}
       className={cn(
-        "flex h-[60px] w-full cursor-pointer items-center gap-2.5 overflow-clip rounded-[30px] bg-fill-neutral-default pr-4 pl-3 text-left outline-none focus-visible:ring-2 focus-visible:ring-border-focus",
+        "flex h-60 w-full cursor-pointer items-center gap-10 overflow-clip rounded-30 bg-fill-neutral-default pr-16 pl-12 text-left outline-none focus-visible:ring-2 focus-visible:ring-border-focus",
+        // ds-exception: Figma stroke is 1.5px, Tailwind border widths are whole px
         selected ? "border-[1.5px] border-border-brand-tonal" : "active:bg-fill-neutral-pressed",
         className,
       )}
       {...props}
     >
       <LocationPinBadge />
-      <span className="flex min-w-0 flex-1 flex-col gap-0.5 overflow-clip">
+      <span className="flex min-w-0 flex-1 flex-col gap-2 overflow-clip">
         <span className={cn("whitespace-nowrap text-text-default", selected ? "text-heading" : "text-body")}>{title}</span>
         <span className="text-label whitespace-pre text-text-muted">{subtitle}</span>
       </span>

@@ -20,16 +20,16 @@ type IPadListItemProps = ComponentProps<"div"> & { items: IPadListItemData[] }
 
 function IPadListItem({ items, className, ...props }: IPadListItemProps) {
   return (
-    <div className={cn("w-full overflow-clip rounded-2xl border border-border-default bg-surface-default shadow-croptrak", className)} {...props}>
+    <div className={cn("w-full overflow-clip rounded-16 border border-border-default bg-surface-default shadow-croptrak", className)} {...props}>
       {items.map((it, i) => (
-        <div key={i} className="flex h-[72px] items-stretch gap-4 border-b border-border-default pr-2.5 last:border-b-0">
-          <div className="flex w-[135px] shrink-0 flex-col justify-center border-r border-border-default pl-3.5">
+        <div key={i} className="flex h-72 items-stretch gap-16 border-b border-border-default pr-10 last:border-b-0">
+          <div className="flex w-135 shrink-0 flex-col justify-center border-r border-border-default pl-14">
             <span className="text-label text-text-muted">PO #</span>
             <span className="truncate text-body text-text-default">{it.po}</span>
           </div>
-          <div className="flex min-w-0 flex-[3] flex-col justify-center gap-1">
+          <div className="flex min-w-0 flex-3 flex-col justify-center gap-4">
             <span className="truncate text-body text-text-default">{it.farm}</span>
-            <span className="flex min-w-0 items-center gap-1.5 text-label whitespace-nowrap text-text-muted">
+            <span className="flex min-w-0 items-center gap-6 text-label whitespace-nowrap text-text-muted">
               <Badge tone={it.statusTone}>{it.status}</Badge>
               <span aria-hidden>·</span>
               <span className="truncate">{it.owner}</span>
@@ -37,15 +37,15 @@ function IPadListItem({ items, className, ...props }: IPadListItemProps) {
               <span>{it.date}</span>
             </span>
           </div>
-          <div className="flex min-w-0 flex-[3] flex-col justify-center">
+          <div className="flex min-w-0 flex-3 flex-col justify-center">
             <span className="text-label text-text-muted">Vendor</span>
             <span className="truncate text-body text-text-default">{it.vendor}</span>
           </div>
           <div className="flex shrink-0 flex-col items-end justify-center">
             <span className="text-label text-text-muted">Total</span>
-            <span className="text-[18px] leading-normal tracking-[-0.02em] text-text-default tabular-nums">{it.total}</span>
+            <span className="text-18 leading-normal tracking-condensed text-text-default tabular-nums">{it.total}</span>
           </div>
-          <div className="flex w-[60px] shrink-0 items-start justify-end pt-3">
+          <div className="flex w-60 shrink-0 items-start justify-end pt-12">
             <Badge tone={it.badgeTone}>{it.badge}</Badge>
           </div>
         </div>

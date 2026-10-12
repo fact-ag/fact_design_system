@@ -56,18 +56,18 @@ function AudioRecorder({
   const disabledLook = "disabled:border-border-default disabled:bg-fill-disabled disabled:text-text-on-fill-disabled"
 
   return (
-    <div className={cn("flex w-full flex-col gap-[11px]", className)} {...props}>
-      <div className="flex w-full items-center gap-[11px]">
-        <div className={cn("flex w-10 shrink-0 items-center justify-center text-body", state === "recording" && "gap-1", idle ? "text-text-muted" : "text-text-default")}>
-          {state === "recording" && <span className="size-1.5 rounded-full bg-status-danger" />}
+    <div className={cn("flex w-full flex-col gap-11", className)} {...props}>
+      <div className="flex w-full items-center gap-11">
+        <div className={cn("flex w-40 shrink-0 items-center justify-center text-body", state === "recording" && "gap-4", idle ? "text-text-muted" : "text-text-default")}>
+          {state === "recording" && <span className="size-6 rounded-full bg-status-danger" />}
           {elapsed}
         </div>
-        <div className="flex h-[45px] min-w-px flex-1 items-center justify-center gap-[2.4px]" aria-hidden>
+        <div className="flex h-45 min-w-px flex-1 items-center justify-center gap-wave-gap" aria-hidden>
           {levels.map((h, i) => (
             <span
               key={i}
               className={cn(
-                "w-[3.2px] shrink-0 rounded-[1.6px]",
+                "w-wave-bar shrink-0 rounded-wave",
                 idle && "bg-border-default",
                 state === "recording" && "bg-status-success",
                 state === "paused" && "bg-fill-draft",
@@ -77,9 +77,9 @@ function AudioRecorder({
             />
           ))}
         </div>
-        <div className="flex h-5 w-10 shrink-0 items-center justify-center text-body text-text-muted">{state === "review" ? duration : null}</div>
+        <div className="flex h-20 w-40 shrink-0 items-center justify-center text-body text-text-muted">{state === "review" ? duration : null}</div>
       </div>
-      <div className="flex w-full items-center gap-[11px]">
+      <div className="flex w-full items-center gap-11">
         <IconButton
           label="Discard recording"
           icon="trash-can"
@@ -87,7 +87,7 @@ function AudioRecorder({
           onClick={onDiscard}
           className={cn(!idle && "border-fill-rating-01 bg-fill-danger-bg-subtle text-status-danger", disabledLook)}
         />
-        <UtilityButton icon={p.icon} onClick={p.onClick} className="h-10 min-w-px flex-1 text-body">
+        <UtilityButton icon={p.icon} onClick={p.onClick} className="h-40 min-w-px flex-1 text-body">
           {p.label}
         </UtilityButton>
         <IconButton label="Save recording" icon="check" disabled={idle} onClick={onSave} className={disabledLook} />

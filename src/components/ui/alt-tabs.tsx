@@ -11,7 +11,7 @@ type AltTabsProps = Omit<ComponentProps<"div">, "onChange"> & {
 
 function AltTabs({ items, value, onValueChange, className, ...props }: AltTabsProps) {
   return (
-    <div role="tablist" className={cn("inline-flex items-center rounded-full bg-fill-neutral-default p-1", className)} {...props}>
+    <div role="tablist" className={cn("inline-flex items-center rounded-full bg-fill-neutral-default p-4", className)} {...props}>
       {items.map((item) => (
         <AltTab key={item.value} selected={item.value === value} onClick={() => onValueChange?.(item.value)}>
           {item.label}

@@ -64,7 +64,7 @@ function UserSelectorDrawer({
       onConfirm={onConfirm ?? onClose}
     >
       {multiple && chosen.length > 0 && (
-        <div className="flex flex-wrap gap-1.5">
+        <div className="flex flex-wrap gap-6">
           {chosen.map((u) => (
             <Fragment key={u.id}>
               <UserChip name={u.name} initials={u.initials} onRemove={() => toggle(u.id)} />
@@ -73,7 +73,7 @@ function UserSelectorDrawer({
         </div>
       )}
       <span className="text-label text-text-muted">{groupLabel}</span>
-      <div className="flex flex-col px-[7px]">
+      <div className="flex flex-col px-7">
         {visible.map((u) => (
           <UserRow
             key={u.id}

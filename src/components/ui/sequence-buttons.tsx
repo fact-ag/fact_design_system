@@ -35,9 +35,9 @@ function SequenceButtons({
   showNA = true, naLabel = "N/A", className, ...props
 }: SequenceButtonsProps) {
   return (
-    <div role="group" aria-label={title} className={cn("flex w-full flex-col gap-2", className)} {...props}>
+    <div role="group" aria-label={title} className={cn("flex w-full flex-col gap-8", className)} {...props}>
       {title && <p className="text-heading text-text-default">{title}</p>}
-      <div className="flex items-center gap-1 p-1">
+      <div className="flex items-center gap-4 p-4">
         {fills.map((fill, n) =>
           n === 0 && !showNA ? null : (
             <SequenceStep
@@ -53,8 +53,8 @@ function SequenceButtons({
         )}
       </div>
       {legends && (
-        <div className="flex gap-1 px-1 text-caption text-text-muted">
-          {showNA && <span className="w-[28.364px] shrink-0 text-center">{naLabel}</span>}
+        <div className="flex gap-4 px-4 text-caption text-text-muted">
+          {showNA && <span className="w-28.25 shrink-0 text-center">{naLabel}</span>}
           <span className="min-w-0 flex-1">{lowLabel}</span>
           <span className="text-right whitespace-nowrap">{highLabel}</span>
         </div>

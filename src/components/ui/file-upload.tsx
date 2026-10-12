@@ -25,23 +25,23 @@ function FileUpload({
   ...props
 }: FileUploadProps) {
   return (
-    <div className={cn("flex w-full flex-col gap-4", className)} {...props}>
-      <div className="flex w-full flex-col gap-[9px]">
+    <div className={cn("flex w-full flex-col gap-16", className)} {...props}>
+      <div className="flex w-full flex-col gap-9">
         {showTitle && <p className="text-body text-text-default">{title}</p>}
         <button
           type="button"
           onClick={onPick}
-          className="flex w-full cursor-pointer flex-col items-center justify-center gap-1 rounded-xl border border-dashed border-border-default bg-surface-muted px-4 pt-[18px] pb-4 outline-none focus-visible:ring-2 focus-visible:ring-border-focus"
+          className="flex w-full cursor-pointer flex-col items-center justify-center gap-4 rounded-12 border border-dashed border-border-default bg-surface-muted px-16 pt-18 pb-16 outline-none focus-visible:ring-2 focus-visible:ring-border-focus"
         >
-          <span className="flex size-9 items-center justify-center rounded-full border border-border-default bg-bg-default text-icon-default">
-            <Icon name="arrow-up-from-bracket" size={16} className="size-5" />
+          <span className="flex size-36 items-center justify-center rounded-full border border-border-default bg-bg-default text-icon-default">
+            <Icon name="arrow-up-from-bracket" size={16} className="size-20" />
           </span>
-          <span className="mt-1 text-heading text-text-default">Add files</span>
+          <span className="mt-4 text-heading text-text-default">Add files</span>
           <span className="text-center text-label text-text-muted">{description}</span>
         </button>
       </div>
       {files.length > 0 && (
-        <div className="flex w-full flex-col gap-2">
+        <div className="flex w-full flex-col gap-8">
           {files.map(({ id, ...file }) => (
             <FileItem key={id} {...file} />
           ))}

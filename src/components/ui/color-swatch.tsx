@@ -17,13 +17,13 @@ function ColorSwatch({ color, selected = false, label, className, type = "button
       aria-pressed={selected}
       aria-label={label}
       className={cn(
-        "flex size-[30px] cursor-pointer items-center justify-center rounded-full outline-none focus-visible:ring-2 focus-visible:ring-border-focus",
+        "flex size-30 cursor-pointer items-center justify-center rounded-full outline-none focus-visible:ring-2 focus-visible:ring-border-focus",
         selected && "border-2 border-fill-brand-default",
         className,
       )}
       {...props}
     >
-      <span className="size-5 rounded-full border border-border-default" style={{ backgroundColor: color }} />
+      <span className="size-20 rounded-full border border-border-default" style={{ backgroundColor: color }} />
     </button>
   )
 }

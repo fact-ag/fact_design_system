@@ -10,9 +10,9 @@ const squareButtonVariants = cva(
   {
     variants: {
       size: {
-        small: "size-8 rounded-lg",
-        medium: "size-[46px] rounded-[10px]",
-        large: "size-[60px] rounded-[14px]",
+        small: "size-32 rounded-8",
+        medium: "size-46 rounded-10",
+        large: "size-60 rounded-14",
       },
     },
     defaultVariants: { size: "small" },

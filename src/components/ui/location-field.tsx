@@ -18,35 +18,35 @@ type LocationFieldProps = Omit<ComponentProps<"div">, "onChange"> & {
   onRemove?: () => void
 }
 
-const chip = "bg-bg-default drop-shadow-[0_6px_14px_rgba(41,71,57,0.18)]"
+const chip = "bg-bg-default drop-shadow-floating"
 
 function LocationField({ label = "Location", value, error, mapPreview, onPick, onUseCurrent, onRemove, className, ...props }: LocationFieldProps) {
   return (
-    <div className={cn("flex w-full flex-col items-start gap-[9px]", className)} {...props}>
+    <div className={cn("flex w-full flex-col items-start gap-9", className)} {...props}>
       <span className="text-body text-text-default">{label}</span>
       {value ? (
         <>
-          <div className="relative h-[140px] w-full overflow-clip rounded-[12px] border border-border-default bg-bg-inverse">
+          <div className="relative h-140 w-full overflow-clip rounded-12 border border-border-default bg-bg-inverse">
             {mapPreview}
-            <MapPin showLabel={false} className="absolute top-[calc(50%-10px)] left-1/2 -translate-x-1/2 -translate-y-1/2" />
+            <MapPin showLabel={false} className="absolute top-1/2 -mt-10 left-1/2 -translate-x-1/2 -translate-y-1/2" />
             <button
               type="button"
               onClick={onRemove}
               aria-label="Remove location"
-              className={cn("absolute top-[9px] right-[9px] flex size-7 cursor-pointer items-center justify-center rounded-[14px] text-icon-default outline-none focus-visible:ring-2 focus-visible:ring-border-focus", chip)}
+              className={cn("absolute top-9 right-9 flex size-28 cursor-pointer items-center justify-center rounded-14 text-icon-default outline-none focus-visible:ring-2 focus-visible:ring-border-focus", chip)}
             >
               <Icon name="xmark" size={16} />
             </button>
             <button
               type="button"
               onClick={onPick}
-              className={cn("absolute bottom-[9px] left-[9px] flex cursor-pointer items-center gap-1.5 rounded-[14px] px-2.5 py-[5px] text-label text-text-default outline-none focus-visible:ring-2 focus-visible:ring-border-focus", chip)}
+              className={cn("absolute bottom-9 left-9 flex cursor-pointer items-center gap-6 rounded-14 px-10 py-5 text-label text-text-default outline-none focus-visible:ring-2 focus-visible:ring-border-focus", chip)}
             >
               <Icon name="pen" size={16} />
               Move pin
             </button>
           </div>
-          <div className="flex w-full gap-[11px]">
+          <div className="flex w-full gap-11">
             <InputField label="Latitude" readOnly value={value.latitude.toFixed(5)} className="flex-1 font-mono" />
             <InputField label="Longitude" readOnly value={value.longitude.toFixed(5)} className="flex-1 font-mono" />
           </div>
@@ -58,26 +58,26 @@ function LocationField({ label = "Location", value, error, mapPreview, onPick, o
             onClick={onPick}
             aria-invalid={!!error}
             className={cn(
-              "flex w-full cursor-pointer items-center gap-3 rounded-[12px] border border-dashed bg-surface-muted p-3.5 text-left outline-none focus-visible:ring-2 focus-visible:ring-border-focus",
+              "flex w-full cursor-pointer items-center gap-12 rounded-12 border border-dashed bg-surface-muted p-14 text-left outline-none focus-visible:ring-2 focus-visible:ring-border-focus",
               error ? "border-status-danger" : "border-border-default",
             )}
           >
-            <span className={cn("flex size-9 shrink-0 items-center justify-center rounded-full border border-border-default bg-bg-default", error ? "text-status-danger" : "text-icon-default")}>
-              <Icon name="location-dot" size={16} className="size-5" />
+            <span className={cn("flex size-36 shrink-0 items-center justify-center rounded-full border border-border-default bg-bg-default", error ? "text-status-danger" : "text-icon-default")}>
+              <Icon name="location-dot" size={16} className="size-20" />
             </span>
-            <span className="flex min-w-0 flex-1 flex-col gap-0.5">
+            <span className="flex min-w-0 flex-1 flex-col gap-2">
               <span className={cn("text-heading", error ? "text-status-danger" : "text-text-default")}>Drop a pin</span>
               <span className="text-label text-text-muted">Pick the spot on the satellite map</span>
             </span>
-            <Icon name="plus" size={16} className="size-5 text-icon-default" />
+            <Icon name="plus" size={16} className="size-20 text-icon-default" />
           </button>
           {error && <span role="alert" className="text-label text-status-danger">{error}</span>}
           <button
             type="button"
             onClick={onUseCurrent}
-            className="flex cursor-pointer items-center gap-1.5 rounded text-label text-text-default underline outline-none focus-visible:ring-2 focus-visible:ring-border-focus"
+            className="flex cursor-pointer items-center gap-6 rounded-4 text-label text-text-default underline outline-none focus-visible:ring-2 focus-visible:ring-border-focus"
           >
-            <Icon name="location-crosshairs" size={16} className="size-5" />
+            <Icon name="location-crosshairs" size={16} className="size-20" />
             Use my current location
           </button>
         </>

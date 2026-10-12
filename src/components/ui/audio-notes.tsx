@@ -15,13 +15,13 @@ type AudioNotesProps = Omit<ComponentProps<"div">, "children"> & {
 
 function AudioNotes({ title = "Voice notes", showTitle = true, recorder, clips = [], className, ...props }: AudioNotesProps) {
   return (
-    <div className={cn("flex w-full flex-col gap-4", className)} {...props}>
-      <div className="flex w-full flex-col gap-[9px]">
+    <div className={cn("flex w-full flex-col gap-16", className)} {...props}>
+      <div className="flex w-full flex-col gap-9">
         {showTitle && <p className="text-body text-text-default">{title}</p>}
         <AudioRecorder {...recorder} />
       </div>
       {clips.length > 0 && (
-        <div className="flex w-full flex-col gap-2">
+        <div className="flex w-full flex-col gap-8">
           {clips.map(({ id, ...clip }) => (
             <AudioClip key={id} {...clip} />
           ))}

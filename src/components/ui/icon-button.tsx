@@ -16,15 +16,15 @@ function IconButton({ className, label, icon = "house", variant = "default", typ
       type={type}
       aria-label={label}
       className={cn(
-        "inline-flex size-10 shrink-0 cursor-pointer items-center justify-center rounded-[20px] outline-none transition-colors focus-visible:ring-2 focus-visible:ring-border-focus disabled:cursor-not-allowed",
+        "inline-flex size-40 shrink-0 cursor-pointer items-center justify-center rounded-20 outline-none transition-colors focus-visible:ring-2 focus-visible:ring-border-focus disabled:cursor-not-allowed",
         variant === "alt"
           ? "bg-fill-neutral-default text-text-on-fill-neutral"
-          : "border border-border-default bg-bg-default text-icon-default shadow-[0_0_2.5px_0_#2947391a] active:bg-fill-neutral-default active:text-text-on-fill-neutral disabled:bg-border-default disabled:text-text-on-fill-neutral",
+          : "border border-border-default bg-bg-default text-icon-default shadow-glow-sm active:bg-fill-neutral-default active:text-text-on-fill-neutral disabled:bg-border-default disabled:text-text-on-fill-neutral",
         className,
       )}
       {...props}
     >
-      <Icon name={icon} size={16} className="size-5" />
+      <Icon name={icon} size={16} className="size-20" />
     </button>
   )
 }

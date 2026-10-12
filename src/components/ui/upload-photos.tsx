@@ -49,11 +49,11 @@ function UploadPhotos({
   const selected = photos.find((p) => p.id === selectedId)
   const done = photos.filter((p) => p.state === undefined || p.state === "default").length
   return (
-    <div className={cn("flex w-full flex-col gap-4", className)} {...props}>
+    <div className={cn("flex w-full flex-col gap-16", className)} {...props}>
       {(showPreview || showCaption) && selected && (
-        <div className="flex w-full flex-col gap-2.5">
+        <div className="flex w-full flex-col gap-10">
           {showPreview && (
-            <div className="h-[262px] w-full overflow-clip rounded-[10px] bg-bg-inverse">
+            <div className="h-262 w-full overflow-clip rounded-10 bg-bg-inverse">
               <img src={selected.src} alt={selected.alt ?? ""} className="size-full object-contain" />
             </div>
           )}
@@ -63,14 +63,14 @@ function UploadPhotos({
               placeholder={captionPlaceholder}
               aria-label="Photo caption"
               onChange={(e) => onCaptionChange?.(e.target.value)}
-              className="[&_textarea]:h-[84px]"
+              className="[&_textarea]:h-84"
             />
           )}
         </div>
       )}
       <div className="flex w-full flex-col">
         <p className="text-heading text-text-default">{header ?? `Photos (${done})`}</p>
-        <div className="flex gap-[11px] overflow-x-auto pt-3 pb-3">
+        <div className="flex gap-11 overflow-x-auto pt-12 pb-12">
           <AddPhotoTile onPress={onAdd} className="shrink-0" />
           {photos.map((p) => (
             <PhotoThumbnail

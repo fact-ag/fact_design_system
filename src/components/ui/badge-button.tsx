@@ -12,13 +12,13 @@ function BadgeButton({ className, selected = false, icon = "house", type = "butt
       type={type}
       aria-pressed={selected}
       className={cn(
-        "inline-flex h-7 shrink-0 cursor-pointer items-center gap-1.5 rounded-[25px] px-[7px] text-body whitespace-nowrap outline-none transition-colors focus-visible:ring-2 focus-visible:ring-border-focus disabled:cursor-not-allowed disabled:opacity-50",
+        "inline-flex h-28 shrink-0 cursor-pointer items-center gap-6 rounded-25 px-7 text-body whitespace-nowrap outline-none transition-colors focus-visible:ring-2 focus-visible:ring-border-focus disabled:cursor-not-allowed disabled:opacity-50",
         selected ? "bg-fill-accent text-text-on-fill-brand" : "bg-fill-neutral-default text-text-muted",
         className,
       )}
       {...props}
     >
-      <Icon name={icon} size={16} className="size-[15px]" />
+      <Icon name={icon} size={16} className="size-15" />
       {children}
     </button>
   )

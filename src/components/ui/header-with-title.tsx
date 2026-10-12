@@ -16,14 +16,14 @@ type HeaderWithTitleProps = Omit<ComponentProps<"header">, "title"> & {
 
 function HeaderWithTitle({ title, onBack, onTitleClick, children, className, ...props }: HeaderWithTitleProps) {
   return (
-    <header className={cn("relative flex h-10 items-center justify-between gap-2 px-4", className)} {...props}>
-      {onBack ? <IconButton label="Back" icon="arrow-left" variant="alt" onClick={onBack} /> : <span className="size-10" />}
-      <div className="absolute inset-x-16 flex justify-center">
+    <header className={cn("relative flex h-40 items-center justify-between gap-8 px-16", className)} {...props}>
+      {onBack ? <IconButton label="Back" icon="arrow-left" variant="alt" onClick={onBack} /> : <span className="size-40" />}
+      <div className="absolute inset-x-64 flex justify-center">
         {onTitleClick ? (
           <button
             type="button"
             onClick={onTitleClick}
-            className="flex cursor-pointer items-center gap-1.5 rounded text-heading text-text-default outline-none focus-visible:ring-2 focus-visible:ring-border-focus"
+            className="flex cursor-pointer items-center gap-6 rounded-4 text-heading text-text-default outline-none focus-visible:ring-2 focus-visible:ring-border-focus"
           >
             {title}
             <Icon name="chevron-down" size={16} />
@@ -32,7 +32,7 @@ function HeaderWithTitle({ title, onBack, onTitleClick, children, className, ...
           <h1 className="truncate text-heading text-text-default">{title}</h1>
         )}
       </div>
-      <div className="flex min-w-10 justify-end gap-2">{children}</div>
+      <div className="flex min-w-40 justify-end gap-8">{children}</div>
     </header>
   )
 }

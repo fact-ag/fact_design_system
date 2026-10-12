@@ -34,7 +34,8 @@ function SignaturePad({
 }: SignaturePadProps) {
   const isSigned = signed ?? !!signatureSrc
   return (
-    <div className={cn("relative flex min-h-[402px] w-full flex-col bg-bg-default px-[59px] pt-5 pb-[21px]", className)} {...props}>
+    <div className={cn("relative flex min-h-402 w-full flex-col bg-bg-default px-59 pt-20 pb-21", className)} {...props}>
+      {/* ds-exception: title centered between two buttons */}
       <div className="grid grid-cols-[1fr_auto_1fr] items-center">
         <Button variant="secondary" onClick={onCancel} className="justify-self-start border border-border-default text-body">
           Cancel
@@ -44,15 +45,15 @@ function SignaturePad({
           Done
         </Button>
       </div>
-      <div className="relative mx-5 mt-[18px] flex-1">
+      <div className="relative mx-20 mt-18 flex-1">
         {!isSigned && !children && (
-          <p className="absolute inset-x-0 top-[calc(50%-13px)] text-center text-title text-icon-subtle opacity-60">{placeholder}</p>
+          <p className="absolute inset-x-0 top-1/2 -mt-13 text-center text-title text-icon-subtle opacity-60">{placeholder}</p>
         )}
-        {signatureSrc && <img src={signatureSrc} alt="Signature" className="absolute top-1/2 left-1/2 w-[450px] max-w-full -translate-x-1/2 -translate-y-1/2" />}
+        {signatureSrc && <img src={signatureSrc} alt="Signature" className="absolute top-1/2 left-1/2 w-450 max-w-full -translate-x-1/2 -translate-y-1/2" />}
         {children && <div className="absolute inset-0">{children}</div>}
-        <div className="absolute inset-x-0 bottom-9 h-px bg-border-default" />
-        <p className="absolute bottom-[42px] left-0 text-heading text-icon-subtle">×</p>
-        {signerName && <p className="absolute inset-x-0 bottom-3 text-center text-label text-text-muted">{signerName}</p>}
+        <div className="absolute inset-x-0 bottom-36 h-px bg-border-default" />
+        <p className="absolute bottom-42 left-0 text-heading text-icon-subtle">×</p>
+        {signerName && <p className="absolute inset-x-0 bottom-12 text-center text-label text-text-muted">{signerName}</p>}
       </div>
       {isSigned && (
         <Button variant="tertiary" onClick={onClear} className="self-start text-body">

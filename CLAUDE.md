@@ -25,7 +25,13 @@ All tokens are in `src/styles/tokens.css`. A Figma variable name becomes a CSS v
 | `Color/fill/*` | `bg-fill-brand-default`, `bg-fill-danger-surface-subtle` |
 | `Color/status/*` | `bg-status-success`, `text-status-danger` |
 | `Type/*` | `text-body`, `text-heading` |
-| Effects | `shadow-drop-shadow-2`, `shadow-croptrak`, `shadow-mobile` |
+| Spacing and size | The unit is 1px, so the class number is the Figma px value: `p-16`, `gap-10`, `h-44`, `leading-22` |
+| Radius | `rounded-<px>`: 2, 4, 6, 8, 10, 11, 12, 14, 15, 16, 17, 18, 20, 22, 24, 25, 30, 32, 33, 50, plus `rounded-full` and `rounded-wave` |
+| Extra font sizes | `text-11`, `-13`, `-14`, `-16`, `-17`, `-18`, `-22`, `-24`, `-30`. Tracking: `tracking-condensed`, `tracking-hairline` |
+| Shadows | `shadow-drop-shadow-2`, `-croptrak`, `-mobile`, `-hairline`, `-glow-sm`, `-glow-md`, `-lift`, `-ring-selected`, `-scrim` |
+| Other effects | `drop-shadow-floating`, `-glow`, `-lift`. `text-shadow-media-sm`, `-md`, `-lg`. `backdrop-blur-glass`, `-glass-sm` |
+
+`npm run lint` fails on raw colors and arbitrary values like `p-[13px]` in all of `src` except `src/styles` and `src/dev`. If a value cannot be a token, write `ds-exception: <reason>` in a comment on that line or the line above. If a new value is needed, add a token in `tokens.css` and add its name to `src/lib/utils.ts` so that `cn()` merges it correctly.
 
 Dark mode: add the class `dark` on `<html>`. The semantic tokens switch to the Figma "Dark" mode values.
 
@@ -41,7 +47,7 @@ Use `src/components/ui/button.tsx` as the model.
 - Figma BOOLEAN properties are optional boolean props. TEXT properties are string or `ReactNode` props. SLOT and INSTANCE_SWAP properties are `ReactNode` props or `children`.
 - Use `cva` for variants and `cn` from `@/lib/utils` to merge classes. Spread the remaining props onto the root element and accept `className`.
 - Use native elements (`button`, `input`, `textarea`, `dialog`) before a library. If a native element cannot do the job, use `@base-ui/react`. An example is a popover with focus handling.
-- If Figma uses a value that the Tailwind scale does not have, use an arbitrary pixel value such as `rounded-[14px]`. This is allowed only inside `src/components/ui`.
+- If Figma uses a value that has no token, add the token with the exact Figma value. Do not round it.
 - Some components are complex: Barcode Scanner, Map Sketch, Sketch Pad, Signature Pad, Audio Recorder, Location Picker, and device frames. They render every Figma state from props and report user actions through callbacks. They do not contain camera, map, canvas drawing, or audio logic. The feature that uses them adds that logic.
 
 ## Icons
