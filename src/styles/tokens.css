@@ -1,0 +1,267 @@
+/*
+ * Design tokens from Figma "Master Components (Copy)" (00E9j9wMim2nlHmN0Zsfsq).
+ * Names match Figma: "Color/text/on-fill/brand" -> --color-text-on-fill-brand.
+ * Primitives are plain CSS variables (no Tailwind classes) so components use semantic tokens only.
+ * Semantic tokens live in @theme, so Tailwind makes classes like bg-fill-brand-default and text-text-muted.
+ */
+
+@font-face {
+  font-family: "Phonic";
+  src: url("../assets/fonts/PhonicTrial-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Phonic";
+  src: url("../assets/fonts/PhonicTrial-Medium.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Phonic";
+  src: url("../assets/fonts/PhonicTrial-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Primitive tokens (Figma collection "Primitive tokens", Mode 1) */
+:root {
+  --color-neutrals-charcoal: #2f3832;
+  --color-neutrals-silt: #667064;
+  --color-neutrals-stone: #d3cfc2;
+  --color-neutrals-fog: #ebebe2;
+  --color-neutrals-mist: #f8f7f0;
+  --color-neutrals-almost-white: #fdfdfa;
+
+  --color-greens-deep-algae: #1b2620;
+  --color-greens-algae: #294739;
+  --color-greens-algae-ish: #3d4e44;
+  --color-greens-fern: #819365;
+  --color-greens-pistachio: #d1dbba;
+  --color-greens-mint: #f1f3e1;
+
+  --color-warm-earth-citron: #eae27a;
+  --color-warm-earth-olive: #77744f;
+  --color-warm-earth-alfalfa: #c6bd95;
+  --color-warm-earth-straw: #efe8c5;
+  --color-warm-earth-terracotta: #aa5b3f;
+  --color-warm-earth-clay: #c17b4a;
+  --color-warm-earth-sand: #edd9b7;
+  --color-warm-earth-rust: #762e08;
+  --color-warm-earth-persimmon: #fc704f;
+
+  --color-indicators-positive: #acdd68;
+  --color-indicators-warning: #f9dd64;
+  --color-indicators-caution: #fe8b4a;
+  --color-indicators-negative: #dd2839;
+  --color-indicators-bright-negative: #ff5a6b;
+  --color-indicators-blush: #fce5e7;
+  --color-indicators-warning-strong: #615300;
+
+  --color-rating-light-00: #ebebe2;
+  --color-rating-light-01: #f4d2d2;
+  --color-rating-light-02: #f3d8c9;
+  --color-rating-light-03: #f2dfc2;
+  --color-rating-light-04: #f1e3be;
+  --color-rating-light-05: #efe8c5;
+  --color-rating-light-06: #e7e8b4;
+  --color-rating-light-07: #dde5a2;
+  --color-rating-light-08: #d0e191;
+  --color-rating-light-09: #bfdf7c;
+  --color-rating-light-10: #acdd68;
+  /* Figma Rating/Dark has the same values as Rating/Light today. */
+  --color-rating-dark-00: #ebebe2;
+  --color-rating-dark-01: #f4d2d2;
+  --color-rating-dark-02: #f3d8c9;
+  --color-rating-dark-03: #f2dfc2;
+  --color-rating-dark-04: #f1e3be;
+  --color-rating-dark-05: #efe8c5;
+  --color-rating-dark-06: #e7e8b4;
+  --color-rating-dark-07: #dde5a2;
+  --color-rating-dark-08: #d0e191;
+  --color-rating-dark-09: #bfdf7c;
+  --color-rating-dark-10: #acdd68;
+
+  --color-alpha-surface-glass-light: #2f383299;
+  --color-alpha-surface-glass-dark: #2f3832f2;
+  --color-alpha-border-bg-neutral: #d3cfc28c;
+  --color-alpha-tint-bg-positive: color-mix(in srgb, var(--color-indicators-positive) 2%, transparent);
+  --color-alpha-tint-bg-warning: color-mix(in srgb, var(--color-indicators-warning) 2%, transparent);
+  --color-alpha-tint-bg-caution: color-mix(in srgb, var(--color-indicators-caution) 2%, transparent);
+  --color-alpha-tint-bg-danger: color-mix(in srgb, var(--color-indicators-negative) 2%, transparent);
+  --color-alpha-tint-surface-positive: color-mix(in srgb, var(--color-indicators-positive) 10%, transparent);
+  --color-alpha-tint-surface-warning: color-mix(in srgb, var(--color-indicators-warning) 10%, transparent);
+  --color-alpha-tint-surface-caution: color-mix(in srgb, var(--color-indicators-caution) 10%, transparent);
+  --color-alpha-tint-surface-danger: color-mix(in srgb, var(--color-indicators-negative) 10%, transparent);
+  --color-alpha-tint-glass-positive: color-mix(in srgb, var(--color-indicators-positive) 60%, transparent);
+  --color-alpha-tint-bg-mint: color-mix(in srgb, var(--color-greens-mint) 80%, transparent);
+}
+
+/* Semantic tokens (Figma collection "Semantic tokens", Light mode). Tailwind default colors are removed. */
+@theme {
+  --color-*: initial;
+
+  --color-bg-default: var(--color-neutrals-mist);
+  --color-bg-muted: var(--color-neutrals-fog);
+  --color-bg-inverse: var(--color-greens-algae);
+  --color-surface-default: var(--color-neutrals-mist);
+  --color-surface-muted: var(--color-neutrals-fog);
+  --color-surface-overlay: var(--color-alpha-surface-glass-light);
+
+  --color-text-default: var(--color-greens-algae);
+  --color-text-muted: var(--color-neutrals-silt);
+  --color-text-subtle: var(--color-warm-earth-olive);
+  --color-text-disabled: var(--color-neutrals-stone);
+  --color-text-on-inverse: var(--color-neutrals-mist);
+  --color-text-link: var(--color-greens-algae);
+  --color-text-on-fill-brand: var(--color-neutrals-mist);
+  --color-text-on-fill-brand-tonal: var(--color-greens-algae);
+  --color-text-on-fill-neutral: var(--color-greens-algae);
+  --color-text-on-fill-success: var(--color-greens-algae);
+  --color-text-on-fill-warning: var(--color-indicators-warning-strong);
+  --color-text-on-fill-disabled: var(--color-neutrals-stone);
+  --color-text-on-fill-alternative: var(--color-neutrals-mist);
+  --color-text-on-fill-placeholder: var(--color-alpha-surface-glass-light);
+
+  --color-icon-default: var(--color-greens-algae);
+  --color-icon-muted: var(--color-neutrals-silt);
+  --color-icon-subtle: var(--color-warm-earth-olive);
+  --color-icon-on-emphasis: var(--color-neutrals-mist);
+  --color-icon-disabled: var(--color-neutrals-stone);
+
+  --color-border-default: var(--color-neutrals-stone);
+  --color-border-muted: var(--color-neutrals-fog);
+  --color-border-emphasis: var(--color-neutrals-silt);
+  --color-border-focus: var(--color-warm-earth-alfalfa);
+  --color-border-brand-tonal: var(--color-greens-pistachio);
+  --color-border-selected: var(--color-greens-algae);
+  --color-border-selected-alt: var(--color-warm-earth-citron);
+  --color-border-neutral: var(--color-alpha-border-bg-neutral);
+
+  --color-status-success: var(--color-indicators-positive);
+  --color-status-warning: var(--color-indicators-warning);
+  --color-status-caution: var(--color-indicators-caution);
+  --color-status-danger: var(--color-indicators-negative);
+  --color-status-danger-subtle: var(--color-indicators-blush);
+
+  --color-fill-brand-default: var(--color-greens-algae);
+  --color-fill-brand-pressed: var(--color-neutrals-silt);
+  --color-fill-brand-tonal-default: var(--color-greens-mint);
+  --color-fill-brand-tonal-pressed: var(--color-greens-pistachio);
+  --color-fill-brand-tonal-alternative: var(--color-alpha-tint-bg-mint);
+  --color-fill-brand-subtle: var(--color-greens-pistachio);
+  --color-fill-neutral-default: var(--color-neutrals-fog);
+  --color-fill-neutral-pressed: var(--color-neutrals-stone);
+  --color-fill-accent: var(--color-neutrals-silt);
+  --color-fill-alternative: var(--color-greens-fern);
+  --color-fill-active: var(--color-warm-earth-alfalfa);
+  --color-fill-draft: var(--color-warm-earth-olive);
+  --color-fill-disabled: var(--color-neutrals-fog);
+  --color-fill-ai-default: var(--color-alpha-tint-glass-positive);
+  --color-fill-success: var(--color-indicators-positive);
+  --color-fill-success-bg-subtle: var(--color-alpha-tint-bg-positive);
+  --color-fill-success-surface-subtle: var(--color-alpha-tint-surface-positive);
+  --color-fill-warning: var(--color-indicators-warning);
+  --color-fill-warning-bg-subtle: var(--color-alpha-tint-bg-warning);
+  --color-fill-warning-surface-subtle: var(--color-alpha-tint-surface-warning);
+  --color-fill-caution: var(--color-indicators-caution);
+  --color-fill-caution-bg-subtle: var(--color-alpha-tint-bg-caution);
+  --color-fill-caution-surface-subtle: var(--color-alpha-tint-surface-caution);
+  --color-fill-danger: var(--color-indicators-negative);
+  --color-fill-danger-bg-subtle: var(--color-alpha-tint-bg-danger);
+  --color-fill-danger-surface-subtle: var(--color-alpha-tint-surface-danger);
+  --color-fill-rating-00: var(--color-rating-light-00);
+  --color-fill-rating-01: var(--color-rating-light-01);
+  --color-fill-rating-02: var(--color-rating-light-02);
+  --color-fill-rating-03: var(--color-rating-light-03);
+  --color-fill-rating-04: var(--color-rating-light-04);
+  --color-fill-rating-05: var(--color-rating-light-05);
+  --color-fill-rating-06: var(--color-rating-light-06);
+  --color-fill-rating-07: var(--color-rating-light-07);
+  --color-fill-rating-08: var(--color-rating-light-08);
+  --color-fill-rating-09: var(--color-rating-light-09);
+  --color-fill-rating-10: var(--color-rating-light-10);
+
+  /* Text styles: Type/Display ... Type/Caption. Figma letter spacing is -2%. */
+  --font-sans: "Phonic", ui-sans-serif, system-ui, sans-serif;
+  --text-display: 28px;
+  --text-display--line-height: 34px;
+  --text-display--letter-spacing: -0.02em;
+  --text-title: 20px;
+  --text-title--line-height: 26px;
+  --text-title--letter-spacing: -0.02em;
+  --text-heading: 16px;
+  --text-heading--line-height: 22px;
+  --text-heading--letter-spacing: -0.02em;
+  --text-body: 14px;
+  --text-body--line-height: 20px;
+  --text-body--letter-spacing: -0.02em;
+  --text-label: 12px;
+  --text-label--line-height: 16px;
+  --text-label--letter-spacing: -0.02em;
+  --text-caption: 10px;
+  --text-caption--line-height: 14px;
+  --text-caption--letter-spacing: -0.02em;
+
+  /* Effects from the linked libraries: "Drop Shadow/2", "Croptrak - Drop shadow", "Mobile - Dropshadow". */
+  --shadow-drop-shadow-2: 0 2px 4px 0 #2727271a;
+  --shadow-croptrak: 0 0 10px 3px #2947390d;
+  --shadow-mobile: 0 0 10px 3px #2947391a;
+}
+
+/* Semantic tokens, Dark mode. Add class "dark" on <html> to use it. */
+.dark {
+  --color-bg-default: var(--color-greens-deep-algae);
+  --color-bg-muted: var(--color-neutrals-charcoal);
+  --color-surface-default: var(--color-greens-deep-algae);
+  --color-surface-muted: var(--color-neutrals-charcoal);
+  --color-surface-overlay: var(--color-alpha-surface-glass-dark);
+
+  --color-text-default: var(--color-neutrals-mist);
+  --color-text-muted: var(--color-neutrals-stone);
+  --color-text-subtle: var(--color-warm-earth-alfalfa);
+  --color-text-disabled: var(--color-neutrals-silt);
+  --color-text-link: var(--color-greens-mint);
+  --color-text-on-fill-brand: var(--color-greens-algae);
+  --color-text-on-fill-brand-tonal: var(--color-neutrals-mist);
+  --color-text-on-fill-neutral: var(--color-neutrals-mist);
+  --color-text-on-fill-success: var(--color-greens-deep-algae);
+  --color-text-on-fill-disabled: var(--color-neutrals-silt);
+  --color-text-on-fill-placeholder: var(--color-alpha-surface-glass-dark);
+
+  --color-icon-default: var(--color-greens-fern);
+  --color-icon-muted: var(--color-neutrals-stone);
+  --color-icon-subtle: var(--color-warm-earth-alfalfa);
+  --color-icon-on-emphasis: var(--color-greens-algae);
+  --color-icon-disabled: var(--color-neutrals-silt);
+
+  --color-border-default: var(--color-greens-algae-ish);
+  --color-border-muted: var(--color-neutrals-charcoal);
+  --color-border-brand-tonal: var(--color-greens-algae-ish);
+  --color-border-selected: var(--color-greens-mint);
+
+  --color-status-danger: var(--color-indicators-bright-negative);
+
+  --color-fill-brand-default: var(--color-greens-mint);
+  --color-fill-brand-tonal-default: var(--color-greens-algae);
+  --color-fill-brand-tonal-pressed: var(--color-greens-algae-ish);
+  --color-fill-neutral-default: var(--color-neutrals-charcoal);
+  --color-fill-neutral-pressed: var(--color-greens-algae-ish);
+  --color-fill-accent: var(--color-warm-earth-alfalfa);
+  --color-fill-draft: var(--color-warm-earth-alfalfa);
+  --color-fill-disabled: var(--color-neutrals-charcoal);
+  --color-fill-rating-00: var(--color-rating-dark-00);
+  --color-fill-rating-01: var(--color-rating-dark-01);
+  --color-fill-rating-02: var(--color-rating-dark-02);
+  --color-fill-rating-03: var(--color-rating-dark-03);
+  --color-fill-rating-04: var(--color-rating-dark-04);
+  --color-fill-rating-05: var(--color-rating-dark-05);
+  --color-fill-rating-06: var(--color-rating-dark-06);
+  --color-fill-rating-07: var(--color-rating-dark-07);
+  --color-fill-rating-08: var(--color-rating-dark-08);
+  --color-fill-rating-09: var(--color-rating-dark-09);
+  --color-fill-rating-10: var(--color-rating-dark-10);
+}
