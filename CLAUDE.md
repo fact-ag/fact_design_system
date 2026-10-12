@@ -51,3 +51,7 @@ Use `src/components/ui/button.tsx` as the model.
 ## Font
 
 Phonic is in `src/assets/fonts`. These are trial files. Buy a license before the app goes live.
+
+## Code Connect
+
+Each Figma component links to its code file through Figma Code Connect. The link uses the node ID in the `// Figma:` comment. If you add a component, add its mapping with the Figma MCP tool `add_code_connect_map`.
