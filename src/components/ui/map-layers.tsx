@@ -5,7 +5,7 @@ import { Icon } from "@/components/ui/icon"
 // Figma: Map Layers (897:514). Layer thumbnails are sample content -> `image` prop per layer.
 type MapLayer = { id: string; label: string; image: string }
 
-type MapLayersProps = Omit<ComponentProps<"div">, "children"> & {
+type MapLayersProps = Omit<ComponentProps<"div">, "children" | "onSelect"> & {
   layers: MapLayer[]
   /** Id of the selected layer. */
   selectedId?: string

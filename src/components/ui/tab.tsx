@@ -1,11 +1,11 @@
 import type { ComponentProps } from "react"
 import { cn } from "@/lib/utils"
-import { Icon } from "./icon"
+import { Icon, type IconName } from "@/components/ui/icon"
 
 // Figma: FACT Tab (903:572). State=[Default|Active] -> selected prop. tabName is the label (Figma default state shows fixed "Tab Name").
-type TabProps = Omit<ComponentProps<"button">, "children"> & { selected?: boolean; tabName?: string }
+type TabProps = Omit<ComponentProps<"button">, "children"> & { selected?: boolean; tabName?: string; /** null hides the icon. */ icon?: IconName | null }
 
-function Tab({ className, selected = false, tabName = "Tab Name", type = "button", ...props }: TabProps) {
+function Tab({ className, selected = false, tabName = "Tab Name", icon = "circle-info", type = "button", ...props }: TabProps) {
   return (
     <button
       type={type}
@@ -18,7 +18,7 @@ function Tab({ className, selected = false, tabName = "Tab Name", type = "button
       )}
       {...props}
     >
-      <Icon name="circle-info" size={12} />
+      {icon && <Icon name={icon} size={12} />}
       {tabName}
     </button>
   )

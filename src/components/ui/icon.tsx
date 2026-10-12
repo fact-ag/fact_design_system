@@ -30,6 +30,7 @@ import {
   faHouse,
   faImage,
   faLayerGroup,
+  faLightbulb,
   faListUl,
   faLocationCrosshairs,
   faLocationDot,
@@ -49,13 +50,14 @@ import {
   faTractor,
   faTrashCan,
   faTriangleExclamation,
+  faVideoSlash,
   faXmark,
 } from "@fortawesome/free-solid-svg-icons"
 import { cn } from "@/lib/utils"
 
 // Figma uses Font Awesome 7 Sharp Regular (Pro). Keys are the Figma glyph names.
 // Glyphs marked Pro in Figma (barcode-read, book-open-lines, clipboard-list-check, signal-stream,
-// image-circle-plus, scribble) use the closest free glyph.
+// image-circle-plus, scribble, flashlight, camera-slash) use the closest free glyph.
 // ponytail: free solid set for now. With a Pro token, swap these imports to
 // @fortawesome/sharp-regular-svg-icons and nothing else changes.
 export const icons = {
@@ -109,6 +111,8 @@ export const icons = {
   "magnifying-glass": faMagnifyingGlass,
   "chevron-right": faChevronRight,
   "chevron-left": faChevronLeft,
+  "flashlight": faLightbulb,
+  "camera-slash": faVideoSlash,
 } satisfies Record<string, IconDefinition>
 
 export type IconName = keyof typeof icons

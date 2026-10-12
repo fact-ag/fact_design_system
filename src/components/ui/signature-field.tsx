@@ -1,7 +1,6 @@
 import type { ComponentProps, ReactNode } from "react"
 import { cn } from "@/lib/utils"
 import { Icon } from "@/components/ui/icon"
-import signatureStroke from "@/assets/images/signature-stroke.svg"
 
 // Figma: Signature Field (1224:1405). State=[Empty|Signed|Error] -> state. Tap calls onPress; clear button calls onClear.
 type SignatureFieldProps = Omit<ComponentProps<"div">, "onClick"> & {
@@ -9,13 +8,13 @@ type SignatureFieldProps = Omit<ComponentProps<"div">, "onClick"> & {
   label?: ReactNode
   /** Helper text under the pad. */
   caption?: ReactNode
-  /** Signature image. Defaults to the Figma sample stroke. */
+  /** Signature image (for example a PNG from the Signature Pad). Shown when state is "signed". */
   signatureSrc?: string
   onPress?: () => void
   onClear?: () => void
 }
 
-function SignatureField({ state = "empty", label = "Signature", caption, signatureSrc = signatureStroke, onPress, onClear, className, ...props }: SignatureFieldProps) {
+function SignatureField({ state = "empty", label = "Signature", caption, signatureSrc, onPress, onClear, className, ...props }: SignatureFieldProps) {
   const signed = state === "signed"
   const error = state === "error"
   return (
@@ -36,7 +35,7 @@ function SignatureField({ state = "empty", label = "Signature", caption, signatu
         />
         <div className="pointer-events-none absolute inset-x-[23px] top-[103px] h-px bg-border-default" />
         <span className="pointer-events-none absolute top-[79px] left-[23px] text-heading text-icon-subtle">×</span>
-        {signed ? (
+        {signed && signatureSrc ? (
           <>
             <img src={signatureSrc} alt="Signature" className="pointer-events-none absolute top-[56px] left-1/2 h-[55px] w-[240px] -translate-x-1/2" />
             <button

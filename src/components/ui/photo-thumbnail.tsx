@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils"
 import { Icon } from "@/components/ui/icon"
 
 // Figma: Photo Thumbnail (1198:1085). State=[Default|Selected|Uploading|Error] -> state. Image is a prop (sample content).
-type PhotoThumbnailProps = Omit<ComponentProps<"div">, "children"> & {
+type PhotoThumbnailProps = Omit<ComponentProps<"div">, "children" | "onSelect"> & {
   src: string
   alt?: string
   state?: "default" | "selected" | "uploading" | "error"
