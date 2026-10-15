@@ -1010,6 +1010,8 @@ export function Gallery() {
 
       <Section id="ipad-list-item" wide title="iPad List item container (531:455)">
         <IPadListItem items={poItems} />
+        <Cap>Swiped (Delete block)</Cap>
+        <IPadListItem items={poItems.map((it, i) => ({ ...it, swiped: i === 0 }))} onDelete={noop} />
       </Section>
 
       <Section id="item-layout-card" title="Item Layout Card (988:943)">
@@ -1064,6 +1066,8 @@ export function Gallery() {
         <ListItem title="North Paddock" subtitle="Winter wheat · 42 ha" icon="tractor" showChevron onClick={noop} />
         <ListItem title="Hillside 3" subtitle="Potatoes" onClick={noop} />
         <ListItem title="Soil moisture" trailing={<Badge tone="positive">Optimal</Badge>} />
+        <Cap>Badge in the subtitle row</Cap>
+        <ListItem title="Russet potatoes" subtitle="Hillside 3" badge={<Badge tone="caution">Watch</Badge>} />
       </Section>
 
       <Section id="list-section-header-large" title="List Section Header - Large (1086:3064)">
