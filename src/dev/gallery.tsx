@@ -694,7 +694,7 @@ function TabsDemo() {
 
 function TagsDemo() {
   const [tags, setTags] = useState(["Irrigated", "Organic", "Frost risk"])
-  return <TagsList tags={tags} onTagClick={(t) => setTags(tags.filter((x) => x !== t))} onAdd={() => setTags([...tags, `Tag ${tags.length + 1}`])} />
+  return <TagsList tags={tags} onRemove={(t) => setTags(tags.filter((x) => x !== t))} onAdd={() => setTags([...tags, `Tag ${tags.length + 1}`])} />
 }
 
 function TextAreaDemo() {
