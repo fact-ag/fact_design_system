@@ -60,7 +60,7 @@ Set the icon size with the `size` prop. A `size-*` class on `<Icon>` has no effe
 
 ## Font
 
-Phonic is in `src/assets/fonts`. These are trial files. Buy a license before the app goes live.
+Phonic is in `src/assets/fonts`. Regular (400) and Bold (700) are the final licensed files. Medium (500) is still a trial file, `PhonicTrial-Medium.otf`. Replace it with the final Medium file before the app goes live.
 
 ## Code Connect
 
