@@ -9,7 +9,7 @@ type StepIndicatorProps = ComponentProps<"div"> & { state?: StepState; stepNumbe
 
 const styles: Record<StepState, string> = {
   upcoming: "bg-surface-default text-text-disabled",
-  completed: "bg-fill-success text-text-on-fill-success",
+  completed: "bg-fill-success text-text-default",
   active: "bg-fill-brand-default text-text-on-fill-brand",
 }
 
@@ -19,7 +19,7 @@ function StepIndicator({ className, state = "upcoming", stepNumber = "1", ...pro
       className={cn("inline-flex size-22 shrink-0 items-center justify-center rounded-full text-14 leading-none", styles[state], className)}
       {...props}
     >
-      {state === "completed" ? <Icon name="check" size={12} label="Completed" /> : stepNumber}
+      {state === "completed" ? <Icon name="check-thin" size={22} label="Completed" /> : stepNumber}
     </div>
   )
 }

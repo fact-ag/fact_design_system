@@ -21,7 +21,7 @@ function Stepper({ steps, currentStep, className, ...props }: StepperProps) {
     <div
       ref={ref}
       // ds-exception: hide scrollbar and fade clipped edges (no token for mask-image)
-      className={cn("inline-flex h-47 max-w-full items-center justify-start overflow-x-auto rounded-full bg-fill-neutral-default p-10 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden data-overflow:[mask-image:linear-gradient(to_right,transparent,black_16px,black_calc(100%-16px),transparent)]", className)}
+      className={cn("inline-flex h-47 w-fit max-w-full items-center justify-start overflow-x-auto rounded-full bg-fill-neutral-default p-10 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden data-overflow:[mask-image:linear-gradient(to_right,transparent,black_16px,black_calc(100%-16px),transparent)]", className)}
       {...props}
     >
       <div className="mx-auto flex w-max items-center">

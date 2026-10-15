@@ -1251,7 +1251,7 @@ export function Gallery() {
 
       <Section id="stepper" title="CT Stepper (89:88)">
         <Stepper steps={["Field", "Scout", "Sign"]} currentStep={2} />
-        <Stepper steps={["Field", "Crop", "Scout", "Photos", "Notes", "Sign"]} currentStep={4} />
+        <Stepper steps={["Field", "Crop", "Scout", "Photos", "Notes", "Sign"]} currentStep={2} />
       </Section>
 
       <Section id="stroke-width" title="Stroke Width (1229:1462)">
