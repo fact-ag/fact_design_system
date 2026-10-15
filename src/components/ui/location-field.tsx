@@ -47,8 +47,8 @@ function LocationField({ label = "Location", value, error, mapPreview, onPick, o
             </button>
           </div>
           <div className="flex w-full gap-11">
-            <InputField label="Latitude" readOnly value={value.latitude.toFixed(5)} className="flex-1 font-mono" />
-            <InputField label="Longitude" readOnly value={value.longitude.toFixed(5)} className="flex-1 font-mono" />
+            <InputField label="Latitude" readOnly value={value.latitude.toFixed(5)} className="min-w-0 flex-1 font-mono" />
+            <InputField label="Longitude" readOnly value={value.longitude.toFixed(5)} className="min-w-0 flex-1 font-mono" />
           </div>
         </>
       ) : (

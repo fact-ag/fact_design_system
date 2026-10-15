@@ -1175,7 +1175,7 @@ export function Gallery() {
         <SignatureField state="error" label="Inspector signature" caption="Signature required" onPress={noop} />
       </Section>
 
-      <Section id="signature-pad" title="Signature Pad (1224:1430)">
+      <Section id="signature-pad" wide title="Signature Pad (1224:1430)">
         <Cap>Click the pad to simulate a signature</Cap>
         <SignaturePadDemo />
       </Section>

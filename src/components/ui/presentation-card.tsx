@@ -39,8 +39,8 @@ function PresentationCard({
       {/* Figma: multiply gradient for text contrast */}
       {/* ds-exception: gradient stops from Figma */}
       <div className="absolute inset-0 -z-10 bg-linear-to-b from-media-shade from-[18.75%] to-transparent to-[95.19%] mix-blend-multiply" />
-      {label && <span className="-mb-5 text-16 leading-22 tracking-condensed text-shadow-media-sm">{label}</span>}
-      <span className="text-30 leading-55 tracking-condensed text-shadow-media-lg">{title}</span>
+      {label && <span className="-mb-5 truncate text-16 leading-22 tracking-condensed text-shadow-media-sm">{label}</span>}
+      <span className="truncate text-30 leading-55 tracking-condensed text-shadow-media-lg">{title}</span>
       {onAction && actionLabel && (
         <button
           type="button"

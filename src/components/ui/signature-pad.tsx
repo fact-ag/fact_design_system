@@ -34,14 +34,15 @@ function SignaturePad({
 }: SignaturePadProps) {
   const isSigned = signed ?? !!signatureSrc
   return (
-    <div className={cn("relative flex min-h-402 w-full flex-col bg-bg-default px-59 pt-20 pb-21", className)} {...props}>
-      {/* ds-exception: title centered between two buttons */}
-      <div className="grid grid-cols-[1fr_auto_1fr] items-center">
-        <Button variant="secondary" onClick={onCancel} className="justify-self-start border border-border-default text-body">
+    <div className={cn("@container relative flex min-h-402 w-full flex-col bg-bg-default", className)} {...props}>
+      <div className="flex flex-1 flex-col px-16 pt-20 pb-21 @3xl:px-59">
+      {/* ds-exception: title centered between two buttons; @container on the root so padding shrinks below the 874px Figma width */}
+      <div className="grid grid-cols-[1fr_minmax(0,auto)_1fr] items-center gap-10">
+        <Button variant="secondary" onClick={onCancel} className="shrink-0 justify-self-start border border-border-default text-body">
           Cancel
         </Button>
-        <p className="text-heading text-text-default">{title}</p>
-        <Button onClick={onDone} disabled={!isSigned} className="justify-self-end text-body">
+        <p className="min-w-0 truncate text-center text-heading text-text-default">{title}</p>
+        <Button onClick={onDone} disabled={!isSigned} className="shrink-0 justify-self-end text-body">
           Done
         </Button>
       </div>
@@ -58,6 +59,7 @@ function SignaturePad({
       <Button variant="tertiary" onClick={onClear} className={cn("mt-7 self-start text-body", !isSigned && "invisible")}>
         Clear
       </Button>
+      </div>
     </div>
   )
 }

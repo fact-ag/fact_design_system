@@ -62,7 +62,7 @@ function AudioRecorder({
           {state === "recording" && <span className="size-6 rounded-full bg-status-danger" />}
           {elapsed}
         </div>
-        <div className="flex h-45 min-w-px flex-1 items-center justify-center gap-wave-gap" aria-hidden>
+        <div className="flex h-45 min-w-px flex-1 items-center justify-center gap-wave-gap overflow-hidden" aria-hidden>
           {levels.map((h, i) => (
             <span
               key={i}

@@ -41,7 +41,7 @@ function PhotoThumbnail({ src, alt = "", state = "default", progress = 45, onSel
       </button>
       {busy && <div className={cn("pointer-events-none absolute inset-0 bg-bg-inverse", state === "error" ? "opacity-80" : "opacity-60")} />}
       {busy && (
-        <div className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center gap-6">
+        <div className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center gap-6 text-center">
           {state === "uploading" ? (
             <>
               <p className="text-body text-text-on-inverse">{progress}%</p>

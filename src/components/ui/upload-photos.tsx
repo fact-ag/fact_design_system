@@ -68,7 +68,7 @@ function UploadPhotos({
           )}
         </div>
       )}
-      <div className="flex w-full flex-col">
+      <div className="flex w-full min-w-0 flex-col">
         <p className="text-heading text-text-default">{header ?? `Photos (${done})`}</p>
         <div className="flex h-123 gap-11 overflow-x-auto pt-12">
           <AddPhotoTile onPress={onAdd} className="shrink-0" />

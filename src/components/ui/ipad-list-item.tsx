@@ -23,18 +23,18 @@ function IPadListItem({ items, className, ...props }: IPadListItemProps) {
     <div className={cn("w-full overflow-clip rounded-16 border border-border-default bg-surface-default shadow-croptrak", className)} {...props}>
       {items.map((it, i) => (
         <div key={i} className="flex h-72 items-stretch gap-10 border-b border-border-default last:border-b-0">
-          <div className="flex w-135 shrink-0 flex-col gap-3.5 border-r border-border-default pt-13 pl-14">
+          <div className="flex w-135 min-w-0 shrink flex-col gap-3.5 border-r border-border-default pt-13 pl-14">
             <span className="text-label text-text-muted">PO #</span>
             <span className="truncate text-body text-text-default">{it.po}</span>
           </div>
-          <div className="flex w-269 shrink-0 flex-col gap-5.5 pt-11.5">
+          <div className="flex w-269 min-w-0 shrink flex-col gap-5.5 pt-11.5">
             <span className="truncate text-body text-text-default">{it.farm}</span>
-            <span className="flex min-w-0 items-center gap-6 text-label whitespace-nowrap text-text-muted">
+            <span className="flex min-w-0 items-center overflow-clip gap-6 text-label whitespace-nowrap text-text-muted">
               <Badge tone={it.statusTone}>{it.status}</Badge>
               <span aria-hidden>·</span>
               <span className="truncate">{it.owner}</span>
               <span aria-hidden>·</span>
-              <span>{it.date}</span>
+              <span className="shrink-0">{it.date}</span>
             </span>
           </div>
           <div className="flex min-w-0 flex-1 flex-col gap-5 pt-14">
@@ -45,7 +45,7 @@ function IPadListItem({ items, className, ...props }: IPadListItemProps) {
             <span className="text-label text-text-muted">Total</span>
             <span className="text-18 leading-normal tracking-condensed text-text-default tabular-nums">{it.total}</span>
           </div>
-          <div className="flex w-103 shrink-0 items-start pt-13 pl-47">
+          <div className="flex min-w-103 shrink-0 items-start pt-13 pr-14 pl-47">
             <Badge tone={it.badgeTone}>{it.badge}</Badge>
           </div>
         </div>
