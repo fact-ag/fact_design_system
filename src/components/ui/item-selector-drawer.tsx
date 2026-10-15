@@ -2,7 +2,6 @@ import type { ComponentProps, ReactNode } from "react"
 import { BottomDrawer } from "@/components/ui/bottom-drawer"
 import { Button } from "@/components/ui/button"
 import { Icon } from "@/components/ui/icon"
-import { IconButton } from "@/components/ui/icon-button"
 
 // Figma: Item selector drawer (518:278). Show button -> showBack. Selector rows are children.
 // Search shows when onQueryChange is set. The footer button shows when confirmLabel is set.
@@ -40,19 +39,28 @@ function ItemSelectorDrawer({
   return (
     <BottomDrawer open={open} onClose={onClose} size={size} aria-label={typeof title === "string" ? title : undefined}>
       <div className="relative flex min-h-full flex-col">
-        <div className="flex items-center gap-3.5 border-b border-border-default px-3.5 pt-3.5 pb-3">
-          {showBack && <IconButton label="Back" icon="arrow-left" variant="alt" onClick={onBack} />}
+        <div className="flex items-center gap-14 border-b border-border-default px-14 pt-10 pb-12.5">
+          {showBack && (
+            <button
+              type="button"
+              aria-label="Back"
+              onClick={onBack}
+              className="flex size-36 shrink-0 cursor-pointer items-center justify-center rounded-18 bg-surface-muted text-text-on-fill-neutral outline-none focus-visible:ring-2 focus-visible:ring-border-focus"
+            >
+              <Icon name="arrow-left" />
+            </button>
+          )}
           <h2 className="flex-1 text-title text-text-default">{title}</h2>
           {onClear && (
-            <Button variant="secondary" className="h-9 px-3.5" onClick={onClear}>
+            <Button variant="secondary" className="h-36 px-14" onClick={onClear}>
               Clear
             </Button>
           )}
         </div>
-        <div className="flex flex-1 flex-col gap-2.5 px-3.5 pt-2.5 pb-4">
+        <div className="flex flex-1 flex-col gap-10 px-14 pt-9.5 pb-16">
           {onQueryChange && (
-            <label className="flex h-11 shrink-0 items-center gap-2.5 rounded-[30px] bg-fill-neutral-default px-3.5 text-text-muted focus-within:ring-2 focus-within:ring-border-focus">
-              <Icon name="magnifying-glass" size={16} className="size-[18px]" />
+            <label className="mb-6 flex h-44 shrink-0 items-center gap-10 rounded-30 bg-fill-neutral-default px-14 text-text-muted focus-within:ring-2 focus-within:ring-border-focus">
+              <Icon name="magnifying-glass" size={18} />
               <input
                 type="search"
                 value={query}
@@ -65,8 +73,8 @@ function ItemSelectorDrawer({
           {children}
         </div>
         {confirmLabel && (
-          <div className="sticky bottom-0 flex justify-center bg-gradient-to-b from-transparent to-bg-default px-3.5 pt-[45px] pb-2.5 backdrop-blur-[15px]">
-            <Button className="w-44" onClick={onConfirm}>
+          <div className="sticky bottom-0 flex h-133 items-center justify-center bg-gradient-to-b from-transparent to-bg-default px-14 pt-45 pb-10 backdrop-blur-glass">
+            <Button className="w-176" onClick={onConfirm}>
               {confirmLabel}
             </Button>
           </div>

@@ -13,10 +13,10 @@ type MobileScreenProps = Omit<ComponentProps<"div">, "children"> & {
 
 function MobileScreen({ header, children, onTop, dim = false, className, ...props }: MobileScreenProps) {
   return (
-    <div className={cn("relative mx-auto flex h-dvh w-full max-w-[402px] flex-col overflow-clip bg-bg-default text-text-default", className)} {...props}>
+    <div className={cn("relative mx-auto flex h-dvh w-full max-w-402 flex-col overflow-clip rounded-50 border border-border-default bg-bg-default text-text-default", className)} {...props}>
       {header && <header className="shrink-0">{header}</header>}
       <main className="min-h-0 flex-1 overflow-y-auto">{children}</main>
-      {dim && <div aria-hidden className="absolute inset-0 bg-bg-inverse opacity-40" />}
+      {dim && <div aria-hidden className="absolute inset-0 bg-surface-scrim backdrop-blur-hairline" />}
       {onTop && <div className="absolute inset-0 flex flex-col justify-end *:pointer-events-auto pointer-events-none">{onTop}</div>}
     </div>
   )

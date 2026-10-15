@@ -35,13 +35,13 @@ type MapSketchProps = Omit<ComponentProps<"div">, "children"> & {
   onLayersClose?: () => void
 }
 
-const pill = "rounded-[22px] bg-bg-default drop-shadow-[0_6px_14px_rgba(41,71,57,0.18)]"
-const rail = "flex size-11 cursor-pointer items-center justify-center rounded-xl text-icon-default outline-none focus-visible:ring-2 focus-visible:ring-border-focus"
+const pill = "rounded-22 bg-bg-default drop-shadow-floating"
+const rail = "flex size-44 cursor-pointer items-center justify-center rounded-12 text-icon-default outline-none focus-visible:ring-2 focus-visible:ring-border-focus"
 
 function RailButton({ icon, label, onClick, className }: { icon: IconName; label: string; onClick?: () => void; className?: string }) {
   return (
     <button type="button" aria-label={label} onClick={onClick} className={cn(rail, className)}>
-      <Icon name={icon} size={16} className="size-5" />
+      <Icon name={icon} size={16} className="size-20" />
     </button>
   )
 }
@@ -76,17 +76,17 @@ function MapSketch({
   const draw = state === "draw"
   const pinDetails = state === "pin-details"
   return (
-    <div className={cn("relative h-full min-h-[600px] w-full overflow-clip bg-bg-inverse", className)} {...props}>
+    <div className={cn("relative h-full min-h-600 w-full overflow-clip rounded-50 bg-bg-inverse", className)} {...props}>
       <div className="absolute inset-0">{background}</div>
       {(draw || pinDetails) && <div className="absolute inset-0 overflow-clip">{children}</div>}
       {(explore || layers) && (
-        <button type="button" aria-label="Close" onClick={onClose} className={cn(pill, "absolute top-[62px] left-4 flex size-11 cursor-pointer items-center justify-center text-icon-default outline-none focus-visible:ring-2 focus-visible:ring-border-focus")}>
-          <Icon name="xmark" size={16} className="size-5" />
+        <button type="button" aria-label="Close" onClick={onClose} className={cn(pill, "absolute top-62 left-16 flex size-44 cursor-pointer items-center justify-center text-icon-default outline-none focus-visible:ring-2 focus-visible:ring-border-focus")}>
+          <Icon name="xmark" size={16} className="size-20" />
         </button>
       )}
       {(draw || pinDetails) && (
-        <div className="absolute inset-x-4 top-[60px] flex items-center justify-between">
-          <button type="button" onClick={onCancel} className={cn(pill, "cursor-pointer px-4 py-3 text-body text-text-default outline-none focus-visible:ring-2 focus-visible:ring-border-focus")}>
+        <div className="absolute inset-x-16 top-60 flex items-center justify-between">
+          <button type="button" onClick={onCancel} className={cn(pill, "cursor-pointer px-16 py-12 text-body text-text-default outline-none focus-visible:ring-2 focus-visible:ring-border-focus")}>
             Cancel
           </button>
           <Button onClick={onDone}>Done</Button>
@@ -94,15 +94,17 @@ function MapSketch({
       )}
       {explore && (
         <>
-          <h2 className={cn(pill, "absolute top-[62px] left-1/2 -translate-x-1/2 px-4 py-[11px] text-heading text-text-default")}>{title}</h2>
-          <div className={cn(pill, "absolute top-[62px] right-4 flex flex-col items-center")}>
+          <h2 className={cn(pill, "absolute top-62 left-1/2 -translate-x-1/2 px-16 py-11 text-heading text-text-default")}>{title}</h2>
+          <div className={cn(pill, "absolute top-62 right-16 flex flex-col items-center")}>
             <RailButton icon="layer-group" label="Map layers" onClick={onOpenLayers} />
-            <div aria-hidden className="h-px w-6 bg-border-default" />
+            <div aria-hidden className="h-px w-24 bg-border-default" />
             <RailButton icon="location-crosshairs" label="My location" onClick={onMyLocation} />
           </div>
-          <div className="absolute inset-x-4 bottom-[50px] flex flex-col items-center gap-3">
-            <p className="flex items-center gap-2 rounded-[14px] bg-bg-default px-3.5 py-2 text-label text-text-default drop-shadow-[0_6px_14px_rgba(41,71,57,0.18)]">
-              <Icon name="hand-pointer" size={16} className="size-5 text-text-muted" />
+          <div className="absolute inset-x-16 bottom-50 flex flex-col items-center gap-12">
+            <p className="flex items-center gap-8 rounded-14 bg-bg-default px-14 py-8 text-label text-text-default drop-shadow-floating">
+              <span className="flex size-20 items-center justify-center text-text-muted">
+                <Icon name="hand-pointer" size={16} />
+              </span>
               {hint}
             </p>
             <Button className="w-full" onClick={onCapture}>
@@ -116,23 +118,23 @@ function MapSketch({
           context="map"
           canRedo={false}
           {...toolbarProps}
-          className={cn("absolute bottom-[34px] left-1/2 -translate-x-1/2", toolbarProps?.className)}
+          className={cn("absolute bottom-34 left-1/2 -translate-x-1/2", toolbarProps?.className)}
         />
       )}
-      {/* Dim and drawers come from the native dialog backdrop. */}
-      <BottomDrawer open={pinDetails} modal={false} onClose={() => onDone?.()} className="h-[257px]">
-        <div className="flex flex-col gap-3 px-6 pt-3">
-          <div className="flex items-center gap-3">
-            <span className="flex size-8 items-center justify-center rounded-full bg-fill-neutral-default text-icon-default">
+      {/* Drawers sit inside the map (contained), no dim. */}
+      <BottomDrawer open={pinDetails} contained onClose={() => onDone?.()} className="bottom-5 h-257">
+        <div className="flex h-full flex-col gap-12 px-14 pt-5 pb-24">
+          <div className="flex items-center gap-12">
+            <span className="flex size-40 shrink-0 items-center justify-center rounded-full bg-fill-neutral-default text-icon-default">
               <Icon name="location-dot" size={16} />
             </span>
-            <div>
-              <p className="text-body text-text-default">{pinName}</p>
-              {pinCoordinates && <p className="font-mono text-caption text-text-muted">{pinCoordinates}</p>}
+            <div className="flex flex-col gap-2">
+              <p className="text-heading text-text-default">{pinName}</p>
+              {pinCoordinates && <p className="font-mono text-label text-text-muted">{pinCoordinates}</p>}
             </div>
           </div>
-          <InputField label="Note" placeholder="e.g. Broken sprinkler on north span" value={pinNote ?? ""} onChange={(e) => onPinNoteChange?.(e.target.value)} />
-          <div className="flex gap-3">
+          <InputField className="mt-2" label="Note" placeholder="e.g. Broken sprinkler on north span" value={pinNote ?? ""} onChange={(e) => onPinNoteChange?.(e.target.value)} />
+          <div className="mt-auto flex gap-11">
             <Button variant="secondary" className="flex-1" onClick={onDeletePin}>
               Delete pin
             </Button>
@@ -142,9 +144,12 @@ function MapSketch({
           </div>
         </div>
       </BottomDrawer>
-      <BottomDrawer open={layers} onClose={() => onLayersClose?.()} size="medium" className="overflow-visible">
-        <MapLayers layers={[]} {...layersProps} onClose={onLayersClose} className="rounded-none border-0 bg-transparent" />
-      </BottomDrawer>
+      {layers && (
+        <>
+          <div aria-hidden className="absolute inset-0 bg-bg-inverse/40" />
+          <MapLayers layers={[]} {...layersProps} onClose={onLayersClose} className="absolute inset-x-5 bottom-5 w-auto" />
+        </>
+      )}
     </div>
   )
 }

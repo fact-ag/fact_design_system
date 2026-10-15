@@ -12,9 +12,9 @@ type InputFieldProps = Omit<ComponentProps<"input">, "size"> & {
 
 function InputField({ label, unit, onScan, id, className, ...props }: InputFieldProps) {
   return (
-    <label className={cn("flex w-full flex-col gap-2", className)}>
-      {label && <span className="text-heading text-text-default">{label}</span>}
-      <span className="flex h-[44px] items-center gap-2 rounded-[30px] bg-fill-neutral-default px-3.5 focus-within:ring-2 focus-within:ring-border-focus has-disabled:opacity-50">
+    <label className={cn("flex w-full flex-col gap-8", className)}>
+      {label && <span className="flex h-20 items-center text-heading text-text-default">{label}</span>}
+      <span className="flex h-input-lg items-center gap-8 rounded-30 bg-fill-neutral-default px-input-x focus-within:ring-2 focus-within:ring-border-focus has-disabled:opacity-50">
         <input
           id={id}
           className="min-w-0 flex-1 bg-transparent text-body text-text-default outline-none placeholder:text-text-on-fill-placeholder"
@@ -23,13 +23,13 @@ function InputField({ label, unit, onScan, id, className, ...props }: InputField
         {unit && <span className="text-body whitespace-nowrap text-text-muted">{unit}</span>}
         {onScan && (
           <>
-            <span className="h-5 w-px bg-border-default" />
+            <span className="h-20 w-px bg-border-default" />
             <button
               type="button"
               onClick={onScan}
-              className="flex size-7 cursor-pointer items-center justify-center rounded-full text-icon-default outline-none focus-visible:ring-2 focus-visible:ring-border-focus"
+              className="flex size-28 cursor-pointer items-center justify-center rounded-full text-icon-default outline-none focus-visible:ring-2 focus-visible:ring-border-focus"
             >
-              <Icon name="barcode-read" size={20} label="Scan" />
+              <span className="flex size-20 items-center justify-center"><Icon name="barcode-read" size={16} label="Scan" /></span>
             </button>
           </>
         )}

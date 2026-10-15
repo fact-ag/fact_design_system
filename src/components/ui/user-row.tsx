@@ -12,6 +12,8 @@ type UserRowProps = Omit<ComponentProps<"div">, "onSelect"> & {
   initials?: string
   mode?: "multiple" | "single"
   selected?: boolean
+  /** 12px name and 10px role, as the people list in the Figma user selector drawer. */
+  compact?: boolean
   onSelect?: () => void
 }
 
@@ -23,15 +25,15 @@ const initialsOf = (name: string) =>
     .slice(0, 2)
     .toUpperCase()
 
-const row = "flex w-full items-center gap-3 border-b border-border-default py-3"
+const row = "flex w-full items-center gap-12 border-b border-border-default py-8"
 
-function UserRow({ name, role, initials = initialsOf(name), mode = "multiple", selected = false, onSelect, className, ...props }: UserRowProps) {
+function UserRow({ name, role, initials = initialsOf(name), mode = "multiple", selected = false, compact = false, onSelect, className, ...props }: UserRowProps) {
   const content = (
     <>
       <Avatar size="medium" initials={initials} />
       <span className="flex min-w-0 flex-1 flex-col text-left">
-        <span className="truncate text-heading text-text-default">{name}</span>
-        {role && <span className="truncate text-label text-text-muted">{role}</span>}
+        <span className={cn("truncate text-text-default", compact ? "text-label" : "text-body")}>{name}</span>
+        {role && <span className="truncate text-caption text-text-muted">{role}</span>}
       </span>
     </>
   )
@@ -42,10 +44,14 @@ function UserRow({ name, role, initials = initialsOf(name), mode = "multiple", s
           type="button"
           aria-pressed={selected}
           onClick={onSelect}
-          className="flex w-full cursor-pointer items-center gap-3 py-3 outline-none focus-visible:ring-2 focus-visible:ring-border-focus"
+          className="flex w-full cursor-pointer items-center gap-12 py-8 outline-none focus-visible:ring-2 focus-visible:ring-border-focus"
         >
           {content}
-          {selected && <Icon name="check" size={16} className="size-5 text-icon-default" />}
+          {selected && (
+            <span className="flex size-20 shrink-0 items-center justify-center text-icon-default">
+              <Icon name="check" size={16} />
+            </span>
+          )}
         </button>
       </div>
     )
@@ -53,7 +59,7 @@ function UserRow({ name, role, initials = initialsOf(name), mode = "multiple", s
   return (
     <div className={cn(row, className)} {...props}>
       <Checkbox checked={selected} onChange={() => onSelect?.()} aria-label={name} />
-      <div onClick={onSelect} className="flex min-w-0 flex-1 cursor-pointer items-center gap-3">
+      <div onClick={onSelect} className="flex min-w-0 flex-1 cursor-pointer items-center gap-12">
         {content}
       </div>
     </div>

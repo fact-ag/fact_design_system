@@ -29,15 +29,15 @@ function AlertBottomDrawer({
   destructive = false,
 }: AlertBottomDrawerProps) {
   return (
-    <BottomDrawer open={open} onClose={onClose} role="alertdialog" className="h-[273px]">
-      <div className="flex flex-col items-center px-[34px] pt-3.5 pb-6 text-center">
-        <span className="flex size-14 items-center justify-center rounded-full bg-fill-danger-surface-subtle text-status-danger">
-          <Icon name="triangle-exclamation" size={20} className="size-[25px]" />
+    <BottomDrawer open={open} onClose={onClose} role="alertdialog" className="h-273">
+      <div className="flex flex-col items-center px-34 pt-14 pb-20 text-center">
+        <span className="flex size-56 items-center justify-center rounded-full bg-fill-danger-surface-subtle text-fill-danger">
+          <Icon name="triangle-exclamation" size={20} className="size-25" />
         </span>
-        <h2 className="mt-5 text-title text-text-default">{title}</h2>
-        {description && <p className="mt-2 line-clamp-2 text-body text-text-muted">{description}</p>}
+        <h2 className="mt-20 text-title text-text-default">{title}</h2>
+        {description && <p className="mt-10 h-39 line-clamp-2 text-body text-text-muted">{description}</p>}
       </div>
-      <div className="flex gap-5 px-[33px]">
+      <div className="flex gap-20 px-33">
         <Button variant="secondary" className="flex-1" onClick={onCancel ?? onClose}>
           {cancelLabel}
         </Button>

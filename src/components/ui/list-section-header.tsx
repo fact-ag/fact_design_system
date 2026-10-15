@@ -16,11 +16,11 @@ function ListSectionHeader({ title, expanded, onToggle, children, className, ...
         type="button"
         aria-expanded={expanded}
         onClick={onToggle}
-        className="flex h-7 w-fit cursor-pointer items-center gap-1.5 rounded-full text-body text-text-default outline-none focus-visible:ring-2 focus-visible:ring-border-focus"
+        className="flex h-28 w-fit cursor-pointer items-center gap-6 rounded-full text-body text-text-default outline-none focus-visible:ring-2 focus-visible:ring-border-focus"
       >
         {title}
-        <span className="flex size-[25px] items-center justify-center rounded-full bg-fill-neutral-default">
-          <Icon name={expanded ? "chevron-up" : "chevron-down"} size={10} />
+        <span className="flex size-25 items-center justify-center rounded-full bg-fill-neutral-default text-text-default">
+          <Icon name="arrow-forward-ios" size={25} className={expanded ? "-rotate-90" : "rotate-90"} />
         </span>
       </button>
       {expanded && children}

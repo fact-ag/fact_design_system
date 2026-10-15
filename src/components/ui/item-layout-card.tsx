@@ -18,34 +18,35 @@ type ItemLayoutCardProps = Omit<ComponentProps<"div">, "title"> & {
   date?: string
 }
 
-const Dot = () => <span aria-hidden className="size-0.5 shrink-0 rounded-full bg-text-muted" />
+const Dot = () => <span aria-hidden className="size-2 shrink-0 rounded-full bg-text-muted" />
 
 function ItemLayoutCard({
   itemType, title, locationName, propertyName, status, statusTone = "positive", statusBadge, owner, date, className, children, ...props
 }: ItemLayoutCardProps) {
-  const info = [statusBadge, owner && <span key="owner" className="max-w-[150px] truncate font-bold">{owner}</span>, date && <span key="date" className="max-w-[150px] truncate font-bold">{date}</span>].filter(Boolean)
+  const info = [statusBadge, owner && <span key="owner" className="max-w-150 truncate font-bold">{owner}</span>, date && <span key="date" className="max-w-150 truncate font-bold">{date}</span>].filter(Boolean)
   return (
-    <div className={cn("relative flex flex-col pt-[30px]", className)} {...props}>
+    <div className={cn("relative flex flex-col", className)} {...props}>
       {status && <Badge tone={statusTone} className="absolute top-0 right-0">{status}</Badge>}
-      <ItemTypeBadge itemType={itemType} />
+      {/* Figma: the badge sits in a 26px row, content at the top (py-2, items-start). */}
+      <ItemTypeBadge itemType={itemType} className="h-26 items-start py-2" />
       <p className="text-body text-text-default">{title}</p>
-      <div className="flex h-5 items-start gap-[5px] text-label text-text-muted">
-        <Icon name="location-dot" size={12} />
+      <div className="flex h-20 items-start gap-5 text-label text-text-muted">
+        <span className="flex h-16 items-center"><Icon name="location-dot" size={12} /></span>
         <span>{locationName}</span>
-        <Dot />
+        <span className="flex h-16 items-center"><Dot /></span>
         <span>{propertyName}</span>
       </div>
       {info.length > 0 && (
-        <div className="flex h-8 items-center gap-[5px] text-label text-text-muted">
+        <div className="flex h-32 items-center gap-5 text-label text-text-muted">
           {info.map((n, i) => (
-            <span key={i} className="flex items-center gap-[5px]">
-              {i > 0 && <Dot />}
+            <span key={i} className="flex items-center gap-5">
+              {i > 0 && <span className={cn("flex", statusBadge && i === 1 && "ml-px")}><Dot /></span>}
               {n}
             </span>
           ))}
         </div>
       )}
-      {children && <div className="mt-2 flex flex-col gap-2.5 border-t border-border-neutral pt-2.5">{children}</div>}
+      {children && <div className="mt-6 flex flex-col gap-10 border-t border-border-neutral pt-7">{children}</div>}
     </div>
   )
 }

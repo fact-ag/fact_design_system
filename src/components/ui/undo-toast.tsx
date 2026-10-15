@@ -13,14 +13,14 @@ function UndoToast({ message, actionLabel = "Undo", onAction, className, ...prop
     <div
       role="status"
       className={cn(
-        "flex w-full items-center justify-between gap-4 rounded-[10px] bg-bg-inverse px-4 py-3 text-body whitespace-nowrap drop-shadow-[0_6px_14px_rgba(41,71,57,0.18)]",
+        "flex w-full items-center justify-between gap-16 rounded-10 bg-bg-inverse px-16 py-12 text-body whitespace-nowrap drop-shadow-floating",
         className,
       )}
       {...props}
     >
       <span className="text-text-on-inverse">{message}</span>
       {onAction && (
-        <button type="button" onClick={onAction} className="cursor-pointer rounded-sm text-status-success outline-none focus-visible:ring-2 focus-visible:ring-border-focus">
+        <button type="button" onClick={onAction} className="cursor-pointer rounded-4 text-status-success outline-none focus-visible:ring-2 focus-visible:ring-border-focus">
           {actionLabel}
         </button>
       )}

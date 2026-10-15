@@ -12,7 +12,7 @@ function LinearProgressBar({ className, value = 0, ...props }: LinearProgressBar
       aria-valuemin={0}
       aria-valuemax={100}
       aria-valuenow={v}
-      className={cn("h-1.5 w-full overflow-hidden rounded-full bg-border-default", className)}
+      className={cn("h-6 w-full overflow-hidden rounded-full bg-border-default", className)}
       {...props}
     >
       <div className="h-full rounded-full bg-border-selected" style={{ width: `${v}%` }} />

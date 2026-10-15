@@ -11,12 +11,14 @@ function AddPhotoTile({ onPress, className, type = "button", ...props }: AddPhot
       type={type}
       onClick={onPress}
       className={cn(
-        "flex size-[100px] cursor-pointer flex-col items-center justify-center gap-1.5 rounded-[10px] border border-dashed border-text-muted bg-bg-default text-body text-text-muted outline-none focus-visible:ring-2 focus-visible:ring-border-focus active:bg-bg-muted",
+        "flex size-100 cursor-pointer flex-col items-center justify-center gap-6 rounded-10 border border-dashed border-text-muted bg-bg-default text-body text-text-muted outline-none focus-visible:ring-2 focus-visible:ring-border-focus active:bg-bg-muted",
         className,
       )}
       {...props}
     >
-      <Icon name="image-circle-plus" size={16} />
+      <span className="flex size-20 items-center justify-center">
+        <Icon name="image-circle-plus" size={16} />
+      </span>
       Add photo
     </button>
   )

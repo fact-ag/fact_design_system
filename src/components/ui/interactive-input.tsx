@@ -35,28 +35,31 @@ function InteractiveInput({
 }: InteractiveInputProps) {
   const filled = value !== ""
   return (
-    <div className={cn("flex w-full items-center gap-2 py-[7px]", className)} {...props}>
+    <div className={cn("flex w-full items-center gap-8 py-7", className)} {...props}>
       {leading ?? <Checkbox checked={checked} onChange={(e) => onCheckedChange?.(e.target.checked)} aria-label="Select" />}
       {filled ? (
-        <div className="flex min-w-0 flex-1 flex-col py-px">
+        <div className="flex min-w-0 flex-1 flex-col py-1.25">
           <span className={cn("truncate text-text-default", detail ? "text-label" : "text-body")}>{value}</span>
-          {detail && <span className="truncate font-mono text-caption text-text-muted">{detail}</span>}
+          {detail && <span className="truncate font-mono text-caption leading-16 text-text-muted">{detail}</span>}
         </div>
       ) : (
-        <input
-          value={value}
-          onChange={(e) => onChange?.(e.target.value)}
-          placeholder={placeholder ?? (action === "scan" ? "Scan or enter a code" : "Enter a name")}
-          className="h-5 min-w-0 flex-1 bg-transparent text-body text-text-default caret-fill-success outline-none placeholder:text-text-on-fill-placeholder"
-        />
+        <div className="relative h-20 min-w-0 flex-1">
+          <span aria-hidden className="absolute top-0 left-0 h-20 w-1.5 animate-caret bg-fill-success" />
+          <input
+            value={value}
+            onChange={(e) => onChange?.(e.target.value)}
+            placeholder={placeholder ?? (action === "scan" ? "Scan or enter a code" : "Enter a name")}
+            className="h-20 w-full bg-transparent pl-3.5 text-body text-text-default caret-transparent outline-none placeholder:text-text-muted/50"
+          />
+        </div>
       )}
       <button
         type="button"
         onClick={onAction}
         aria-label={action === "scan" ? "Scan" : "Clear"}
-        className="flex size-6 shrink-0 cursor-pointer items-center justify-center rounded-full text-icon-default outline-none focus-visible:ring-2 focus-visible:ring-border-focus"
+        className="flex h-23.5 w-20 shrink-0 cursor-pointer items-center justify-center rounded-full text-icon-default outline-none focus-visible:ring-2 focus-visible:ring-border-focus"
       >
-        <Icon name={action === "scan" ? "barcode-read" : "xmark"} size={16} />
+        <Icon name={action === "scan" ? "barcode-read" : "material-close"} size={16} />
       </button>
     </div>
   )

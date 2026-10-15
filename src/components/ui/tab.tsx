@@ -12,13 +12,17 @@ function Tab({ className, selected = false, tabName = "Tab Name", icon = "circle
       role="tab"
       aria-selected={selected}
       className={cn(
-        "inline-flex h-[34px] cursor-pointer items-center justify-center gap-1 rounded-full pr-4 pl-2.5 text-[13px] leading-[19.5px] tracking-[-0.1px] whitespace-nowrap outline-none focus-visible:ring-2 focus-visible:ring-border-focus",
+        "inline-flex h-34 cursor-pointer items-center justify-center gap-4 rounded-full pr-16 pl-10 text-13 leading-19.5 tracking-hairline whitespace-nowrap outline-none focus-visible:ring-2 focus-visible:ring-border-focus",
         selected ? "bg-fill-accent text-text-on-fill-brand" : "text-text-muted",
         className,
       )}
       {...props}
     >
-      {icon && <Icon name={icon} size={12} />}
+      {icon && (
+        <span className="flex size-15 shrink-0 items-center justify-center">
+          <Icon name={icon} size={12} />
+        </span>
+      )}
       {tabName}
     </button>
   )

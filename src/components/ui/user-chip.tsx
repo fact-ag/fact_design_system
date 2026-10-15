@@ -14,7 +14,7 @@ type UserChipProps = ComponentProps<"div"> & {
 function UserChip({ name, initials = initialsOf(name), onRemove, className, ...props }: UserChipProps) {
   return (
     <div
-      className={cn("inline-flex items-center gap-1.5 rounded-[16px] border border-border-brand-tonal bg-fill-brand-tonal-default py-1 pr-2 pl-1", className)}
+      className={cn("inline-flex items-center gap-6 rounded-16 border border-border-brand-tonal bg-fill-brand-tonal-default py-4 pr-8 pl-4", className)}
       {...props}
     >
       <Avatar size="small" initials={initials} />
@@ -23,7 +23,7 @@ function UserChip({ name, initials = initialsOf(name), onRemove, className, ...p
         type="button"
         onClick={onRemove}
         aria-label={`Remove ${name}`}
-        className="flex size-5 cursor-pointer items-center justify-center rounded-full text-icon-default outline-none focus-visible:ring-2 focus-visible:ring-border-focus"
+        className="flex size-20 cursor-pointer items-center justify-center rounded-full text-icon-default outline-none focus-visible:ring-2 focus-visible:ring-border-focus"
       >
         <Icon name="xmark" size={12} />
       </button>

@@ -16,9 +16,12 @@ type ItemTypeBadgeProps = ComponentProps<"div"> & { itemType?: keyof typeof item
 function ItemTypeBadge({ className, itemType = "inspection", ...props }: ItemTypeBadgeProps) {
   const { icon, label } = items[itemType]
   return (
-    <div className={cn("inline-flex items-center gap-[5px] text-label font-medium text-text-muted uppercase", className)} {...props}>
-      <Icon name={icon} size={12} />
-      {label}
+    // ds-exception: Figma sets this bold label without letter spacing
+    <div className={cn("inline-flex items-center gap-5 text-label font-bold tracking-[0] text-text-muted uppercase", className)} {...props}>
+      <span className="flex size-15 shrink-0 items-center justify-center">
+        <Icon name={icon} size={12} />
+      </span>
+      <span>{label}</span>
     </div>
   )
 }

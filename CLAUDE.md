@@ -25,7 +25,14 @@ All tokens are in `src/styles/tokens.css`. A Figma variable name becomes a CSS v
 | `Color/fill/*` | `bg-fill-brand-default`, `bg-fill-danger-surface-subtle` |
 | `Color/status/*` | `bg-status-success`, `text-status-danger` |
 | `Type/*` | `text-body`, `text-heading` |
-| Effects | `shadow-drop-shadow-2`, `shadow-croptrak`, `shadow-mobile` |
+| Spacing and size | The unit is 1px, so the class number is the Figma px value: `p-16`, `gap-10`, `h-44`, `leading-22` |
+| Radius | `rounded-<px>`: 2, 4, 6, 8, 10, 11, 12, 14, 15, 16, 17, 18, 20, 22, 24, 25, 30, 32, 33, 50, plus `rounded-full` and `rounded-wave` |
+| Fixed Figma sizes | `h-input-lg` (62.8px) and `px-input-x` (13.889px) for the Input Field |
+| Extra font sizes | `text-11`, `-13`, `-14`, `-16`, `-17`, `-18`, `-22`, `-24`, `-30`. Tracking: `tracking-condensed`, `tracking-hairline` |
+| Shadows | `shadow-drop-shadow-2`, `-croptrak`, `-mobile`, `-hairline`, `-glow-sm`, `-glow-md`, `-lift`, `-ring-selected`, `-scrim` |
+| Other effects | `drop-shadow-floating`, `-glow`, `-lift`, `-hairline`. `text-shadow-media-sm`, `-md`, `-lg`. `backdrop-blur-glass`, `-glass-sm` |
+
+`npm run lint` fails on raw colors and arbitrary values like `p-[13px]` in all of `src` except `src/styles` and `src/dev`. If a value cannot be a token, write `ds-exception: <reason>` in a comment on that line or the line above. If a new value is needed, add a token in `tokens.css` and add its name to `src/lib/utils.ts` so that `cn()` merges it correctly.
 
 Dark mode: add the class `dark` on `<html>`. The semantic tokens switch to the Figma "Dark" mode values.
 
@@ -41,16 +48,20 @@ Use `src/components/ui/button.tsx` as the model.
 - Figma BOOLEAN properties are optional boolean props. TEXT properties are string or `ReactNode` props. SLOT and INSTANCE_SWAP properties are `ReactNode` props or `children`.
 - Use `cva` for variants and `cn` from `@/lib/utils` to merge classes. Spread the remaining props onto the root element and accept `className`.
 - Use native elements (`button`, `input`, `textarea`, `dialog`) before a library. If a native element cannot do the job, use `@base-ui/react`. An example is a popover with focus handling.
-- If Figma uses a value that the Tailwind scale does not have, use an arbitrary pixel value such as `rounded-[14px]`. This is allowed only inside `src/components/ui`.
+- If Figma uses a value that has no token, add the token with the exact Figma value. Do not round it.
 - Some components are complex: Barcode Scanner, Map Sketch, Sketch Pad, Signature Pad, Audio Recorder, Location Picker, and device frames. They render every Figma state from props and report user actions through callbacks. They do not contain camera, map, canvas drawing, or audio logic. The feature that uses them adds that logic.
 
 ## Icons
 
-`src/components/ui/icon.tsx` maps Figma glyph names to Font Awesome icons. Figma uses Font Awesome 7 Sharp Regular (Pro). The code uses the free solid set until the team has a Pro token. To change to Pro, change only the imports in that file.
+`src/components/ui/icon.tsx` maps Figma glyph names to Font Awesome 7 Sharp Regular (Pro), the same style as Figma. The package `@fortawesome/sharp-regular-svg-icons` comes from the private Font Awesome registry. The project `.npmrc` points the `@fortawesome` scope to that registry. It holds no secret. Before `npm install`, each developer and each build server needs the Font Awesome Package Manager Token in `~/.npmrc`: `//npm.fontawesome.com/:_authToken=<token>`. Never commit the token.
+
+Some Figma icons are Material glyphs or images, not Font Awesome. They are custom glyphs in `icon.tsx` with the Figma path: `arrow-forward-ios`, `material-close`, `keyboard-arrow-right`, `add-2`, `search`, `mic`, `filter-list`, `dehaze`, `cellular`, `wifi`, `check-thin`, `check-stroke`, `i-search`, `mic-20`, `close-thin`.
+
+Set the icon size with the `size` prop. A `size-*` class on `<Icon>` has no effect, because the component sets an inline width and height. If Figma puts the icon in a larger box, wrap the icon in a `span` with that box size. `IconButton` takes `iconSize` (default 16).
 
 ## Font
 
-Phonic is in `src/assets/fonts`. Regular (400) and Bold (700) are the final licensed files. Medium (500) is still a trial file, `PhonicTrial-Medium.otf`. Replace it with the final Medium file before the app goes live.
+Phonic is in `src/assets/fonts`. Regular (400) and Bold (700) are the final licensed files. Figma uses no Medium (500) weight, so the project has no Medium file.
 
 ## Code Connect
 

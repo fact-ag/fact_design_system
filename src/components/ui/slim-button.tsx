@@ -6,7 +6,7 @@ import { Icon, type IconName } from "./icon"
 // Figma: Slim Button (302:293). Style=[Primary|Secondary|Secondary 2] -> variant (primary|secondary|secondary2). showIcon -> icon prop (null hides it).
 // Figma has no pressed/disabled for this set; the pressed/disabled looks reuse the Button tokens (fallback).
 const slimButtonVariants = cva(
-  "inline-flex h-[30px] shrink-0 cursor-pointer items-center justify-center gap-1.5 rounded-[25px] border px-2.5 text-body leading-none whitespace-nowrap shadow-[0_0_5px_0_#2947391a] outline-none transition-colors focus-visible:ring-2 focus-visible:ring-border-focus disabled:cursor-not-allowed disabled:border-border-default disabled:bg-fill-disabled disabled:text-text-on-fill-disabled",
+  "inline-flex h-30 shrink-0 cursor-pointer items-center justify-center gap-6 rounded-25 border px-10 text-body leading-none whitespace-nowrap shadow-glow-md outline-none transition-colors focus-visible:ring-2 focus-visible:ring-border-focus disabled:cursor-not-allowed disabled:border-border-default disabled:bg-fill-disabled disabled:text-text-on-fill-disabled",
   {
     variants: {
       variant: {
@@ -25,7 +25,11 @@ type SlimButtonProps = ComponentProps<"button"> &
 function SlimButton({ className, variant, icon = "house", type = "button", children, ...props }: SlimButtonProps) {
   return (
     <button type={type} className={cn(slimButtonVariants({ variant }), className)} {...props}>
-      {icon && <Icon name={icon} size={16} className="size-[15px]" />}
+      {icon && (
+        <span className="flex size-15 shrink-0 items-center justify-center">
+          <Icon name={icon} size={16} />
+        </span>
+      )}
       {children}
     </button>
   )

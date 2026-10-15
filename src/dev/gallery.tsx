@@ -83,13 +83,19 @@ import { UtilityButton } from "@/components/ui/utility-button"
 
 const wheat = presentationImages.wheatField
 const potato = presentationImages.potatoField
+// Sample signature stroke for the demos (a real app passes the drawn signature).
+const sampleSignature =
+  "data:image/svg+xml," +
+  encodeURIComponent(
+    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 70"><path d="M6 52c14-30 26-44 30-30s-22 30-12 30 20-34 34-26 6 22 14 18 12-26 22-20 4 20 14 16 12-22 22-16 4 18 14 14 14-20 24-14 6 16 16 12 18-14 28-10M30 64c60-4 140-6 200-8" fill="none" stroke="#294739" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+  )
 const noop = () => {}
 
 function Section({ id, title, wide, children }: { id: string; title: string; wide?: boolean; children: ReactNode }) {
   return (
-    <section id={id} className={wide ? "w-full max-w-[1122px] scroll-mt-4" : "w-full max-w-[392px] scroll-mt-4"}>
-      <h2 className="mb-2 text-heading text-text-default">{title}</h2>
-      <div className="flex flex-col gap-4 rounded-xl border border-border-default bg-bg-default p-4">{children}</div>
+    <section id={id} className={wide ? "w-full max-w-1122 scroll-mt-16" : "w-full max-w-392 scroll-mt-16"}>
+      <h2 className="mb-8 text-heading text-text-default">{title}</h2>
+      <div className="flex flex-col gap-16 rounded-12 border border-border-default bg-bg-default p-16">{children}</div>
     </section>
   )
 }
@@ -99,7 +105,7 @@ function Cap({ children }: { children: ReactNode }) {
 }
 
 function Row({ children }: { children: ReactNode }) {
-  return <div className="flex flex-wrap items-center gap-3">{children}</div>
+  return <div className="flex flex-wrap items-center gap-12">{children}</div>
 }
 
 function Opener({ label, children }: { label: string; children: (open: boolean, close: () => void) => ReactNode }) {
@@ -353,7 +359,7 @@ function BarcodeScannerDemo() {
           <BadgeButton key={s} selected={state === s} onClick={() => setState(s)}>{s}</BadgeButton>
         ))}
       </Row>
-      <div className="h-[640px] overflow-clip rounded-xl">
+      <div className="h-640 overflow-clip rounded-12">
         <BarcodeScanner
           state={state}
           background={<img src={wheat} alt="" className="size-full object-cover" />}
@@ -381,7 +387,7 @@ function LocationPickerDemo() {
           <BadgeButton key={s} selected={state === s} onClick={() => setState(s)}>{s}</BadgeButton>
         ))}
       </Row>
-      <div className="h-[640px] overflow-clip rounded-xl">
+      <div className="h-640 overflow-clip rounded-12">
         <LocationPicker
           state={state}
           background={<img src={wheat} alt="" className="size-full object-cover" />}
@@ -402,57 +408,55 @@ function LocationPickerDemo() {
 function MobileScreenDemo() {
   const [dim, setDim] = useToggle()
   return (
-    <div className="h-[480px] overflow-clip rounded-xl border border-border-default">
+    <div className="h-480 overflow-clip rounded-12 border border-border-default">
       <MobileScreen
-        header={<div className="p-4 text-title">North Field</div>}
+        header={<div className="p-16 text-title">North Field</div>}
         dim={dim}
-        onTop={dim ? <div className="absolute inset-x-4 bottom-4 rounded-xl bg-surface-default p-4">On-top panel</div> : null}
+        onTop={dim ? <div className="absolute inset-x-16 bottom-16 rounded-12 bg-surface-default p-16">On-top panel</div> : null}
       >
-        <div className="p-4"><Button onClick={setDim}>Toggle backdrop dim</Button></div>
+        <div className="p-16"><Button onClick={setDim}>Toggle backdrop dim</Button></div>
       </MobileScreen>
     </div>
   )
 }
 
+const mapAsset = (name: string) => new URL(`./assets/map/${name}`, import.meta.url).href
+const mapLayerList = [
+  { id: "cropland", label: "Cropland Data", image: mapAsset("cropland.png") },
+  { id: "ssurgo", label: "SSURGO", image: mapAsset("ssurgo.png") },
+  { id: "ceres", label: "Ceres", image: mapAsset("ceres.png") },
+  { id: "tax", label: "Tax Parcels", image: mapAsset("tax-parcels.png") },
+  { id: "opp", label: "Opp Finder", image: mapAsset("opp-finder.png") },
+  { id: "plss", label: "PLSS", image: mapAsset("plss.png") },
+  { id: "water", label: "CA Water Districts", image: mapAsset("ca-water.png") },
+]
+
+// Exact Figma frames (402x874), one per state, so the gallery can be diffed against Figma.
 function MapSketchDemo() {
-  const [state, setState] = useState<"explore" | "draw" | "pin-details" | "layers">("explore")
-  const [lid, setLid] = useState("sat")
-  const [note, setNote] = useState("Standing water after rain")
-  return (
+  const [lid, setLid] = useState("ssurgo")
+  const [note, setNote] = useState("")
+  const sketch = (
     <>
-      <Row>
-        {(["explore", "draw", "pin-details", "layers"] as const).map((s) => (
-          <BadgeButton key={s} selected={state === s} onClick={() => setState(s)}>{s}</BadgeButton>
-        ))}
-      </Row>
-      <div className="h-[640px] overflow-clip rounded-xl">
-        <MapSketch
-          state={state}
-          background={<img src={wheat} alt="" className="size-full object-cover" />}
-          title="Sketch"
-          hint="Tap the map to drop a pin"
-          onClose={() => setState("explore")}
-          onCapture={() => setState("draw")}
-          onOpenLayers={() => setState("layers")}
-          onMyLocation={noop}
-          onCancel={() => setState("explore")}
-          onDone={() => setState("explore")}
-          toolbarProps={{ tool: "pen", onToolChange: noop }}
-          pinName="Wet spot"
-          pinCoordinates="36.7378, -119.7871"
-          pinNote={note}
-          onPinNoteChange={setNote}
-          onDeletePin={() => setState("draw")}
-          onSavePin={() => setState("draw")}
-          layersProps={{ layers, selectedId: lid, onSelect: setLid }}
-          onLayersClose={() => setState("explore")}
-        >
-          {state === "pin-details" || state === "draw" ? (
-            <div className="absolute top-1/3 left-1/3"><MapPin name="Wet spot" /></div>
-          ) : null}
-        </MapSketch>
-      </div>
+      <img src={mapAsset("freehand.svg")} alt="" className="absolute top-[417.52px] left-[182.37px] h-[107.581px] w-[105.236px]" />{/* ds-exception: Figma sketch layer position */}
+      <img src={mapAsset("area-fill.svg")} alt="" className="absolute top-[433.5px] left-[43.68px] h-[157.32px] w-[148.58px]" />{/* ds-exception: Figma sketch layer position */}
+      <img src={mapAsset("area.svg")} alt="" className="absolute top-[433.5px] left-[43.68px] h-[157.32px] w-[148.58px]" />{/* ds-exception: Figma sketch layer position */}
     </>
+  )
+  const bg = <img src={mapAsset("satellite.png")} alt="" className="size-full object-cover" />
+  const frame = "h-874 w-402 shrink-0"
+  return (
+    <div className="flex flex-wrap gap-24 overflow-x-auto">
+      <MapSketch className={frame} state="explore" background={bg} onClose={noop} />
+      <MapSketch className={frame} state="draw" background={bg} onCancel={noop} onDone={noop}>
+        {sketch}
+        <div className="absolute top-[509.38px] left-[298.87px]"><MapPin showLabel={false} /></div>{/* ds-exception: Figma pin position */}
+      </MapSketch>
+      <MapSketch className={frame} state="pin-details" background={bg} onCancel={noop} onDone={noop} pinName="Pin 1" pinCoordinates="36.78123, -119.41790" pinNote={note} onPinNoteChange={setNote}>
+        {sketch}
+        <div className="absolute top-[483.38px] left-[292.87px]"><MapPin name="Pin 1" /></div>{/* ds-exception: Figma pin position */}
+      </MapSketch>
+      <MapSketch className={frame} state="layers" background={bg} onClose={noop} layersProps={{ layers: mapLayerList, selectedId: lid, onSelect: setLid }} onLayersClose={noop} />
+    </div>
   )
 }
 
@@ -575,6 +579,7 @@ function SignaturePadDemo() {
       title="Sign to confirm inspection"
       signerName="Maria Lopez"
       placeholder="Sign here"
+      signatureSrc={signed ? sampleSignature : undefined}
       onCancel={noop}
       onClear={() => setSigned(false)}
       onDone={noop}
@@ -593,7 +598,7 @@ function SketchPadDemo() {
           <BadgeButton key={s} selected={state === s} onClick={() => setState(s)}>{s}</BadgeButton>
         ))}
       </Row>
-      <div className="h-[640px] overflow-clip rounded-xl">
+      <div className="h-640 overflow-clip rounded-12">
         <SketchPad
           state={state}
           title="Field sketch"
@@ -791,8 +796,8 @@ const allIcons = Object.keys(icons) as IconName[]
 
 export function Gallery() {
   return (
-    <main className="flex min-h-screen flex-wrap items-start justify-center gap-8 bg-bg-muted p-4">
-      <div className="flex w-full flex-col gap-2">
+    <main className="flex min-h-screen flex-wrap items-start justify-center gap-32 bg-bg-muted p-16">
+      <div className="flex w-full flex-col gap-8">
         <h1 className="text-title text-text-default">Component gallery</h1>
         <ThemeToggle />
       </div>
@@ -859,7 +864,7 @@ export function Gallery() {
 
       <Section id="audio-recorder" title="Audio Recorder (1190:1384)">
         {(["idle", "recording", "paused", "review"] as const).map((s) => (
-          <div key={s} className="flex flex-col gap-1">
+          <div key={s} className="flex flex-col gap-4">
             <Cap>{s}</Cap>
             <AudioRecorder
               state={s}
@@ -908,7 +913,7 @@ export function Gallery() {
             <Opener key={s} label={`Open ${s}`}>
               {(open, close) => (
                 <BottomDrawer open={open} onClose={close} size={s}>
-                  <div className="flex flex-col gap-3 p-6">
+                  <div className="flex flex-col gap-12 p-24">
                     <p className="text-title text-text-default">Hillside harvest plan</p>
                     <p className="text-body text-text-muted">Harvest the lower blocks first. Dry weather expected through Friday.</p>
                     <Button onClick={close}>Close</Button>
@@ -981,7 +986,7 @@ export function Gallery() {
       </Section>
 
       <Section id="icon" title="Icon (all glyph names)">
-        <div className="flex flex-wrap gap-3 text-icon-default">
+        <div className="flex flex-wrap gap-12 text-icon-default">
           {allIcons.map((n) => (
             <span key={n} title={n}><Icon name={n} size={20} /></span>
           ))}
@@ -1005,6 +1010,8 @@ export function Gallery() {
 
       <Section id="ipad-list-item" wide title="iPad List item container (531:455)">
         <IPadListItem items={poItems} />
+        <Cap>Swiped (Delete block)</Cap>
+        <IPadListItem items={poItems.map((it, i) => ({ ...it, swiped: i === 0 }))} onDelete={noop} />
       </Section>
 
       <Section id="item-layout-card" title="Item Layout Card (988:943)">
@@ -1059,6 +1066,8 @@ export function Gallery() {
         <ListItem title="North Paddock" subtitle="Winter wheat · 42 ha" icon="tractor" showChevron onClick={noop} />
         <ListItem title="Hillside 3" subtitle="Potatoes" onClick={noop} />
         <ListItem title="Soil moisture" trailing={<Badge tone="positive">Optimal</Badge>} />
+        <Cap>Badge in the subtitle row</Cap>
+        <ListItem title="Russet potatoes" subtitle="Hillside 3" badge={<Badge tone="caution">Watch</Badge>} />
       </Section>
 
       <Section id="list-section-header-large" title="List Section Header - Large (1086:3064)">
@@ -1089,7 +1098,7 @@ export function Gallery() {
         <Row><MapPin name="Wet spot" /><MapPin showLabel={false} /></Row>
       </Section>
 
-      <Section id="map-sketch" title="Map Sketch (1219:1376)">
+      <Section id="map-sketch" wide title="Map Sketch (1219:1376)">
         <MapSketchDemo />
       </Section>
 
@@ -1164,11 +1173,11 @@ export function Gallery() {
 
       <Section id="signature-field" title="Signature Field (1224:1405)">
         <SignatureField state="empty" label="Inspector signature" caption="Tap to sign" onPress={noop} />
-        <SignatureField state="signed" label="Inspector signature" caption="Signed by Maria Lopez" signatureSrc={wheat} onPress={noop} onClear={noop} />
+        <SignatureField state="signed" label="Inspector signature" caption="Signed by Maria Lopez" signatureSrc={sampleSignature} onPress={noop} onClear={noop} />
         <SignatureField state="error" label="Inspector signature" caption="Signature required" onPress={noop} />
       </Section>
 
-      <Section id="signature-pad" title="Signature Pad (1224:1430)">
+      <Section id="signature-pad" wide title="Signature Pad (1224:1430)">
         <Cap>Click the pad to simulate a signature</Cap>
         <SignaturePadDemo />
       </Section>
@@ -1244,7 +1253,7 @@ export function Gallery() {
 
       <Section id="stepper" title="CT Stepper (89:88)">
         <Stepper steps={["Field", "Scout", "Sign"]} currentStep={2} />
-        <Stepper steps={["Field", "Crop", "Scout", "Photos", "Notes", "Sign"]} currentStep={4} />
+        <Stepper steps={["Field", "Crop", "Scout", "Photos", "Notes", "Sign"]} currentStep={2} />
       </Section>
 
       <Section id="stroke-width" title="Stroke Width (1229:1462)">

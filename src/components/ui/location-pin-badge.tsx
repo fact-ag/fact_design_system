@@ -6,7 +6,7 @@ import { Icon } from "./icon"
 function LocationPinBadge({ className, ...props }: ComponentProps<"div">) {
   return (
     <div
-      className={cn("inline-flex size-[30px] items-center justify-center rounded-full bg-fill-brand-default text-text-on-fill-brand", className)}
+      className={cn("inline-flex size-30 items-center justify-center rounded-full bg-fill-brand-default text-text-on-fill-brand", className)}
       {...props}
     >
       <Icon name="house" size={16} />
