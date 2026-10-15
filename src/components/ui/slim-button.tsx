@@ -12,7 +12,7 @@ const slimButtonVariants = cva(
       variant: {
         primary: "border-border-default bg-fill-brand-default text-text-on-fill-brand active:bg-fill-brand-pressed",
         secondary: "border-border-brand-tonal bg-fill-brand-tonal-default text-text-on-fill-brand-tonal active:bg-fill-brand-tonal-pressed",
-        secondary2: "border-border-default bg-surface-default text-text-default active:bg-fill-neutral-pressed",
+        secondary2: "border-border-default bg-surface-default on-fog:border-transparent text-text-default active:bg-fill-neutral-pressed",
       },
     },
     defaultVariants: { variant: "primary" },

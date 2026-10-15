@@ -20,7 +20,7 @@ type AudioClipProps = Omit<ComponentProps<"div">, "children"> & {
 
 function AudioClip({ playing = false, title, duration, position = "0:00", progress = 0, onPlay, onPause, onRemove, className, ...props }: AudioClipProps) {
   return (
-    <div className={cn("flex w-full items-center gap-11 rounded-11 border border-border-default bg-bg-default p-11", className)} {...props}>
+    <div className={cn("flex w-full items-center gap-11 rounded-11 border border-border-default bg-bg-default p-11 on-fog:border-transparent", className)} {...props}>
       <button
         type="button"
         onClick={playing ? onPause : onPlay}

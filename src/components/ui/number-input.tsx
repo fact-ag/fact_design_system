@@ -14,7 +14,7 @@ type NumberInputProps = Omit<ComponentProps<"div">, "onChange"> & {
 }
 
 const stepper =
-  "flex size-32 cursor-pointer items-center justify-center rounded-full border border-border-default bg-surface-default text-text-on-fill-neutral outline-none focus-visible:ring-2 focus-visible:ring-border-focus disabled:cursor-not-allowed disabled:opacity-50"
+  "flex size-32 cursor-pointer items-center justify-center rounded-full border border-border-default bg-surface-default on-fog:border-transparent text-text-on-fill-neutral outline-none focus-visible:ring-2 focus-visible:ring-border-focus disabled:cursor-not-allowed disabled:opacity-50"
 
 function NumberInput({ value, onChange, min = -Infinity, max = Infinity, step = 1, placeholder = "Number of X", disabled, className, ...props }: NumberInputProps) {
   const set = (n: number) => onChange?.(Math.min(max, Math.max(min, n)))

@@ -29,7 +29,7 @@ function MyPropertiesMinimized({ onOpen, onMic, onFilter, placeholder = "My Prop
         type="button"
         onClick={onFilter}
         aria-label="Filter"
-        className={cn("flex size-40 shrink-0 cursor-pointer items-center justify-center rounded-20 border border-border-default bg-surface-default drop-shadow-glow", focus)}
+        className={cn("flex size-40 shrink-0 cursor-pointer items-center justify-center rounded-20 border border-border-default bg-surface-default drop-shadow-glow on-fog:border-transparent", focus)}
       >
         <Icon name="filter-list" size={24} className="text-icon-default" />
       </button>

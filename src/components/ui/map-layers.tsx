@@ -25,7 +25,7 @@ function MapLayers({ layers, selectedId, onSelect, onClose, title = "Map Layers"
           type="button"
           onClick={onClose}
           aria-label="Close"
-          className="absolute -top-5 right-2 flex size-40 cursor-pointer items-center justify-center rounded-20 border border-border-default bg-surface-default text-icon-default drop-shadow-glow outline-none focus-visible:ring-2 focus-visible:ring-border-focus"
+          className="absolute -top-5 right-2 flex size-40 cursor-pointer items-center justify-center rounded-20 border border-border-default bg-surface-default text-icon-default drop-shadow-glow on-fog:border-transparent outline-none focus-visible:ring-2 focus-visible:ring-border-focus"
         >
           <Icon name="material-close" size={24} />
         </button>

@@ -17,10 +17,11 @@ function AddOption({ icon, title, hint, onClick }: { icon: IconName; title: stri
   return (
     <button
       type="button"
+      data-surface="muted"
       onClick={onClick}
       className="flex min-w-0 flex-1 cursor-pointer flex-col items-center gap-4 rounded-12 border border-dashed border-border-default bg-surface-muted px-12 pt-16 pb-14 outline-none focus-visible:ring-2 focus-visible:ring-border-focus"
     >
-      <span className="flex size-36 items-center justify-center rounded-full border border-border-default bg-bg-default text-icon-default">
+      <span className="flex size-36 items-center justify-center rounded-full border border-border-default bg-bg-default text-icon-default on-fog:border-transparent">
         <Icon name={icon} size={16} />
       </span>
       <span className="mt-8 text-heading whitespace-nowrap text-text-default">{title}</span>

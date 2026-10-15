@@ -983,6 +983,11 @@ export function Gallery() {
           <IconButton label="Add field" icon="plus" disabled />
           <IconButton label="Add field" icon="plus" variant="alt" />
         </Row>
+        <Cap>Mist on fog: no stone border</Cap>
+        <div data-surface="muted" className="flex items-center gap-12 rounded-12 bg-surface-muted p-14">
+          <IconButton label="Add field" icon="plus" />
+          <span className="text-label text-text-muted">Same button, inside a fog area</span>
+        </div>
       </Section>
 
       <Section id="icon" title="Icon (all glyph names)">
