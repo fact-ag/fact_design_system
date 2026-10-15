@@ -7,7 +7,7 @@ import { Icon, type IconName } from "./icon"
 // Padding is 1px less than Figma on every side: the border is not counted in Figma padding. The gap above the title is a fixed 50px, as in Figma.
 // Figma has no pressed/disabled states; pressed/disabled here are a fallback.
 const slimNavigationButtonVariants = cva(
-  "flex h-137 w-full cursor-pointer flex-col items-start overflow-clip rounded-14 px-11 py-12 text-left outline-none transition-colors focus-visible:ring-2 focus-visible:ring-border-focus active:opacity-80 disabled:cursor-not-allowed disabled:opacity-50",
+  "flex h-137 w-114 cursor-pointer flex-col items-start overflow-clip rounded-14 px-11 py-12 text-left outline-none transition-colors focus-visible:ring-2 focus-visible:ring-border-focus active:opacity-80 disabled:cursor-not-allowed disabled:opacity-50",
   {
     variants: {
       variant: {

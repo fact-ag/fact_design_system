@@ -27,9 +27,10 @@ All tokens are in `src/styles/tokens.css`. A Figma variable name becomes a CSS v
 | `Type/*` | `text-body`, `text-heading` |
 | Spacing and size | The unit is 1px, so the class number is the Figma px value: `p-16`, `gap-10`, `h-44`, `leading-22` |
 | Radius | `rounded-<px>`: 2, 4, 6, 8, 10, 11, 12, 14, 15, 16, 17, 18, 20, 22, 24, 25, 30, 32, 33, 50, plus `rounded-full` and `rounded-wave` |
+| Fixed Figma sizes | `h-input-lg` (62.8px) and `px-input-x` (13.889px) for the Input Field |
 | Extra font sizes | `text-11`, `-13`, `-14`, `-16`, `-17`, `-18`, `-22`, `-24`, `-30`. Tracking: `tracking-condensed`, `tracking-hairline` |
 | Shadows | `shadow-drop-shadow-2`, `-croptrak`, `-mobile`, `-hairline`, `-glow-sm`, `-glow-md`, `-lift`, `-ring-selected`, `-scrim` |
-| Other effects | `drop-shadow-floating`, `-glow`, `-lift`. `text-shadow-media-sm`, `-md`, `-lg`. `backdrop-blur-glass`, `-glass-sm` |
+| Other effects | `drop-shadow-floating`, `-glow`, `-lift`, `-hairline`. `text-shadow-media-sm`, `-md`, `-lg`. `backdrop-blur-glass`, `-glass-sm` |
 
 `npm run lint` fails on raw colors and arbitrary values like `p-[13px]` in all of `src` except `src/styles` and `src/dev`. If a value cannot be a token, write `ds-exception: <reason>` in a comment on that line or the line above. If a new value is needed, add a token in `tokens.css` and add its name to `src/lib/utils.ts` so that `cn()` merges it correctly.
 

@@ -81,6 +81,7 @@ function UserSelectorDrawer({
             role={u.role}
             initials={u.initials}
             mode={selection}
+            compact
             selected={selectedIds.includes(u.id)}
             onSelect={() => {
               if (multiple) return toggle(u.id)

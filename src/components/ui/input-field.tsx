@@ -14,7 +14,7 @@ function InputField({ label, unit, onScan, id, className, ...props }: InputField
   return (
     <label className={cn("flex w-full flex-col gap-8", className)}>
       {label && <span className="flex h-20 items-center text-heading text-text-default">{label}</span>}
-      <span className="flex h-44 items-center gap-8 rounded-30 bg-fill-neutral-default px-14 focus-within:ring-2 focus-within:ring-border-focus has-disabled:opacity-50">
+      <span className="flex h-input-lg items-center gap-8 rounded-30 bg-fill-neutral-default px-input-x focus-within:ring-2 focus-within:ring-border-focus has-disabled:opacity-50">
         <input
           id={id}
           className="min-w-0 flex-1 bg-transparent text-body text-text-default outline-none placeholder:text-text-on-fill-placeholder"
@@ -29,7 +29,7 @@ function InputField({ label, unit, onScan, id, className, ...props }: InputField
               onClick={onScan}
               className="flex size-28 cursor-pointer items-center justify-center rounded-full text-icon-default outline-none focus-visible:ring-2 focus-visible:ring-border-focus"
             >
-              <Icon name="barcode-read" size={16} className="size-20" label="Scan" />
+              <span className="flex size-20 items-center justify-center"><Icon name="barcode-read" size={16} label="Scan" /></span>
             </button>
           </>
         )}

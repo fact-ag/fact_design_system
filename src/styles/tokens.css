@@ -228,6 +228,8 @@
   /* Audio waveform bars use sub-pixel Figma values. */
   --spacing-wave-bar: 3.2px;
   --spacing-wave-gap: 2.4px;
+  --spacing-input-lg: 62.8px;
+  --spacing-input-x: 13.889px;
 
   /* Radius: rounded-<px>, plus rounded-full. Figma "Radius/<px>". */
   --radius-*: initial;
@@ -273,6 +275,7 @@
   --drop-shadow-floating: 0 6px 14px #2947392e;
   --drop-shadow-glow: 0 0 5px #2947391a;
   --drop-shadow-lift: 0 10px 7.5px #0000001a;
+  --drop-shadow-hairline: 0 1px 1.5px #2947391a;
   --text-shadow-media-sm: 0 0 1px #00000040;
   --text-shadow-media-md: 0 0 2px #00000040;
   --text-shadow-media-lg: 0 0 3px #00000033;

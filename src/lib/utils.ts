@@ -9,7 +9,7 @@ const twMerge = extendTailwindMerge({
       radius: [validators.isNumber, "wave", "battery", "battery-fill"],
       blur: ["glass", "glass-sm", "hairline"],
       "text-shadow": ["media-sm", "media-md", "media-lg"],
-      "drop-shadow": ["floating", "glow", "lift"],
+      "drop-shadow": ["floating", "glow", "lift", "hairline"],
       shadow: ["drop-shadow-2", "croptrak", "mobile", "hairline", "glow-sm", "glow-md", "lift", "ring-selected", "scrim", "selected"],
       tracking: ["condensed", "hairline"],
     },

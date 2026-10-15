@@ -12,6 +12,8 @@ type UserRowProps = Omit<ComponentProps<"div">, "onSelect"> & {
   initials?: string
   mode?: "multiple" | "single"
   selected?: boolean
+  /** 12px name and 10px role, as the people list in the Figma user selector drawer. */
+  compact?: boolean
   onSelect?: () => void
 }
 
@@ -25,12 +27,12 @@ const initialsOf = (name: string) =>
 
 const row = "flex w-full items-center gap-12 border-b border-border-default py-8"
 
-function UserRow({ name, role, initials = initialsOf(name), mode = "multiple", selected = false, onSelect, className, ...props }: UserRowProps) {
+function UserRow({ name, role, initials = initialsOf(name), mode = "multiple", selected = false, compact = false, onSelect, className, ...props }: UserRowProps) {
   const content = (
     <>
       <Avatar size="medium" initials={initials} />
       <span className="flex min-w-0 flex-1 flex-col text-left">
-        <span className="truncate text-body text-text-default">{name}</span>
+        <span className={cn("truncate text-text-default", compact ? "text-label" : "text-body")}>{name}</span>
         {role && <span className="truncate text-caption text-text-muted">{role}</span>}
       </span>
     </>
