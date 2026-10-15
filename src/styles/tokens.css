@@ -7,7 +7,7 @@
 
 @font-face {
   font-family: "Phonic";
-  src: url("../assets/fonts/PhonicTrial-Regular.otf") format("opentype");
+  src: url("../assets/fonts/Phonic-Regular.otf") format("opentype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -21,7 +21,7 @@
 }
 @font-face {
   font-family: "Phonic";
-  src: url("../assets/fonts/PhonicTrial-Bold.otf") format("opentype");
+  src: url("../assets/fonts/Phonic-Bold.otf") format("opentype");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
