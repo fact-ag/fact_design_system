@@ -445,7 +445,7 @@ function MapSketchDemo() {
   const bg = <img src={mapAsset("satellite.png")} alt="" className="size-full object-cover" />
   const frame = "h-874 w-402 shrink-0"
   return (
-    <div className="flex flex-wrap gap-24">
+    <div className="flex flex-wrap gap-24 overflow-x-auto">
       <MapSketch className={frame} state="explore" background={bg} onClose={noop} />
       <MapSketch className={frame} state="draw" background={bg} onCancel={noop} onDone={noop}>
         {sketch}
