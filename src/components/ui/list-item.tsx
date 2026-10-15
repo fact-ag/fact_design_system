@@ -32,8 +32,8 @@ function ListItem({ title, subtitle, icon = "house", showChevron = true, trailin
         {subtitle && <span className="truncate text-11 leading-16.5 text-text-muted capitalize">{subtitle}</span>}
       </span>
       {showChevron && (
-        <span className="flex h-25 min-w-25 shrink-0 items-center justify-center text-text-default">
-          {trailing ?? <Icon name="chevron-right" size={10} />}
+        <span className="flex h-25 min-w-25 shrink-0 items-center justify-center text-text-muted">
+          {trailing ?? <Icon name="arrow-forward-ios" size={25} />}
         </span>
       )}
     </button>

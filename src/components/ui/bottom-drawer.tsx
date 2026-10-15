@@ -51,7 +51,7 @@ function BottomDrawer({ open, onClose, modal = true, size, className, children, 
       {...props}
     >
       <div aria-hidden className={cn("absolute left-1/2 h-4 w-50 -translate-x-1/2 rounded-25 bg-border-focus", size === "small" || size == null ? "top-4" : "top-5")} />
-      <div className="h-full overflow-y-auto">{children}</div>
+      <div className="-m-px h-full overflow-y-auto">{children}</div>
     </dialog>
   )
 }

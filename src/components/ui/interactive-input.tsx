@@ -56,7 +56,7 @@ function InteractiveInput({
         aria-label={action === "scan" ? "Scan" : "Clear"}
         className="flex h-23.5 w-20 shrink-0 cursor-pointer items-center justify-center rounded-full text-icon-default outline-none focus-visible:ring-2 focus-visible:ring-border-focus"
       >
-        <Icon name={action === "scan" ? "barcode-read" : "xmark"} size={16} />
+        <Icon name={action === "scan" ? "barcode-read" : "material-close"} size={16} />
       </button>
     </div>
   )

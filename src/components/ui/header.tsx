@@ -28,7 +28,7 @@ function Header({ tabs, activeId, onTabChange, onMenu, time = "9:41", className,
     >
       <div aria-hidden className="flex h-54 items-start gap-154 px-18 pt-15">
         <span className="flex h-22 flex-1 items-center justify-center text-17 leading-22 font-semibold text-text-default">{time}</span>
-        <span className="absolute top-9 left-1/2 h-36 w-124 -translate-x-1/2 rounded-50 bg-device-notch" />
+        <span className="absolute top-8 left-1/2 h-36 w-124 -translate-x-1/2 rounded-50 bg-device-notch" />
         <span className="flex h-22 flex-1 items-center justify-center gap-7 text-text-default">
           <Icon name="cellular" size={19.2} />
           <Icon name="wifi" size={17.14} />

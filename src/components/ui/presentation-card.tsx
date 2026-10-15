@@ -30,7 +30,7 @@ function PresentationCard({
   return (
     <div
       className={cn(
-        "relative isolate flex aspect-square w-full flex-col overflow-hidden rounded-10 p-24 pt-20 text-text-on-inverse drop-shadow-lift",
+        "relative isolate flex aspect-square w-full max-w-342 flex-col overflow-hidden rounded-10 p-24 pt-20 text-text-on-inverse drop-shadow-lift",
         className,
       )}
       {...props}
@@ -45,7 +45,7 @@ function PresentationCard({
         <button
           type="button"
           onClick={onAction}
-          className="mt-auto flex w-fit cursor-pointer items-center gap-10 rounded-33 bg-fill-glass px-20 py-9 text-16 leading-normal tracking-condensed text-shadow-media-md outline-none backdrop-blur-glass-sm focus-visible:ring-2 focus-visible:ring-border-focus"
+          className="mt-auto flex min-h-49 w-fit cursor-pointer items-center gap-10 rounded-33 bg-fill-glass px-20 py-9 text-16 leading-normal tracking-condensed text-shadow-media-md outline-none backdrop-blur-glass-sm focus-visible:ring-2 focus-visible:ring-border-focus"
         >
           <Icon name={actionIcon} />
           {actionLabel}

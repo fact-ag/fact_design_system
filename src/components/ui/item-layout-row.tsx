@@ -21,7 +21,7 @@ function ItemLayoutRow({ variant = "default", title, description, photo, classNa
           <Icon name="folder" size={16} />
         </DisplayIcon>
       )}
-      <div className="flex min-w-0 flex-1 flex-col">
+      <div className="flex min-w-0 flex-1 flex-col gap-1.5">
         <span className="truncate text-body text-text-default">{title}</span>
         <span className="text-caption whitespace-pre text-text-muted">{description}</span>
       </div>

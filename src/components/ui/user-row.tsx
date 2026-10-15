@@ -45,7 +45,11 @@ function UserRow({ name, role, initials = initialsOf(name), mode = "multiple", s
           className="flex w-full cursor-pointer items-center gap-12 py-8 outline-none focus-visible:ring-2 focus-visible:ring-border-focus"
         >
           {content}
-          {selected && <Icon name="check" size={16} className="size-20 text-icon-default" />}
+          {selected && (
+            <span className="flex size-20 shrink-0 items-center justify-center text-icon-default">
+              <Icon name="check" size={16} />
+            </span>
+          )}
         </button>
       </div>
     )

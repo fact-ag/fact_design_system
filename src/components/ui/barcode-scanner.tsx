@@ -3,10 +3,16 @@ import { cn } from "@/lib/utils"
 import { Button } from "./button"
 import { BottomDrawer } from "./bottom-drawer"
 import { Icon, type IconName } from "./icon"
+// ds-exception: viewfinder corners and scan line are Figma artwork, not icons
+import viewfinderScanning from "@/assets/images/barcode-viewfinder-scanning.svg"
+// ds-exception: viewfinder corners are Figma artwork, not icons
+import viewfinderDetected from "@/assets/images/barcode-viewfinder-detected.svg"
+// ds-exception: viewfinder corners are Figma artwork, not icons
+import viewfinderNoMatch from "@/assets/images/barcode-viewfinder-no-match.svg"
 
 // Figma: Barcode Scanner (1206:1231). State=[Scanning|Detected|No match|Permission denied] -> state.
 // background = the camera feed. No camera logic here. Detected/No match show a BottomDrawer; its body is children.
-// Viewfinder and scrim are drawn with CSS (the Figma SVGs are not shipped).
+// The scrim is a CSS box-shadow (black 62%, 12px cutout). The viewfinder corners are the Figma SVGs. Drawers sit 5px inside the screen.
 type BarcodeScannerProps = Omit<ComponentProps<"div">, "children"> & {
   state?: "scanning" | "detected" | "no-match" | "permission-denied"
   background?: ReactNode
@@ -23,6 +29,9 @@ type BarcodeScannerProps = Omit<ComponentProps<"div">, "children"> & {
   /** Drawers: scan again / dismiss. */
   onScanAgain?: () => void
 }
+
+// Figma: the drawer floats 5px inside the screen, so it is positioned in the scanner, not the viewport.
+const drawerInset = "absolute inset-x-5 bottom-5 mx-0 w-auto max-w-none"
 
 const glass = "flex size-40 cursor-pointer items-center justify-center rounded-20 bg-text-on-inverse/16 text-text-on-inverse outline-none focus-visible:ring-2 focus-visible:ring-border-focus"
 
@@ -60,11 +69,12 @@ function BarcodeScanner({
           {/* The viewfinder box is transparent; its shadow dims everything around it. */}
           <div
             aria-hidden
-            className={cn(
-              "absolute top-290 left-1/2 h-170 w-280 -translate-x-1/2 rounded-16 border-2 shadow-scrim",
-              detected ? "border-status-success" : noMatch ? "border-status-danger" : "border-text-on-inverse",
-            )}
-          />
+            // ds-exception: Figma scrim is plain black at 62%, no token
+            className="absolute top-290 left-1/2 h-170 w-280 -translate-x-1/2 rounded-12 shadow-[0_0_0_100vmax_rgb(0_0_0/0.62)]"
+          >
+            {/* The artwork is 284x174, 2px larger than the 280x170 box on every side. */}
+            <img alt="" src={detected ? viewfinderDetected : noMatch ? viewfinderNoMatch : viewfinderScanning} className="absolute -top-2 -left-2 block max-w-none" />
+          </div>
           <div className="absolute top-480 left-1/2 flex -translate-x-1/2 flex-col items-center gap-4 text-center whitespace-nowrap">
             <p className="text-body">{hint}</p>
             {state === "scanning" && <p className="text-label opacity-70">UPC, EAN, Code 128 and QR</p>}
@@ -82,7 +92,7 @@ function BarcodeScanner({
       {denied && (
         <div className="absolute inset-x-0 top-1/2 flex -translate-y-1/2 flex-col items-center gap-12 px-32">
           <span className="flex size-64 items-center justify-center rounded-32 bg-text-on-inverse/12">
-            <Icon name="camera-slash" size={20} />
+            <Icon name="camera-slash" size={16} />
           </span>
           <h3 className="text-title">Camera access needed</h3>
           <p className="text-center text-body opacity-75">Allow camera access in Settings to scan barcodes, or enter the code manually.</p>
@@ -94,7 +104,7 @@ function BarcodeScanner({
           </Button>
         </div>
       )}
-      <BottomDrawer open={detected} modal={false} onClose={() => onScanAgain?.()} className="h-190">
+      <BottomDrawer open={detected} modal={false} onClose={() => onScanAgain?.()} className={cn(drawerInset, "h-190")}>
         {children ?? (
           <div className="flex flex-col items-center gap-8 px-24 pt-16">
             <p className="text-label text-text-muted">Barcode</p>
@@ -110,7 +120,7 @@ function BarcodeScanner({
           </div>
         )}
       </BottomDrawer>
-      <BottomDrawer open={noMatch} modal={false} onClose={() => onScanAgain?.()} className="h-224">
+      <BottomDrawer open={noMatch} modal={false} onClose={() => onScanAgain?.()} className={cn(drawerInset, "h-224")}>
         {children ?? (
           <div className="flex flex-col items-center gap-8 px-24 pt-16">
             <h3 className="text-title text-text-default">No match found</h3>

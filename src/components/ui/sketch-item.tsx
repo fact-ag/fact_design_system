@@ -25,7 +25,7 @@ function SketchItem({ variant = "canvas", state = "default", preview, title, aut
   const uploading = state === "uploading"
   const map = variant === "map"
   return (
-    <div className={cn("flex w-full items-center gap-12 rounded-11 border border-border-default bg-bg-default p-11", className)} {...props}>
+    <div className={cn("flex w-full max-w-358 items-center gap-12 rounded-11 border border-border-default bg-bg-default p-11", className)} {...props}>
       <div className={cn("relative size-64 shrink-0 overflow-clip rounded-8", map ? "bg-bg-inverse" : "border border-border-default bg-bg-default")}>
         {preview}
         {map && <MapPin showLabel={false} className="absolute top-34 left-53 origin-top-left scale-25" />}

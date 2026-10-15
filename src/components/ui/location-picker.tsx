@@ -80,14 +80,14 @@ function LocationPicker({
         <Icon name="hand-pointer" size={16} className="size-20 text-text-muted" />
         {hint ?? (locating ? "Finding your location…" : "Move the map to place the pin")}
       </p>
-      <div className="absolute inset-x-5 bottom-5 flex flex-col gap-12 rounded-t-25 rounded-b-50 border border-border-default bg-surface-default px-17 pt-19 pb-20">
+      <div className="absolute inset-x-5 bottom-5 flex flex-col gap-12 rounded-t-25 rounded-b-50 border border-border-default bg-surface-default px-14 pt-41 pb-24">
         <div aria-hidden className="absolute top-4 left-1/2 h-4 w-50 -translate-x-1/2 rounded-25 bg-border-focus" />
         <div className="flex gap-12">
           <InputField label="Latitude" inputMode="decimal" value={latitude} onChange={(e) => onLatitudeChange?.(e.target.value)} className="min-w-0 flex-1 [&_input]:font-mono" />
           <InputField label="Longitude" inputMode="decimal" value={longitude} onChange={(e) => onLongitudeChange?.(e.target.value)} className="min-w-0 flex-1 [&_input]:font-mono" />
         </div>
-        <p className="text-label text-text-muted">{note}</p>
-        <Button disabled={locating} onClick={onConfirm}>
+        <p className="mt-2 text-label text-text-muted">{note}</p>
+        <Button className="mt-9" disabled={locating} onClick={onConfirm}>
           {confirmLabel}
         </Button>
       </div>

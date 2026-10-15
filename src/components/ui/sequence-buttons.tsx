@@ -35,7 +35,7 @@ function SequenceButtons({
   showNA = true, naLabel = "N/A", className, ...props
 }: SequenceButtonsProps) {
   return (
-    <div role="group" aria-label={title} className={cn("flex w-full flex-col gap-8", className)} {...props}>
+    <div role="group" aria-label={title} className={cn("flex w-full max-w-358 flex-col gap-8", className)} {...props}>
       {title && <p className="text-heading text-text-default">{title}</p>}
       <div className="flex items-center gap-4 p-4">
         {fills.map((fill, n) =>

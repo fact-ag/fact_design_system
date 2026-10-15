@@ -15,11 +15,11 @@ function SearchField({ value = "", onMicPress, onClear, className, ...props }: S
   return (
     <div
       className={cn(
-        "flex h-44 w-full items-center gap-8 rounded-30 bg-fill-neutral-default px-12 focus-within:ring-2 focus-within:ring-border-focus",
+        "flex h-44 w-full max-w-362 items-center gap-8 rounded-30 bg-fill-neutral-default px-12 focus-within:ring-2 focus-within:ring-border-focus",
         className,
       )}
     >
-      <Icon name="magnifying-glass" className="text-icon-default" />
+      <Icon name="i-search" size={16} className="text-icon-default" />
       {filled ? (
         <>
           <span className="rounded-4 bg-fill-brand-tonal-default px-8 py-2 text-body whitespace-nowrap text-text-on-fill-brand-tonal">{value}</span>
@@ -29,7 +29,7 @@ function SearchField({ value = "", onMicPress, onClear, className, ...props }: S
             onClick={onClear}
             className="flex size-22 cursor-pointer items-center justify-center rounded-full bg-fill-accent text-icon-on-emphasis outline-none focus-visible:ring-2 focus-visible:ring-border-focus"
           >
-            <Icon name="xmark" size={10} label="Clear search" />
+            <Icon name="close-thin" size={10} label="Clear search" />
           </button>
         </>
       ) : (
@@ -46,7 +46,7 @@ function SearchField({ value = "", onMicPress, onClear, className, ...props }: S
             onClick={onMicPress}
             className="flex size-20 cursor-pointer items-center justify-center rounded-full text-icon-muted outline-none focus-visible:ring-2 focus-visible:ring-border-focus"
           >
-            <Icon name="microphone" label="Voice search" />
+            <Icon name="mic-20" size={20} label="Voice search" />
           </button>
         </>
       )}

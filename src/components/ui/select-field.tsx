@@ -17,8 +17,8 @@ type SelectFieldProps = Omit<ComponentProps<"button">, "value"> & {
 
 function SelectField({ label, placeholder = "Select Property", value, open = false, icon = "house", unit, onScan, className, ...props }: SelectFieldProps) {
   return (
-    <div className={cn("flex w-full flex-col gap-8", className)}>
-      {label && <span className="text-heading text-text-default">{label}</span>}
+    <div className={cn("flex w-full max-w-362 flex-col gap-8", className)}>
+      {label && <span className="block h-20 text-heading text-text-default">{label}</span>}
       <div className="flex h-44 items-center gap-10 rounded-30 bg-fill-neutral-default px-14">
         <button
           type="button"

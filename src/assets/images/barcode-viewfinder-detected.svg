@@ -1,0 +1,8 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="284" height="174" viewBox="0 0 284 174" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Viewfinder">
+<path id="Corner TL" d="M2 30V14C2 6 6 2 14 2H30" stroke="#ACDD68" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Corner TR" d="M254 2H270C278 2 282 6 282 14V30" stroke="#ACDD68" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Corner BR" d="M282 144V160C282 168 278 172 270 172H254" stroke="#ACDD68" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Corner BL" d="M30 172H14C6 172 2 168 2 160V144" stroke="#ACDD68" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</svg>

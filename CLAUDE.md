@@ -52,9 +52,9 @@ Use `src/components/ui/button.tsx` as the model.
 
 ## Icons
 
-`src/components/ui/icon.tsx` maps Figma glyph names to Font Awesome icons. Figma uses Font Awesome 7 Sharp Regular (Pro). The code uses the free solid set until the team has a Pro token. To change to Pro, change only the imports in that file.
+`src/components/ui/icon.tsx` maps Figma glyph names to Font Awesome 7 Sharp Regular (Pro), the same style as Figma. The package `@fortawesome/sharp-regular-svg-icons` comes from the private Font Awesome registry. The project `.npmrc` points the `@fortawesome` scope to that registry. It holds no secret. Before `npm install`, each developer and each build server needs the Font Awesome Package Manager Token in `~/.npmrc`: `//npm.fontawesome.com/:_authToken=<token>`. Never commit the token.
 
-Some Figma icons are Material glyphs or images, not Font Awesome. They are custom glyphs in `icon.tsx` with the Figma path: `arrow-forward-ios`, `material-close`, `keyboard-arrow-right`, `add-2`, `search`, `mic`, `filter-list`, `dehaze`, `cellular`, `wifi`.
+Some Figma icons are Material glyphs or images, not Font Awesome. They are custom glyphs in `icon.tsx` with the Figma path: `arrow-forward-ios`, `material-close`, `keyboard-arrow-right`, `add-2`, `search`, `mic`, `filter-list`, `dehaze`, `cellular`, `wifi`, `check-thin`, `check-stroke`, `i-search`, `mic-20`, `close-thin`.
 
 Set the icon size with the `size` prop. A `size-*` class on `<Icon>` has no effect, because the component sets an inline width and height. If Figma puts the icon in a larger box, wrap the icon in a `span` with that box size. `IconButton` takes `iconSize` (default 16).
 

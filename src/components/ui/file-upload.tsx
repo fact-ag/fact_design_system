@@ -36,7 +36,7 @@ function FileUpload({
           <span className="flex size-36 items-center justify-center rounded-full border border-border-default bg-bg-default text-icon-default">
             <Icon name="arrow-up-from-bracket" size={16} className="size-20" />
           </span>
-          <span className="mt-4 text-heading text-text-default">Add files</span>
+          <span className="mt-8 text-heading text-text-default">Add files</span>
           <span className="text-center text-label text-text-muted">{description}</span>
         </button>
       </div>

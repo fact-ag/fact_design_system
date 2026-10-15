@@ -63,7 +63,7 @@ function UploadPhotos({
               placeholder={captionPlaceholder}
               aria-label="Photo caption"
               onChange={(e) => onCaptionChange?.(e.target.value)}
-              className="[&_textarea]:h-84"
+              className="[&_textarea]:h-84 [&_textarea]:py-10"
             />
           )}
         </div>

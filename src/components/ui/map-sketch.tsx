@@ -123,18 +123,18 @@ function MapSketch({
       )}
       {/* Dim and drawers come from the native dialog backdrop. */}
       <BottomDrawer open={pinDetails} modal={false} onClose={() => onDone?.()} className="bottom-5 h-257">
-        <div className="flex flex-col gap-12 px-24 pt-12">
+        <div className="flex h-full flex-col gap-12 px-14 pt-5 pb-24">
           <div className="flex items-center gap-12">
-            <span className="flex size-32 items-center justify-center rounded-full bg-fill-neutral-default text-icon-default">
+            <span className="flex size-40 shrink-0 items-center justify-center rounded-full bg-fill-neutral-default text-icon-default">
               <Icon name="location-dot" size={16} />
             </span>
-            <div>
-              <p className="text-body text-text-default">{pinName}</p>
-              {pinCoordinates && <p className="font-mono text-caption text-text-muted">{pinCoordinates}</p>}
+            <div className="flex flex-col gap-2">
+              <p className="text-heading text-text-default">{pinName}</p>
+              {pinCoordinates && <p className="font-mono text-label text-text-muted">{pinCoordinates}</p>}
             </div>
           </div>
-          <InputField label="Note" placeholder="e.g. Broken sprinkler on north span" value={pinNote ?? ""} onChange={(e) => onPinNoteChange?.(e.target.value)} />
-          <div className="flex gap-12">
+          <InputField className="mt-2" label="Note" placeholder="e.g. Broken sprinkler on north span" value={pinNote ?? ""} onChange={(e) => onPinNoteChange?.(e.target.value)} />
+          <div className="mt-auto flex gap-11">
             <Button variant="secondary" className="flex-1" onClick={onDeletePin}>
               Delete pin
             </Button>

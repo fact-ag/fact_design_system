@@ -6,13 +6,13 @@ import { Icon, type IconName } from "./icon"
 // Figma: Navigation button (855:994). Style=[GreenVariant|RedVariant|SiltVariant] -> variant (green|red|silt).
 // Figma has no pressed/disabled states; pressed/disabled here are a fallback.
 const navigationButtonVariants = cva(
-  "flex min-h-140 w-full cursor-pointer flex-col items-start rounded-18 px-16 pt-16 pb-18 text-left outline-none transition-colors focus-visible:ring-2 focus-visible:ring-border-focus active:opacity-80 disabled:cursor-not-allowed disabled:opacity-50",
+  "flex min-h-140 w-full cursor-pointer flex-col items-start rounded-18 px-15 pt-15 pb-13 text-left outline-none transition-colors focus-visible:ring-2 focus-visible:ring-border-focus active:opacity-80 disabled:cursor-not-allowed disabled:opacity-50",
   {
     variants: {
       variant: {
         green: "border border-border-brand-tonal bg-fill-brand-tonal-default text-text-on-fill-brand-tonal",
         red: "border border-status-danger-subtle bg-fill-danger-bg-subtle text-status-danger",
-        silt: "bg-fill-neutral-default text-text-on-fill-brand-tonal",
+        silt: "border border-transparent bg-fill-neutral-default text-text-on-fill-brand-tonal",
       },
     },
     defaultVariants: { variant: "green" },
@@ -34,8 +34,8 @@ function NavigationButton({ className, variant = "green", icon = "house", title 
         <Icon name={icon} size={16} className="size-20" />
       </span>
       <span className="min-h-24 flex-1" />
-      <span className="w-full text-18 leading-none tracking-condensed">{title}</span>
-      <span className="w-full pt-3 text-body leading-none text-text-muted">{description}</span>
+      <span className="w-full text-18 leading-25 tracking-condensed">{title}</span>
+      <span className="w-full pt-3 text-body text-text-muted">{description}</span>
     </button>
   )
 }

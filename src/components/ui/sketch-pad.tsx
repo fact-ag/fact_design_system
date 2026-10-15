@@ -47,16 +47,17 @@ function SketchPad({
           </div>
         )}
       </div>
-      <div className="absolute inset-x-16 top-60 flex items-center justify-between">
+      {/* ds-exception: centers the title between buttons of unequal width, as Figma does */}
+      <div className="absolute inset-x-16 top-60 grid grid-cols-[1fr_auto_1fr] items-center">
         <button
           type="button"
           onClick={onCancel}
-          className="cursor-pointer rounded-22 bg-bg-default px-16 py-12 text-body text-text-default drop-shadow-floating outline-none focus-visible:ring-2 focus-visible:ring-border-focus"
+          className="cursor-pointer justify-self-start rounded-22 bg-bg-default px-16 py-12 text-body text-text-default drop-shadow-floating outline-none focus-visible:ring-2 focus-visible:ring-border-focus"
         >
           Cancel
         </button>
         <h2 className="text-heading text-text-default">{title}</h2>
-        <Button disabled={blank} onClick={onDone}>
+        <Button disabled={blank} onClick={onDone} className="justify-self-end">
           Done
         </Button>
       </div>

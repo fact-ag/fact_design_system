@@ -6,7 +6,7 @@ function RectanglePanel({ className, ...props }: ComponentProps<"div">) {
   return (
     <div
       className={cn(
-        "flex w-full flex-col overflow-clip rounded-18 border border-border-default bg-bg-default px-15 pt-10 pb-15 shadow-croptrak",
+        "flex w-full max-w-345 flex-col overflow-clip rounded-18 border border-border-default bg-bg-default px-14 pt-9 pb-14 shadow-croptrak",
         className,
       )}
       {...props}

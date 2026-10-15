@@ -17,7 +17,7 @@ const thumb =
 function Slider({ title, subtitle, min = 0, max = 100, value = 0, className, ...props }: SliderProps) {
   const pct = max > min ? ((value - min) / (max - min)) * 100 : 0
   return (
-    <label className={cn("flex w-full flex-col gap-4 pt-15.5", className)}>
+    <label className={cn("flex w-full max-w-606 flex-col gap-4 pt-15.5", className)}>
       {title && <span className="text-18 leading-none text-text-default">{title}</span>}
       {subtitle && <span className="text-caption leading-20 text-text-muted">{subtitle}</span>}
       <span className="flex flex-col">

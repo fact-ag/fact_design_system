@@ -18,7 +18,7 @@ function SignatureField({ state = "empty", label = "Signature", caption, signatu
   const signed = state === "signed"
   const error = state === "error"
   return (
-    <div className={cn("flex w-full flex-col gap-9", className)} {...props}>
+    <div className={cn("flex w-full max-w-358 flex-col gap-9", className)} {...props}>
       <p className="text-body text-text-default">{label}</p>
       <div
         className={cn(

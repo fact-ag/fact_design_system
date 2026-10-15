@@ -33,7 +33,7 @@ function Checkbox({ size = "small", title, description, className, checked, ...p
             s.box,
           )}
         >
-          <Icon name="check" size={s.icon} />
+          <Icon name="check-stroke" size={s.icon} />
         </span>
       </span>
       {title && (
