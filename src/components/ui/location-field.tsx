@@ -55,6 +55,7 @@ function LocationField({ label = "Location", value, error, mapPreview, onPick, o
         <>
           <button
             type="button"
+            data-surface="muted"
             onClick={onPick}
             aria-invalid={!!error}
             className={cn(
@@ -62,7 +63,7 @@ function LocationField({ label = "Location", value, error, mapPreview, onPick, o
               error ? "border-status-danger" : "border-border-default",
             )}
           >
-            <span className={cn("flex size-36 shrink-0 items-center justify-center rounded-full border border-border-default bg-bg-default", error ? "text-status-danger" : "text-icon-default")}>
+            <span className={cn("flex size-36 shrink-0 items-center justify-center rounded-full border border-border-default bg-bg-default on-fog:border-transparent", error ? "text-status-danger" : "text-icon-default")}>
               <Icon name="location-dot" />
             </span>
             <span className="flex min-w-0 flex-1 flex-col gap-2">

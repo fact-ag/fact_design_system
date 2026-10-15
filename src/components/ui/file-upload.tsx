@@ -30,10 +30,11 @@ function FileUpload({
         {showTitle && <p className="text-body text-text-default">{title}</p>}
         <button
           type="button"
+          data-surface="muted"
           onClick={onPick}
           className="flex w-full cursor-pointer flex-col items-center justify-center gap-4 rounded-12 border border-dashed border-border-default bg-surface-muted px-16 pt-18 pb-16 outline-none focus-visible:ring-2 focus-visible:ring-border-focus"
         >
-          <span className="flex size-36 items-center justify-center rounded-full border border-border-default bg-bg-default text-icon-default">
+          <span className="flex size-36 items-center justify-center rounded-full border border-border-default bg-bg-default text-icon-default on-fog:border-transparent">
             <Icon name="arrow-up-from-bracket" size={16} className="size-20" />
           </span>
           <span className="mt-8 text-heading text-text-default">Add files</span>

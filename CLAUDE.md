@@ -34,6 +34,8 @@ All tokens are in `src/styles/tokens.css`. A Figma variable name becomes a CSS v
 
 `npm run lint` fails on raw colors and arbitrary values like `p-[13px]` in all of `src` except `src/styles` and `src/dev`. If a value cannot be a token, write `ds-exception: <reason>` in a comment on that line or the line above. If a new value is needed, add a token in `tokens.css` and add its name to `src/lib/utils.ts` so that `cn()` merges it correctly.
 
+Mist on fog: a mist item (`bg-bg-default` or `bg-surface-default`) that sits on a fog area (`bg-surface-muted`) has no stone border. Mark the fog area with `data-surface="muted"` and add `on-fog:border-transparent` to the mist item. The border stays in the box, so the size does not change.
+
 Dark mode: add the class `dark` on `<html>`. The semantic tokens switch to the Figma "Dark" mode values.
 
 ## How a design-system component is written

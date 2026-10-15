@@ -21,7 +21,7 @@ function IconButton({ className, label, icon = "house", variant = "default", ico
         "inline-flex size-40 shrink-0 cursor-pointer items-center justify-center rounded-20 outline-none transition-colors focus-visible:ring-2 focus-visible:ring-border-focus disabled:cursor-not-allowed",
         variant === "alt"
           ? "bg-fill-neutral-default text-text-on-fill-neutral"
-          : "border border-border-default bg-bg-default text-icon-default shadow-glow-sm active:bg-fill-neutral-default active:text-text-on-fill-neutral disabled:bg-border-default disabled:text-text-on-fill-neutral",
+          : "border border-border-default bg-bg-default text-icon-default on-fog:border-transparent shadow-glow-sm active:bg-fill-neutral-default active:text-text-on-fill-neutral disabled:bg-border-default disabled:text-text-on-fill-neutral",
         className,
       )}
       {...props}

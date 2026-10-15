@@ -94,6 +94,9 @@
 }
 
 /* Semantic tokens (Figma collection "Semantic tokens", Light mode). Tailwind default colors are removed. */
+/* Mist items inside a fog parent (data-surface="muted") drop their stone border. The border stays in the box, so size does not change. */
+@custom-variant on-fog (&:where([data-surface="muted"] *));
+
 @theme {
   --animate-caret: caret-blink 2s linear infinite;
   @keyframes caret-blink {
