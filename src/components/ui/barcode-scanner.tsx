@@ -30,9 +30,6 @@ type BarcodeScannerProps = Omit<ComponentProps<"div">, "children"> & {
   onScanAgain?: () => void
 }
 
-// Figma: the drawer floats 5px inside the screen, so it is positioned in the scanner, not the viewport.
-const drawerInset = "absolute inset-x-5 bottom-5 mx-0 w-auto max-w-none"
-
 const glass = "flex size-40 cursor-pointer items-center justify-center rounded-20 bg-text-on-inverse/16 text-text-on-inverse outline-none focus-visible:ring-2 focus-visible:ring-border-focus"
 
 function GlassButton({ icon, label, onClick, className }: { icon: IconName; label: string; onClick?: () => void; className?: string }) {
@@ -104,7 +101,7 @@ function BarcodeScanner({
           </Button>
         </div>
       )}
-      <BottomDrawer open={detected} modal={false} onClose={() => onScanAgain?.()} className={cn(drawerInset, "h-190")}>
+      <BottomDrawer open={detected} contained onClose={() => onScanAgain?.()} className="bottom-5 h-190">
         {children ?? (
           <div className="flex flex-col items-center gap-8 px-24 pt-16">
             <p className="text-label text-text-muted">Barcode</p>
@@ -120,7 +117,7 @@ function BarcodeScanner({
           </div>
         )}
       </BottomDrawer>
-      <BottomDrawer open={noMatch} modal={false} onClose={() => onScanAgain?.()} className={cn(drawerInset, "h-224")}>
+      <BottomDrawer open={noMatch} contained onClose={() => onScanAgain?.()} className="bottom-5 h-224">
         {children ?? (
           <div className="flex flex-col items-center gap-8 px-24 pt-16">
             <h3 className="text-title text-text-default">No match found</h3>

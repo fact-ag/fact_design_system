@@ -26,20 +26,24 @@ type BottomDrawerProps = Omit<ComponentProps<"dialog">, "open"> &
     onClose: () => void
     /** false keeps the page behind usable (no dim, no focus trap), for panels over a map or camera. */
     modal?: boolean
+    /** Sits inside the nearest positioned (clipping) parent instead of the window, with no dim. Forces modal={false}. */
+    contained?: boolean
   }
 
-function BottomDrawer({ open, onClose, modal = true, size, className, children, ...props }: BottomDrawerProps) {
+function BottomDrawer({ open, onClose, modal = true, contained = false, size, className, children, ...props }: BottomDrawerProps) {
   const ref = useRef<HTMLDialogElement>(null)
+
+  const isModal = modal && !contained
 
   useEffect(() => {
     const dialog = ref.current
     if (!dialog) return
     if (open && !dialog.open) {
-      if (modal) dialog.showModal()
+      if (isModal) dialog.showModal()
       else dialog.show()
     }
     if (!open && dialog.open) dialog.close()
-  }, [open, modal])
+  }, [open, isModal])
 
   return (
     <dialog
@@ -47,7 +51,7 @@ function BottomDrawer({ open, onClose, modal = true, size, className, children, 
       onClose={onClose}
       // A click on the dialog element itself (not its content) is a click on the backdrop.
       onClick={(e) => e.target === e.currentTarget && onClose()}
-      className={cn(drawerVariants({ size }), className)}
+      className={cn(drawerVariants({ size }), contained && "absolute inset-x-5 w-auto", className)}
       {...props}
     >
       <div aria-hidden className={cn("absolute left-1/2 h-4 w-50 -translate-x-1/2 rounded-25 bg-border-focus", size === "small" || size == null ? "top-4" : "top-5")} />

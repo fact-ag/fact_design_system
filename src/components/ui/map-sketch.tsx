@@ -121,8 +121,8 @@ function MapSketch({
           className={cn("absolute bottom-34 left-1/2 -translate-x-1/2", toolbarProps?.className)}
         />
       )}
-      {/* Dim and drawers come from the native dialog backdrop. */}
-      <BottomDrawer open={pinDetails} modal={false} onClose={() => onDone?.()} className="bottom-5 h-257">
+      {/* Drawers sit inside the map (contained), no dim. */}
+      <BottomDrawer open={pinDetails} contained onClose={() => onDone?.()} className="bottom-5 h-257">
         <div className="flex h-full flex-col gap-12 px-14 pt-5 pb-24">
           <div className="flex items-center gap-12">
             <span className="flex size-40 shrink-0 items-center justify-center rounded-full bg-fill-neutral-default text-icon-default">
@@ -144,9 +144,12 @@ function MapSketch({
           </div>
         </div>
       </BottomDrawer>
-      <BottomDrawer open={layers} onClose={() => onLayersClose?.()} size="medium" className="bottom-5 overflow-visible">
-        <MapLayers layers={[]} {...layersProps} onClose={onLayersClose} className="rounded-none border-0 bg-transparent" />
-      </BottomDrawer>
+      {layers && (
+        <>
+          <div aria-hidden className="absolute inset-0 bg-bg-inverse/40" />
+          <MapLayers layers={[]} {...layersProps} onClose={onLayersClose} className="absolute inset-x-5 bottom-5 w-auto" />
+        </>
+      )}
     </div>
   )
 }

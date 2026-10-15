@@ -1,4 +1,4 @@
-import type { ComponentProps } from "react"
+import { useLayoutEffect, useRef, useState, type ComponentProps } from "react"
 import { cn } from "@/lib/utils"
 import { IconButton } from "@/components/ui/icon-button"
 import { UtilityButton } from "@/components/ui/utility-button"
@@ -45,7 +45,24 @@ function AudioRecorder({
   ...props
 }: AudioRecorderProps) {
   const idle = state === "idle"
-  const playedBars = Math.round((levels.length * progress) / 100)
+  // Show only whole bars that fit: measure the container and the first bar (tokens w-wave-bar, gap-wave-gap).
+  const waveRef = useRef<HTMLDivElement>(null)
+  const [fit, setFit] = useState(levels.length)
+  useLayoutEffect(() => {
+    const el = waveRef.current
+    if (!el) return
+    const measure = () => {
+      const bar = el.firstElementChild?.getBoundingClientRect().width ?? 0
+      const gap = parseFloat(getComputedStyle(el).columnGap) || 0
+      if (bar > 0) setFit(Math.max(1, Math.floor((el.clientWidth + gap) / (bar + gap))))
+    }
+    measure()
+    const ro = new ResizeObserver(measure)
+    ro.observe(el)
+    return () => ro.disconnect()
+  }, [levels.length])
+  const shown = levels.slice(0, fit)
+  const playedBars = Math.round((shown.length * progress) / 100)
   const primary = {
     idle: { icon: "microphone", label: "Record", onClick: onStart },
     recording: { icon: "pause", label: "Pause", onClick: onPause },
@@ -62,8 +79,8 @@ function AudioRecorder({
           {state === "recording" && <span className="size-6 rounded-full bg-status-danger" />}
           {elapsed}
         </div>
-        <div className="flex h-45 min-w-px flex-1 items-center justify-center gap-wave-gap overflow-hidden" aria-hidden>
-          {levels.map((h, i) => (
+        <div ref={waveRef} className="flex h-45 min-w-px flex-1 items-center justify-center gap-wave-gap overflow-hidden" aria-hidden>
+          {shown.map((h, i) => (
             <span
               key={i}
               className={cn(

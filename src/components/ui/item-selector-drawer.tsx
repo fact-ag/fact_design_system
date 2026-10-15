@@ -59,7 +59,7 @@ function ItemSelectorDrawer({
         </div>
         <div className="flex flex-1 flex-col gap-10 px-14 pt-9.5 pb-16">
           {onQueryChange && (
-            <label className="flex h-44 shrink-0 items-center gap-10 rounded-30 bg-fill-neutral-default px-14 text-text-muted focus-within:ring-2 focus-within:ring-border-focus">
+            <label className="mb-6 flex h-44 shrink-0 items-center gap-10 rounded-30 bg-fill-neutral-default px-14 text-text-muted focus-within:ring-2 focus-within:ring-border-focus">
               <Icon name="magnifying-glass" size={18} />
               <input
                 type="search"

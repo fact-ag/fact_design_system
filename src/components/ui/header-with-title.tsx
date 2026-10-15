@@ -18,7 +18,8 @@ function HeaderWithTitle({ title, onBack, onTitleClick, children, className, ...
   return (
     <header className={cn("relative flex h-40 items-center justify-between gap-8 px-16", className)} {...props}>
       {onBack ? <IconButton label="Back" icon="arrow-left" variant="alt" onClick={onBack} /> : <span className="size-40" />}
-      <div className="absolute inset-x-64 flex justify-center">
+      {/* ds-exception: Figma title box is asymmetric, left 107 and right 97 of 402, and sits 1.5px above the button center */}
+      <div className="absolute inset-y-0 left-[26.62%] right-[24.13%] flex -translate-y-1.5 items-center justify-center">
         {onTitleClick ? (
           <button
             type="button"

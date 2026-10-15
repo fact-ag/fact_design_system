@@ -17,20 +17,20 @@ type MapLayersProps = Omit<ComponentProps<"div">, "children" | "onSelect"> & {
 
 function MapLayers({ layers, selectedId, onSelect, onClose, title = "Map Layers", footer = "Upload custom layers on the FA desktop app.", className, ...props }: MapLayersProps) {
   return (
-    <div className={cn("relative flex w-full flex-col gap-16 rounded-t-25 rounded-b-50 border border-border-default bg-surface-default px-14 pt-19 pb-30", className)} {...props}>
-      <div className="absolute top-5 left-1/2 h-4 w-50 -translate-x-1/2 rounded-25 bg-fill-active" />
+    <div className={cn("relative flex w-full flex-col gap-16 rounded-t-25 rounded-b-50 border border-border-default bg-surface-default px-13 pt-18 pb-31", className)} {...props}>
+      <div className="absolute top-4 left-1/2 h-4 w-50 -translate-x-1/2 rounded-25 bg-fill-active" />
       <div className="relative h-22">
         <h2 className="text-22 leading-none tracking-condensed text-text-default">{title}</h2>
         <button
           type="button"
           onClick={onClose}
           aria-label="Close"
-          className="absolute -top-5 right-0 flex size-40 cursor-pointer items-center justify-center rounded-20 border border-border-default bg-surface-default text-icon-default drop-shadow-glow outline-none focus-visible:ring-2 focus-visible:ring-border-focus"
+          className="absolute -top-5 right-2 flex size-40 cursor-pointer items-center justify-center rounded-20 border border-border-default bg-surface-default text-icon-default drop-shadow-glow outline-none focus-visible:ring-2 focus-visible:ring-border-focus"
         >
           <Icon name="material-close" size={24} />
         </button>
       </div>
-      <ul className="mt-6 grid grid-cols-3 gap-x-2.5 gap-y-13">
+      <ul className="-mx-2 mt-6 grid grid-cols-3 gap-x-5.5 gap-y-13">
         {layers.map((l) => {
           const selected = l.id === selectedId
           return (

@@ -420,45 +420,43 @@ function MobileScreenDemo() {
   )
 }
 
+const mapAsset = (name: string) => new URL(`./assets/map/${name}`, import.meta.url).href
+const mapLayerList = [
+  { id: "cropland", label: "Cropland Data", image: mapAsset("cropland.png") },
+  { id: "ssurgo", label: "SSURGO", image: mapAsset("ssurgo.png") },
+  { id: "ceres", label: "Ceres", image: mapAsset("ceres.png") },
+  { id: "tax", label: "Tax Parcels", image: mapAsset("tax-parcels.png") },
+  { id: "opp", label: "Opp Finder", image: mapAsset("opp-finder.png") },
+  { id: "plss", label: "PLSS", image: mapAsset("plss.png") },
+  { id: "water", label: "CA Water Districts", image: mapAsset("ca-water.png") },
+]
+
+// Exact Figma frames (402x874), one per state, so the gallery can be diffed against Figma.
 function MapSketchDemo() {
-  const [state, setState] = useState<"explore" | "draw" | "pin-details" | "layers">("explore")
-  const [lid, setLid] = useState("sat")
-  const [note, setNote] = useState("Standing water after rain")
-  return (
+  const [lid, setLid] = useState("ssurgo")
+  const [note, setNote] = useState("")
+  const sketch = (
     <>
-      <Row>
-        {(["explore", "draw", "pin-details", "layers"] as const).map((s) => (
-          <BadgeButton key={s} selected={state === s} onClick={() => setState(s)}>{s}</BadgeButton>
-        ))}
-      </Row>
-      <div className="h-640 overflow-clip rounded-12">
-        <MapSketch
-          state={state}
-          background={<img src={wheat} alt="" className="size-full object-cover" />}
-          title="Sketch"
-          hint="Tap the map to drop a pin"
-          onClose={() => setState("explore")}
-          onCapture={() => setState("draw")}
-          onOpenLayers={() => setState("layers")}
-          onMyLocation={noop}
-          onCancel={() => setState("explore")}
-          onDone={() => setState("explore")}
-          toolbarProps={{ tool: "pen", onToolChange: noop }}
-          pinName="Wet spot"
-          pinCoordinates="36.7378, -119.7871"
-          pinNote={note}
-          onPinNoteChange={setNote}
-          onDeletePin={() => setState("draw")}
-          onSavePin={() => setState("draw")}
-          layersProps={{ layers, selectedId: lid, onSelect: setLid }}
-          onLayersClose={() => setState("explore")}
-        >
-          {state === "pin-details" || state === "draw" ? (
-            <div className="absolute top-1/3 left-1/3"><MapPin name="Wet spot" /></div>
-          ) : null}
-        </MapSketch>
-      </div>
+      <img src={mapAsset("freehand.svg")} alt="" className="absolute top-[417.52px] left-[182.37px] h-[107.581px] w-[105.236px]" />{/* ds-exception: Figma sketch layer position */}
+      <img src={mapAsset("area-fill.svg")} alt="" className="absolute top-[433.5px] left-[43.68px] h-[157.32px] w-[148.58px]" />{/* ds-exception: Figma sketch layer position */}
+      <img src={mapAsset("area.svg")} alt="" className="absolute top-[433.5px] left-[43.68px] h-[157.32px] w-[148.58px]" />{/* ds-exception: Figma sketch layer position */}
     </>
+  )
+  const bg = <img src={mapAsset("satellite.png")} alt="" className="size-full object-cover" />
+  const frame = "h-874 w-402 shrink-0"
+  return (
+    <div className="flex flex-wrap gap-24">
+      <MapSketch className={frame} state="explore" background={bg} onClose={noop} />
+      <MapSketch className={frame} state="draw" background={bg} onCancel={noop} onDone={noop}>
+        {sketch}
+        <div className="absolute top-[509.38px] left-[298.87px]"><MapPin showLabel={false} /></div>{/* ds-exception: Figma pin position */}
+      </MapSketch>
+      <MapSketch className={frame} state="pin-details" background={bg} onCancel={noop} onDone={noop} pinName="Pin 1" pinCoordinates="36.78123, -119.41790" pinNote={note} onPinNoteChange={setNote}>
+        {sketch}
+        <div className="absolute top-[483.38px] left-[292.87px]"><MapPin name="Pin 1" /></div>{/* ds-exception: Figma pin position */}
+      </MapSketch>
+      <MapSketch className={frame} state="layers" background={bg} onClose={noop} layersProps={{ layers: mapLayerList, selectedId: lid, onSelect: setLid }} onLayersClose={noop} />
+    </div>
   )
 }
 
@@ -1096,7 +1094,7 @@ export function Gallery() {
         <Row><MapPin name="Wet spot" /><MapPin showLabel={false} /></Row>
       </Section>
 
-      <Section id="map-sketch" title="Map Sketch (1219:1376)">
+      <Section id="map-sketch" wide title="Map Sketch (1219:1376)">
         <MapSketchDemo />
       </Section>
 

@@ -21,23 +21,23 @@ function Slider({ title, subtitle, min = 0, max = 100, value = 0, className, ...
       {title && <span className="text-18 leading-none text-text-default">{title}</span>}
       {subtitle && <span className="text-caption leading-20 text-text-muted">{subtitle}</span>}
       <span className="flex flex-col">
-      <span className="flex h-44 items-center rounded-20 bg-fill-neutral-default px-17">
-        <input
-          type="range"
-          min={min}
-          max={max}
-          value={value}
-          style={{
-            background: `linear-gradient(to right, var(--color-fill-brand-default) ${pct}%, var(--color-border-default) ${pct}%) center / 100% 4px no-repeat`,
-          }}
-          className={cn(
-            "block h-28 w-full cursor-pointer appearance-none rounded-2 bg-transparent outline-none focus-visible:[&::-webkit-slider-thumb]:ring-2 focus-visible:[&::-webkit-slider-thumb]:ring-border-focus disabled:cursor-not-allowed disabled:opacity-50",
-            `[&::-webkit-slider-thumb]:${thumb.split(" ").join(" [&::-webkit-slider-thumb]:")}`,
-            `[&::-moz-range-thumb]:${thumb.split(" ").join(" [&::-moz-range-thumb]:")}`,
-          )}
-          {...props}
-        />
-      </span>
+        <span className="flex h-44 items-center rounded-20 bg-fill-neutral-default px-17">
+          <input
+            type="range"
+            min={min}
+            max={max}
+            value={value}
+            style={{
+              background: `linear-gradient(to right, var(--color-fill-brand-default) ${pct}%, var(--color-border-default) ${pct}%) center / 100% 4px no-repeat`,
+            }}
+            className={cn(
+              "block h-28 w-full cursor-pointer appearance-none rounded-2 bg-transparent outline-none focus-visible:[&::-webkit-slider-thumb]:ring-2 focus-visible:[&::-webkit-slider-thumb]:ring-border-focus disabled:cursor-not-allowed disabled:opacity-50",
+              `[&::-webkit-slider-thumb]:${thumb.split(" ").join(" [&::-webkit-slider-thumb]:")}`,
+              `[&::-moz-range-thumb]:${thumb.split(" ").join(" [&::-moz-range-thumb]:")}`,
+            )}
+            {...props}
+          />
+        </span>
         <span className="flex justify-between px-17 pt-5 text-label text-text-muted">
           <span>{min.toLocaleString()}</span>
           <span>{max.toLocaleString()}</span>

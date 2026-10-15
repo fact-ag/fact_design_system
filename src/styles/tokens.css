@@ -187,6 +187,7 @@
 
   /* Text styles: Type/Display ... Type/Caption. Figma letter spacing is -2%. */
   --font-sans: "Phonic", ui-sans-serif, system-ui, sans-serif;
+  --font-system: -apple-system, "SF Pro", system-ui, sans-serif;
   --text-display: 28px;
   --text-display--line-height: 34px;
   --text-display--letter-spacing: -0.02em;

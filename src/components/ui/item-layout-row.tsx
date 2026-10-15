@@ -13,15 +13,15 @@ type ItemLayoutRowProps = Omit<ComponentProps<"div">, "title"> & {
 
 function ItemLayoutRow({ variant = "default", title, description, photo, className, ...props }: ItemLayoutRowProps) {
   return (
-    <div className={cn("flex h-44 w-full items-center gap-8 border-b border-border-neutral pb-4", className)} {...props}>
+    <div className={cn("flex h-44 w-full items-start gap-8 border-b border-border-neutral pb-4", className)} {...props}>
       {variant === "photo" ? (
-        <div className="size-34 shrink-0 overflow-clip rounded-6 border border-border-muted bg-fill-neutral-default [&>img]:size-full [&>img]:object-cover">{photo}</div>
+        <div className="mt-1 size-34 shrink-0 overflow-clip rounded-6 border border-border-muted bg-fill-neutral-default [&>img]:size-full [&>img]:object-cover">{photo}</div>
       ) : (
-        <DisplayIcon className="size-34 rounded-6 bg-fill-brand-tonal-default">
+        <DisplayIcon className="mt-2.5 size-34 rounded-6 bg-fill-brand-tonal-default">
           <Icon name="folder" size={16} />
         </DisplayIcon>
       )}
-      <div className="flex min-w-0 flex-1 flex-col gap-1.5">
+      <div className={cn("flex min-w-0 flex-1 flex-col gap-1.5", variant === "photo" ? "mt-0" : "mt-1")}>
         <span className="truncate text-body text-text-default">{title}</span>
         <span className="text-caption whitespace-pre text-text-muted">{description}</span>
       </div>

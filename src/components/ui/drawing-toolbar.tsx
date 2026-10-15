@@ -82,7 +82,7 @@ function DrawingToolbar({
       className={cn("flex w-fit max-w-full flex-col items-center gap-6 rounded-15 bg-bg-default p-8 drop-shadow-floating", className)}
       {...props}
     >
-      <div role="toolbar" aria-label="Drawing tools" className="flex flex-wrap items-center justify-center gap-2">
+      <div role="toolbar" aria-label="Drawing tools" className="flex items-center justify-center gap-2">
         {tools.map((t) => (
           <ToolButton key={t} icon={toolMeta[t].icon} label={toolMeta[t].label} selected={tool === t} onClick={() => onToolChange?.(t)} />
         ))}
@@ -90,7 +90,7 @@ function DrawingToolbar({
         <ToolButton icon="arrow-rotate-left" label="Undo" disabled={!canUndo} onClick={onUndo} />
         <ToolButton icon="arrow-rotate-right" label="Redo" disabled={!canRedo} onClick={onRedo} />
       </div>
-      <div className="flex flex-wrap items-center justify-center gap-10 pb-4">
+      <div className="flex items-center justify-center gap-10 pb-4">
         {swatches.map((s) => (
           <ColorSwatch key={s.label} color={s.color} label={s.label} selected={selectedColor === s.color} onClick={() => onColorChange?.(s.color)} />
         ))}
