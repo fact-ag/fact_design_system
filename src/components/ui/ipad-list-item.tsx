@@ -23,7 +23,8 @@ type IPadListItemProps = ComponentProps<"div"> & { items: IPadListItemData[]; on
 
 function IPadListItem({ items, onDelete, className, ...props }: IPadListItemProps) {
   return (
-    <div className={cn("w-full overflow-clip rounded-16 border border-border-default bg-surface-default shadow-croptrak", className)} {...props}>
+    <div className={cn("w-full overflow-x-auto rounded-16 border border-border-default bg-surface-default shadow-croptrak", className)} {...props}>
+      <div className="min-w-650">
       {items.map((it, i) => (
         <div key={i} className="relative flex h-72 items-stretch gap-10 overflow-clip border-b border-border-default last:border-b-0">
           <div className="relative z-10 flex w-135 min-w-0 shrink flex-col gap-3.5 border-r border-border-default bg-surface-default pt-13 pl-14">
@@ -65,6 +66,7 @@ function IPadListItem({ items, onDelete, className, ...props }: IPadListItemProp
           )}
         </div>
       ))}
+      </div>
     </div>
   )
 }
