@@ -102,6 +102,13 @@
 
 /* Semantic tokens (Figma collection "Semantic tokens", Light mode). Tailwind default colors are removed. */
 @theme {
+  --animate-caret: caret-blink 2s linear infinite;
+  @keyframes caret-blink {
+    0%, 24.99% { opacity: 1; }
+    25%, 49.99% { opacity: 0; }
+    50%, 100% { opacity: 1; }
+  }
+
   --color-*: initial;
 
   --color-bg-default: var(--color-neutrals-mist);

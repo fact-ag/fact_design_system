@@ -43,12 +43,15 @@ function InteractiveInput({
           {detail && <span className="truncate font-mono text-caption leading-16 text-text-muted">{detail}</span>}
         </div>
       ) : (
-        <input
-          value={value}
-          onChange={(e) => onChange?.(e.target.value)}
-          placeholder={placeholder ?? (action === "scan" ? "Scan or enter a code" : "Enter a name")}
-          className="h-20 min-w-0 flex-1 bg-transparent text-body text-text-default caret-fill-success outline-none placeholder:text-text-muted/50"
-        />
+        <div className="relative h-20 min-w-0 flex-1">
+          <span aria-hidden className="absolute top-0 left-0 h-20 w-1.5 animate-caret bg-fill-success" />
+          <input
+            value={value}
+            onChange={(e) => onChange?.(e.target.value)}
+            placeholder={placeholder ?? (action === "scan" ? "Scan or enter a code" : "Enter a name")}
+            className="h-20 w-full bg-transparent pl-3.5 text-body text-text-default caret-transparent outline-none placeholder:text-text-muted/50"
+          />
+        </div>
       )}
       <button
         type="button"
