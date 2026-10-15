@@ -48,6 +48,7 @@ function Header({ tabs, activeId, onTabChange, onMenu, time = "9:41", className,
               key={t.id}
               selected={t.id === activeId}
               icon={t.icon}
+              iconSize={t.icon === "book-open-lines" ? 12 : undefined}
               onClick={() => onTabChange?.(t.id)}
             >
               {t.label}

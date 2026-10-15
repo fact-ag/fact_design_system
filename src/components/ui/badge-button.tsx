@@ -4,9 +4,9 @@ import { Icon, type IconName } from "./icon"
 
 // Figma: Badge button (929:669). State=[Active|Inactive] boolean -> selected prop (aria-pressed).
 // Figma has no pressed/disabled states; disabled here is a fallback.
-type BadgeButtonProps = ComponentProps<"button"> & { selected?: boolean; icon?: IconName }
+type BadgeButtonProps = ComponentProps<"button"> & { selected?: boolean; icon?: IconName; iconSize?: number }
 
-function BadgeButton({ className, selected = false, icon = "house", type = "button", children, ...props }: BadgeButtonProps) {
+function BadgeButton({ className, selected = false, icon = "house", iconSize = 16, type = "button", children, ...props }: BadgeButtonProps) {
   return (
     <button
       type={type}
@@ -19,7 +19,7 @@ function BadgeButton({ className, selected = false, icon = "house", type = "butt
       {...props}
     >
       <span className="flex size-15 shrink-0 items-center justify-center">
-        <Icon name={icon} size={16} />
+        <Icon name={icon} size={iconSize} />
       </span>
       {children}
     </button>
